@@ -1,0 +1,8 @@
+[device]
+  name = "Example device"
+  description = "This is an example device"
+
+  [[device.firmware]]
+    version = "1.0.0"
+    profiles = ["example-EU868.toml"]
+    codec = "example.js"

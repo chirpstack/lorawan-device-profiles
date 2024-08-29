@@ -1,0 +1,5 @@
+[vendor]
+  name = "Example vendor"
+  id = 0
+  ouis = []
+  devices = ["example.toml"]
