@@ -1,0 +1,6 @@
+services:
+  lorawan-device-profiles:
+    build:
+      context: .
+    volumes:
+      - ./:/lorawan-device-profiles
