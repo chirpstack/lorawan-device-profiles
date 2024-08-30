@@ -17,3 +17,8 @@
   #
   # This list refers to one or multiple devices in the devices/ directory.
   devices = ["example.toml"]
+
+  # Vendor metadata (optional).
+  [vendor.metadata]
+    # Vendor homepage.
+    homepage = "https://www.example.com"

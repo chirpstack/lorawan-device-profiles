@@ -5,6 +5,15 @@
   # Device description.
   description = "This is an example device"
 
+  # Device metadata (optional).
+  [device.metadata]
+    # Product URL.
+    product_url = "https://www.example.com/devices/example-device"
+
+    # Documentation URL.
+    documentation_url = "https://docs.example.com/devices/example-device"
+
+
   # Device firmware version.
   #
   # This section can be repeated in case multiple firmware versions exist.

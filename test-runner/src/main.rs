@@ -4,6 +4,7 @@ use std::path::Path;
 use serde_valid::Validate;
 
 mod js;
+#[allow(dead_code)]
 mod structs;
 
 fn main() {

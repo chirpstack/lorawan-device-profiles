@@ -6,12 +6,20 @@ pub struct VendorConfiguration {
     pub vendor: Vendor,
 }
 
-#[derive(Deserialize)]
+#[derive(Default, Deserialize)]
+#[serde(default)]
 pub struct Vendor {
     pub name: String,
     pub id: usize,
     pub ouis: Vec<String>,
     pub devices: Vec<String>,
+    pub metadata: VendorMetadata,
+}
+
+#[derive(Default, Deserialize)]
+#[serde(default)]
+pub struct VendorMetadata {
+    pub homepage: Option<String>,
 }
 
 #[derive(Deserialize)]
@@ -19,11 +27,19 @@ pub struct DeviceConfiguration {
     pub device: Device,
 }
 
-#[derive(Deserialize)]
+#[derive(Default, Deserialize)]
+#[serde(default)]
 pub struct Device {
     pub name: String,
     pub description: String,
     pub firmware: Vec<DeviceFirmware>,
+    pub metadata: DeviceMetadata,
+}
+
+#[derive(Default, Deserialize)]
+pub struct DeviceMetadata {
+    pub product_url: Option<String>,
+    pub documentation_url: Option<String>,
 }
 
 #[derive(Deserialize)]
