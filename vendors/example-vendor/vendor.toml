@@ -1,5 +1,19 @@
 [vendor]
+  # Vendor name.
   name = "Example vendor"
+
+  # LoRa Alliance assigned Vendor ID.
+  #
+  # See also:
+  # ttps://resources.lora-alliance.org/document/lora-alliance-vendor-id-20230915
   id = 0
+
+  # OUIs owned by vendor (optional).
+  # 
+  # Example: ouis = ["010203", "40506"]
   ouis = []
+
+  # List of devices.
+  #
+  # This list refers to one or multiple devices in the devices/ directory.
   devices = ["example.toml"]

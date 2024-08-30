@@ -42,34 +42,42 @@ pub struct ProfileConfiguration {
 #[derive(Default, Deserialize, Validate)]
 #[serde(default)]
 pub struct Profile {
-    #[validate(enumerate = ["EU868"])]
+    #[validate(enumerate = ["EU868", "US915", "CN779", "EU433", "AU915", "CN470", "AS923", "AS923-2", "AS923-3", "AS923-4", "KR920", "IN865", "RU864"])]
     pub region: String,
-    #[validate(enumerate = ["1.0.4"])]
+    #[validate(enumerate = ["1.0.0", "1.0.1", "1.0.2", "1.0.3","1.0.4", "1.1.0"])]
     pub mac_version: String,
-    #[validate(enumerate = ["RP002-1.0.3"])]
+    #[validate(enumerate = ["A", "B", "RP002-1.0.0", "RP002-1.0.1", "RP002-1.0.2", "RP002-1.0.3", "RP002-1.0.4"])]
     pub reg_params_revision: String,
     pub supports_otaa: bool,
     pub supports_class_b: bool,
     pub supports_class_c: bool,
     pub max_eirp: usize,
 
+    #[validate]
     pub abp: ProfileAbp,
+    #[validate]
     pub class_b: ProfileClassB,
     pub class_c: ProfileClassC,
 }
 
-#[derive(Default, Deserialize)]
+#[derive(Default, Deserialize, Validate)]
 pub struct ProfileAbp {
+    #[validate(maximum = 15)]
     pub rx1_delay: usize,
+    #[validate(maximum = 7)]
     pub rx1_dr_offset: usize,
+    #[validate(maximum = 15)]
     pub rx2_dr: usize,
     pub rx2_freq: usize,
 }
 
-#[derive(Default, Deserialize)]
+#[derive(Default, Deserialize, Validate)]
 pub struct ProfileClassB {
     pub timeout_secs: usize,
+
+    #[validate(maximum = 7)]
     pub ping_slot_nb_k: usize,
+    #[validate(maximum = 15)]
     pub ping_slot_dr: usize,
     pub ping_slot_freq: usize,
 }
