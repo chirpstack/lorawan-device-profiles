@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Test decode RAK Cayenne LPP",
+    "input": {
+      "bytes": [30,66,0,1,74,1,163]
+    },
+    "expected": {
+      "data": {
+        "presence_48": 0,
+		"voltage_1": 4.19
+      }
+    }
+  }
+]

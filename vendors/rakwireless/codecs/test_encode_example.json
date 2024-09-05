@@ -1,0 +1,13 @@
+[
+  {
+    "name": "Test encode temperature",
+    "input": {
+      "data": {
+        "temp": 22
+      }
+    },
+    "expected": {
+      "bytes": [22]
+    }
+  }
+]

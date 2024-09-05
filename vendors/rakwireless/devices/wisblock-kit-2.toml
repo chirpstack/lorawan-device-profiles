@@ -1,0 +1,35 @@
+[device]
+  # Device name.
+  name = "WisBlock Kit 2 LoRa-based GPS Tracker"
+
+  # Device description.
+  description = "WisBlock GNSS tracker with RAK12500 GNSS module and RAK1906 environment sensor."
+
+  # Device metadata (optional).
+  [device.metadata]
+    # Product URL.
+    product_url = "https://store.rakwireless.com/products/wisblock-kit-2-lora-based-gps-tracker-with-solar-panel"
+
+    # Documentation URL.
+    documentation_url = "https://github.com/beegee-tokyo/RAK4631-Kit-2-RAK12500-RAK1906"
+
+
+  # Device firmware version.
+  #
+  # This section can be repeated in case multiple firmware versions exist.
+  # As a new firmware version can change the supported profiles / regions and
+  # payload format, each firmware version has its own profiles and codec
+  # configuration.
+  [[device.firmware]]
+    # Firmware version.
+    version = "1.0.0^"
+
+    # List of supported profiles.
+    #
+    # This list refers to one or multiple profiles in the profiles/ directory.
+    profiles = ["EU868_1_0_2.toml", "RU864_1_0_2.toml", "IN865_1_0_2.toml", "US915_1_0_2.toml", "AU915_1_0_2.toml", "KR920_1_0_2.toml", "AS923_1_1_0_2.toml", "AS923_2_1_0_2.toml", "AS923_3_1_0_2.toml", "AS923_4_1_0_2.toml"]
+
+    # Payload codec.
+    #
+    # In case no codec is available, you can remove this option.
+    codec = "rak_standard.js"
