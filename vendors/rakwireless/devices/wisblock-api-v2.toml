@@ -22,7 +22,7 @@
   # configuration.
   [[device.firmware]]
     # Firmware version.
-    version = "2.0.18^"
+    version = "2.0.18"
 
     # List of supported profiles.
     #
