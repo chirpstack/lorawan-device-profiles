@@ -1,0 +1,35 @@
+[device]
+  # Device name.
+  name = "WisBlock devices using WisBlock-API-V2"
+
+  # Device description.
+  description = "WisBlock based devices using the WisBlock API V2 which takes care of all the LoRaWAN, BLE, AT command functionality. It makes development of event driven power savings applications easy. RUI3 AT command compatible allows the usage of RAKwireless' WisToolBox to setup the device."
+
+  # Device metadata (optional).
+  [device.metadata]
+    # Product URL.
+    product_url = "https://store.rakwireless.com/collections/wisblock"
+
+    # Documentation URL.
+    documentation_url = "https://docs.rakwireless.com/Product-Categories/WisBlock/"
+
+
+  # Device firmware version.
+  #
+  # This section can be repeated in case multiple firmware versions exist.
+  # As a new firmware version can change the supported profiles / regions and
+  # payload format, each firmware version has its own profiles and codec
+  # configuration.
+  [[device.firmware]]
+    # Firmware version.
+    version = "2.0.18"
+
+    # List of supported profiles.
+    #
+    # This list refers to one or multiple profiles in the profiles/ directory.
+    profiles = ["EU868_1_0_2.toml", "RU864_1_0_2.toml", "IN865_1_0_2.toml", "US915_1_0_2.toml", "AU915_1_0_2.toml", "KR920_1_0_2.toml", "AS923_1_1_0_2.toml", "AS923_2_1_0_2.toml", "AS923_3_1_0_2.toml", "AS923_4_1_0_2.toml"]
+
+    # Payload codec.
+    #
+    # In case no codec is available, you can remove this option.
+    codec = "rak_standard.js"
