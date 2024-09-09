@@ -1,0 +1,5 @@
+include = ["vendors/**/*.toml"]
+
+[formatting]
+  indent_tables = true
+  indent_entries = true

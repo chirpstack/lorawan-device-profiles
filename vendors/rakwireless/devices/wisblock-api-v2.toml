@@ -27,7 +27,18 @@
     # List of supported profiles.
     #
     # This list refers to one or multiple profiles in the profiles/ directory.
-    profiles = ["EU868_1_0_2.toml", "RU864_1_0_2.toml", "IN865_1_0_2.toml", "US915_1_0_2.toml", "AU915_1_0_2.toml", "KR920_1_0_2.toml", "AS923_1_1_0_2.toml", "AS923_2_1_0_2.toml", "AS923_3_1_0_2.toml", "AS923_4_1_0_2.toml"]
+    profiles = [
+      "EU868_1_0_2.toml",
+      "RU864_1_0_2.toml",
+      "IN865_1_0_2.toml",
+      "US915_1_0_2.toml",
+      "AU915_1_0_2.toml",
+      "KR920_1_0_2.toml",
+      "AS923_1_1_0_2.toml",
+      "AS923_2_1_0_2.toml",
+      "AS923_3_1_0_2.toml",
+      "AS923_4_1_0_2.toml",
+    ]
 
     # Payload codec.
     #

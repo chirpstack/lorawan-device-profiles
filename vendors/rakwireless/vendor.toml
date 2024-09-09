@@ -16,7 +16,13 @@
   # List of devices.
   #
   # This list refers to one or multiple devices in the devices/ directory.
-  devices = ["rak10702.toml", "wisblock-api-v2.toml", "wisblock-kit-1.toml", "wisblock-kit-2.toml", "wisblock-kit-4.toml"]
+  devices = [
+    "rak10702.toml",
+    "wisblock-api-v2.toml",
+    "wisblock-kit-1.toml",
+    "wisblock-kit-2.toml",
+    "wisblock-kit-4.toml",
+  ]
 
   # Vendor metadata (optional).
   [vendor.metadata]
