@@ -2,7 +2,7 @@
   {
     "name": "Test decode RAK Cayenne LPP",
     "input": {
-      "bytes": [30,66,0,1,74,1,163]
+      "bytes": [48,102,0,1,116,1,163]
     },
     "expected": {
       "data": {
