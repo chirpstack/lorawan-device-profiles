@@ -3,7 +3,7 @@
   #
   # Please refer to the LoRaWAN Regional Parameters specification for the available
   # common-names.
-  region = "AS923_2"
+  region = "AS923-2"
 
   # LoRaWAN mac-version (1.x.y).
   mac_version = "1.0.2"
