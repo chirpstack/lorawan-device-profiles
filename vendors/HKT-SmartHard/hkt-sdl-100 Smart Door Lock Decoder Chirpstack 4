@@ -1,0 +1,89 @@
+/**
+ * Payload Decoder for The Chirpstack v4
+ * 
+ * Original Decoder by 2023 HKT SmartHard
+ * 
+ * @author Pixeldieb
+ * @product HKT-SDL-100
+ */
+
+function decodeUplink(input) {
+    var bytes = input.bytes;
+    var decoded = {};
+    
+    var ACT_WAY = ["Fingerprint Open", "Password Open", "MF Card Open", "Fingerprint Alarm", "Password Alarm", "MF Card Alarm", "Tamper Alarm", "LoRa Open", "BLE Open", "Unknow"];
+    
+    if (!checkReportSync(bytes)) {
+        return { errors: ["Invalid Sync Report"] };
+    }
+    
+    var dataLen = bytes.length - 5;
+    var i = 5;
+
+    while (dataLen > 0) {
+        var type = bytes[i];
+        i++;
+        switch (type) {
+            case 0x01:  // software_ver and hardware_ver
+                decoded.hard_ver = bytes[i];
+                decoded.soft_ver = bytes[i + 1];
+                i += 2;
+                dataLen -= 2;
+                break;
+            case 0x03:  // battery
+                decoded.battery = bytes[i];
+                i += 1;
+                dataLen -= 1;
+                break;
+            case 0x30:  // operating record
+                decoded.unlock_record = bytes[i];
+                decoded.unlock_record_des = getUnlockRecordDescription(decoded.unlock_record, ACT_WAY);
+                decoded.user_number = bytes[i + 1];
+                decoded.timestamp = byteToUint32(bytes.slice(i + 2, i + 6));
+                i += 6;
+                dataLen -= 6;
+                break;
+            case 0x84:  // tamper status
+                decoded.tamper_status = bytes[i];
+                i += 1;
+                dataLen -= 1;
+                break;
+            case 0x86:  // sync interval
+                decoded.sync_interval = readUInt16LE(bytes.slice(i, i + 2));
+                i += 2;
+                dataLen -= 2;
+                break;
+            default:
+                break;
+        }
+    }
+    
+    return { data: decoded };
+}
+
+function checkReportSync(bytes) {
+    return (bytes[0] == 0x68 && bytes[1] == 0x6B && bytes[2] == 0x74);
+}
+
+function getUnlockRecordDescription(record, ACT_WAY) {
+    switch (record) {
+        case 0x01: return ACT_WAY[0];
+        case 0x02: return ACT_WAY[1];
+        case 0x03: return ACT_WAY[2];
+        case 0xC1: return ACT_WAY[3];
+        case 0xC2: return ACT_WAY[4];
+        case 0xC3: return ACT_WAY[5];
+        case 0xC4: return ACT_WAY[6];
+        case 0xC5: return ACT_WAY[7];
+        case 0xC6: return ACT_WAY[8];
+        default:   return ACT_WAY[9];
+    }
+}
+
+function readUInt16LE(bytes) {
+    return (bytes[1] << 8) | bytes[0];
+}
+
+function byteToUint32(bytes) {
+    return ((bytes[0] << 24) >>> 0) + ((bytes[1] << 16) >>> 0) + ((bytes[2] << 8) >>> 0) + (bytes[3] >>> 0);
+}
