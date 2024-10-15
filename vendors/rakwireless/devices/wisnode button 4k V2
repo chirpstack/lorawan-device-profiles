@@ -1,0 +1,39 @@
+/**
+ * Payload Decoder for ChirpStack v4
+ * 
+ * @author Pixeldieb
+ * converted from a TTN decoder, variable for button message can be set according to your application
+ */
+
+function decodeUplink(input) {
+    var bytes = input.bytes;
+    var pressed_button;
+
+    // Map byte values to button numbers
+    switch (bytes[0]) {
+        case 49:
+            pressed_button = "1";
+            break;
+        case 50:
+            pressed_button = "2";
+            break;
+        case 51:
+            pressed_button = "3";
+            break;
+        case 52:
+            pressed_button = "4";
+            break;
+        default:
+            pressed_button = "Unknown button value";
+            break;
+    }
+
+    // Return the decoded result in ChirpStack v4 format
+    return {
+        data: {
+            button_pressed: pressed_button
+        },
+        warnings: [],
+        errors: []
+    };
+}
