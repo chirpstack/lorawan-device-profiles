@@ -1,0 +1,81 @@
+/**
+ * Payload Decoder for ChirpStack v4
+ * 
+ * @author Pixeldieb
+ */
+
+function decodeUplink(input) {
+    var decoded = {};
+    var bytes = input.bytes;
+
+    if (input.fPort == 1) { // TELEMETRY
+
+        // Decode header
+        decoded.base_id = bytes[0] >> 4;
+        decoded.major_version = bytes[0] & 0x0F;
+        decoded.minor_version = bytes[1] >> 4;
+        decoded.product_version = bytes[1] & 0x0F;
+        decoded.up_cnt = bytes[2];
+        decoded.battery_voltage = ((bytes[3] << 8) | bytes[4]) / 1000.0;
+        decoded.internal_temperature = ((bytes[5] << 8) | bytes[6]) / 10 - 100;
+        decoded.networkBaseType = 'lorawan';
+        decoded.networkSubType = 'tti';
+
+        var it = 7;
+
+        if (decoded.minor_version >= 3) {
+            decoded.humidity = bytes[it++];
+
+            if (decoded.product_version & 0x01) { // CO2 and pressure included if subversion bit0 = 1
+                decoded.pressure = (bytes[it++] << 8 | bytes[it++]);
+                decoded.co2_ppm = (bytes[it++] << 8 | bytes[it++]);
+            } else {
+                it += 4; // Skip for compatibility reasons
+            }
+
+            decoded.alarm = bytes[it++]; // Alarm-Level: green, yellow, red
+
+            // Skip FIFO values (1 byte FIFO size, 1 byte period, 7 bytes per FIFO entry)
+            it += 2 + bytes[it] * 7;
+
+            decoded.dew_point = ((bytes[it++] << 8) | bytes[it++]) / 10 - 100;
+
+            if (decoded.product_version & 0x04) { // Wall temp and humidity if subversion bit 2 = 1
+                decoded.wall_temperature = ((bytes[it++] << 8) | bytes[it++]) / 10 - 100;
+                decoded.therm_temperature = ((bytes[it++] << 8) | bytes[it++]) / 10 - 100;
+                decoded.wall_humidity = bytes[it++];
+            }
+
+        } else {
+            decoded.humidity = bytes[it++];
+
+            if (decoded.product_version & 0x01) { // CO2 and pressure if subversion bit0 = 1
+                decoded.pressure = (bytes[it++] << 8 | bytes[it++]);
+                decoded.co2_ppm = (bytes[it++] << 8 | bytes[it++]);
+            } else {
+                it += 4; // Skip for compatibility reasons
+            }
+
+            decoded.alarm = bytes[it++]; // Alarm-Level: green, yellow, red
+
+            // Skip FIFO values (1 byte FIFO size, 1 byte period, 7 bytes per FIFO entry)
+            it += 2 + bytes[it] * 7;
+
+            if (decoded.minor_version >= 2 && bytes[it]) { // Dew point if minor version >= 2
+                decoded.dew_point = bytes[it++] - 100;
+            }
+
+            if (decoded.product_version & 0x04) { // Wall temp and humidity if subversion bit 2 = 1
+                decoded.wall_temperature = bytes[it++] - 100;
+                decoded.therm_temperature = bytes[it++] - 100;
+                decoded.wall_humidity = bytes[it++];
+            }
+        }
+    }
+
+    return {
+        data: decoded,
+        warnings: [],
+        errors: []
+    };
+}
