@@ -1,4 +1,12 @@
 [profile]
+  # ID.
+  #
+  # Vendor Profile ID (16 bit).
+  # 
+  # See also (4.2.4):
+  # https://resources.lora-alliance.org/technical-recommendations/tr005-lorawan-device-identification-qr-codes
+  id = 0
+
   # Region Common-name.
   #
   # Please refer to the LoRaWAN Regional Parameters specification for the available

@@ -58,6 +58,7 @@ pub struct ProfileConfiguration {
 #[derive(Default, Deserialize, Validate)]
 #[serde(default)]
 pub struct Profile {
+    pub id: usize,
     #[validate(enumerate = ["EU868", "US915", "CN779", "EU433", "AU915", "CN470", "AS923", "AS923-2", "AS923-3", "AS923-4", "KR920", "IN865", "RU864"])]
     pub region: String,
     #[validate(enumerate = ["1.0.0", "1.0.1", "1.0.2", "1.0.3","1.0.4", "1.1.0"])]
