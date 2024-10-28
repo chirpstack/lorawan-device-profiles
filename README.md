@@ -90,7 +90,7 @@ In summary, these are the steps to create a new device-profile.
    For each firmware version (if there are multiple), make sure to also
    configure the `profiles` and `codec` options (if you provide a payload)
    codec. For example your `temperature.toml` device configuration could
-   contain `profiles= ["temerature-eu868.toml", "temperature-us915.toml"]` and
+   contain `profiles= ["temperature-eu868.toml", "temperature-us915.toml"]` and
    `codec = "temperature.js"` if there a a codec for this device.
 
 4. **Create profile file(s).** In this step you need to create a file for
