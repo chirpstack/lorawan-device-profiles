@@ -1,0 +1,61 @@
+.layout {
+  margin-left: 300px;
+}
+
+.layout-header {
+  background: #ffffff;
+  box-shadow: 0px 0px 10px 0px #ccc;
+  /* Leaflet JS zoom controls have z-index 1000. */
+  z-index: 1001;
+
+  position: fixed;
+  width: 100%;
+}
+
+.layout-header .logo {
+  float: left;
+  margin-top: 16px;
+  height: 32px;
+}
+
+.layout-menu {
+  padding-top: 85px;
+
+  overflow: auto;
+  position: fixed !important;
+  height: 100vh;
+  left: 0;
+}
+
+.layout-menu .vendor-select {
+  margin-left: 24px;
+  margin-bottom: 12px;
+  width: 252px;
+}
+
+.layout-menu .vendor-add {
+  margin-left: 24px;
+  width: 252px;
+}
+
+
+.layout-content {
+  margin-top: 65px;
+}
+
+.layout-content .content-header > * {
+  float: right;
+}
+
+.layout-content .content-header h3 {
+  float: left;
+  display: inline;
+}
+
+.layout-content .content {
+  background: #ffffff;
+}
+
+.CodeMirror {
+  height: 600px;
+}

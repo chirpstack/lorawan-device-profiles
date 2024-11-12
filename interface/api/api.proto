@@ -1,0 +1,95 @@
+syntax = "proto3";
+
+package api;
+
+import "google/protobuf/empty.proto";
+
+service DeviceProfileService {
+  rpc GetVendor(GetVendorRequest) returns (GetVendorResponse) {}
+  rpc CreateVendor(CreateVendorRequest) returns (google.protobuf.Empty) {}
+  rpc UpdateVendor(UpdateVendorRequest) returns (google.protobuf.Empty) {}
+  rpc ListVendors(google.protobuf.Empty) returns (ListVendorsResponse) {}
+  rpc DeleteVendor(DeleteVendorRequest) returns (google.protobuf.Empty) {}
+
+  rpc CreateCodec(CreateCodecRequest) returns (google.protobuf.Empty) {}
+  rpc GetCodec(GetCodecRequest) returns (GetCodecResponse) {}
+  rpc UpdateCodec(UpdateCodecRequest) returns (google.protobuf.Empty) {}
+  rpc ListCodecs(ListCodecsRequest) returns (ListCodecsResponse) {}
+  rpc DeleteCodec(DeleteCodecRequest) returns (google.protobuf.Empty) {}
+}
+
+message Vendor {
+  string dir = 1;
+  string name = 2;
+  uint32 lora_alliance_vendor_id = 3;
+  repeated string ouis = 4;
+  VendorMetadata metadata = 5;
+}
+
+message VendorMetadata {
+  string homepage = 1;
+}
+
+message GetVendorRequest {
+  string dir = 1;
+}
+
+message GetVendorResponse {
+  Vendor vendor = 1;
+}
+
+message UpdateVendorRequest {
+  Vendor vendor = 1;
+}
+
+message CreateVendorRequest {
+  Vendor vendor = 1;
+}
+
+message ListVendorsResponse {
+  uint32 total_count = 1;
+  repeated Vendor result = 2;
+}
+
+message DeleteVendorRequest {
+  string dir = 1;
+}
+
+message Codec {
+  string vendor_dir = 1;
+  string file = 2;
+  string codec = 3;
+  string decode_tests = 4;
+  string encode_tests = 5;
+}
+
+message CreateCodecRequest {
+  Codec codec = 1;
+}
+
+message GetCodecRequest {
+  string vendor_dir = 1;
+  string file = 2;
+}
+
+message GetCodecResponse {
+  Codec codec = 1;
+}
+
+message UpdateCodecRequest {
+  Codec codec = 1;
+}
+
+message ListCodecsRequest {
+  string vendor_dir = 1;
+}
+
+message ListCodecsResponse {
+  uint32 total_count = 1;
+  repeated Codec result = 2;
+}
+
+message DeleteCodecRequest {
+  string vendor_dir = 1;
+  string file = 2;
+}

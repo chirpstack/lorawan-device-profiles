@@ -3,6 +3,10 @@
 pkgs.mkShell {
   buildInputs = [
     pkgs.rustup
-    pkgs.taplo
+    pkgs.protobuf
+    pkgs.nodejs
+    pkgs.yarn
+    pkgs.protoc-gen-grpc-web
   ];
 }
+
