@@ -10,4 +10,4 @@ api:
 	$(PROTOC_PATH) $(PROTOC_ARGS) api/api.proto
 
 ui:
-	cd ui && yarn add file:./api/grpc-web && yarn install
+	cd ui && yarn add file:./api/grpc-web && yarn install && yarn build
