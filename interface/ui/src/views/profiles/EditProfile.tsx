@@ -4,45 +4,44 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Space, Breadcrumb, Card, Button, Popconfirm } from "antd";
 import { PageHeader } from "@ant-design/pro-layout";
 
-import { GetCodecRequest, GetCodecResponse, Codec, UpdateCodecRequest, DeleteCodecRequest } from "@api/grpc-web/api_pb";
-import CodecForm from "./CodecForm";
+import { GetProfileRequest, GetProfileResponse, Profile, UpdateProfileRequest, DeleteProfileRequest } from "@api/grpc-web/api_pb";
+import ProfileForm from "./ProfileForm";
 import DeviceProfileStore from "../../stores/DeviceProfileStore";
 
-
-function EditCodec() {
-  const [codec, setCodec] = useState<Codec | undefined>(undefined);
+function EditProfile() {
+  const [profile, setProfile] = useState<Profile | undefined>(undefined);
   const { vendorDir, file } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
-    const req = new GetCodecRequest();
+    const req = new GetProfileRequest();
     req.setFile(file!);
     req.setVendorDir(vendorDir!);
 
-    DeviceProfileStore.getCodec(req, (resp: GetCodecResponse) => {
-      setCodec(resp.getCodec());
+    DeviceProfileStore.getProfile(req, (resp: GetProfileResponse) => {
+      setProfile(resp.getProfile());
     });
   }, [vendorDir, file]);
 
-  const onFinish = (obj: Codec) => {
-    const req = new UpdateCodecRequest();
-    req.setCodec(obj);
-    DeviceProfileStore.updateCodec(req, () => {
-      navigate(`/vendors/${vendorDir}/codecs`);
+  const onFinish = (obj: Profile) => {
+    const req = new UpdateProfileRequest();
+    req.setProfile(obj);
+    DeviceProfileStore.updateProfile(req, () => {
+      navigate(`/vendors/${vendorDir}/profiles`);
     });
   }
 
   const onDelete = () => {
-    const req = new DeleteCodecRequest();
+    const req = new DeleteProfileRequest();
     req.setVendorDir(vendorDir!);
     req.setFile(file!);
 
-    DeviceProfileStore.deleteCodec(req, () => {
-      navigate(`/vendors/${vendorDir}/codecs`);
+    DeviceProfileStore.deleteProfile(req, () => {
+      navigate(`/vendors/${vendorDir}/profiles`);
     });
   }
 
-  if (codec === undefined) {
+  if (profile === undefined) {
     return null;
   }
 
@@ -52,7 +51,7 @@ function EditCodec() {
         breadcrumbRender={() => (
           <Breadcrumb>
             <Breadcrumb.Item>
-              <span>Codecs</span>
+              <span>Profiles</span>
             </Breadcrumb.Item>
             <Breadcrumb.Item>
               <span>{file}</span>
@@ -62,23 +61,23 @@ function EditCodec() {
             </Breadcrumb.Item>
           </Breadcrumb>
         )}
-        title="Update codec"
+        title="Update profile"
         extra={
           <Popconfirm
-            title="Delete codec"
-            description="Are you sure you want to delete this codec file?"
+            title="Delete profile"
+            description="Are you sure you want to delete this profile file?"
             onConfirm={onDelete}
             placement="left"
           >
-            <Button type="primary" danger>Delete codec</Button>
+            <Button type="primary" danger>Delete profile</Button>
           </Popconfirm>
         }
       />
       <Card>
-        <CodecForm update initialValues={codec} onFinish={onFinish} />
+        <ProfileForm update initialValues={profile} onFinish={onFinish} />
       </Card>
     </Space>
   );
 }
 
-export default EditCodec;
+export default EditProfile;

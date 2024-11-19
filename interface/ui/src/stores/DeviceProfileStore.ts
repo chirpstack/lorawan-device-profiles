@@ -13,6 +13,24 @@ import {
   UpdateCodecRequest,
   ListCodecsRequest,
   ListCodecsResponse,
+  DeleteCodecRequest,
+  TestCodecRequest,
+  TestCodecResponse,
+  DeleteVendorRequest,
+  CreateProfileRequest,
+  GetProfileRequest,
+  GetProfileResponse,
+  UpdateProfileRequest,
+  ListProfilesRequest,
+  ListProfilesResponse,
+  DeleteProfileRequest,
+  CreateDeviceRequest,
+  GetDeviceRequest,
+  GetDeviceResponse,
+  UpdateDeviceRequest,
+  ListDevicesRequest,
+  ListDevicesResponse,
+  DeleteDeviceRequest,
 } from "@api/grpc-web/api_pb";
 
 import { notification } from "antd";
@@ -58,7 +76,20 @@ class DeviceProfileStore extends EventEmitter {
         duration: 3,
       });
 
+      this.emit("change");
+
       callbackFunc();
+    });
+  }
+
+  getVendor = (req: GetVendorRequest, callbackFunc: (resp: GetVendorResponse) => void) => {
+    this.client.getVendor(req, undefined, (err, resp) => {
+      if (err !== null) {
+        HandleError(err);
+        return;
+      }
+
+      callbackFunc(resp);
     });
   }
 
@@ -74,19 +105,9 @@ class DeviceProfileStore extends EventEmitter {
         duration: 3,
       });
 
+      this.emit("change");
+
       callbackFunc();
-    });
-  }
-
-
-  getVendor = (req: GetVendorRequest, callbackFunc: (resp: GetVendorResponse) => void) => {
-    this.client.getVendor(req, undefined, (err, resp) => {
-      if (err !== null) {
-        HandleError(err);
-        return;
-      }
-
-      callbackFunc(resp);
     });
   }
 
@@ -98,6 +119,24 @@ class DeviceProfileStore extends EventEmitter {
       }
 
       callbackFunc(resp);
+    });
+  }
+
+  deleteVedor = (req: DeleteVendorRequest, callbackFunc: () => void) => {
+    this.client.deleteVendor(req, undefined, (err) => {
+      if (err !== null) {
+        HandleError(err);
+        return;
+      }
+
+      notification.success({
+        message: "Vendor deleted",
+        duration: 3,
+      });
+
+      this.emit("delete");
+
+      callbackFunc();
     });
   }
 
@@ -139,7 +178,7 @@ class DeviceProfileStore extends EventEmitter {
     });
   }
 
-  updateCodec(req: UpdateCodecRequest, callbackFunc: () => void) {
+  updateCodec = (req: UpdateCodecRequest, callbackFunc: () => void) => {
     this.client.updateCodec(req, undefined, (err) => {
       if (err !== null) {
         HandleError(err);
@@ -148,6 +187,174 @@ class DeviceProfileStore extends EventEmitter {
 
       notification.success({
         message: "Codec updated",
+        duration: 3,
+      });
+
+      callbackFunc();
+    });
+  }
+
+  deleteCodec = (req: DeleteCodecRequest, callbackFunc: () => void) => {
+    this.client.deleteCodec(req, undefined, (err) => {
+      if (err !== null) {
+        HandleError(err);
+        return;
+      }
+
+      notification.success({
+        message: "Codec deleted",
+        duration: 3,
+      });
+
+      callbackFunc();
+    });
+  }
+
+  testCodec = (req: TestCodecRequest, callbackFunc: (resp: TestCodecResponse) => void) => {
+    this.client.testCodec(req, undefined, (err, resp) => {
+      if (err !== null) {
+        HandleError(err);
+        return;
+      }
+
+      callbackFunc(resp);
+    });
+  }
+
+  createProfile = (req: CreateProfileRequest, callbackFunc: () => void) => {
+    this.client.createProfile(req, undefined, (err) => {
+      if (err !== null) {
+        HandleError(err);
+        return;
+      }
+
+      notification.success({
+        message: "Profile created",
+        duration: 3,
+      });
+
+      callbackFunc();
+    });
+  }
+
+  getProfile = (req: GetProfileRequest, callbackFunc: (resp: GetProfileResponse) => void) => {
+    this.client.getProfile(req, undefined, (err, resp) => {
+      if (err !== null) {
+        HandleError(err);
+        return;
+      }
+
+      callbackFunc(resp);
+    });
+  }
+
+  updateProfile = (req: UpdateProfileRequest, callbackFunc: () => void) => {
+    this.client.updateProfile(req, undefined, (err) => {
+      if (err !== null) {
+        HandleError(err);
+        return;
+      }
+
+      notification.success({
+        message: "Profile updated",
+        duration: 3,
+      });
+
+      callbackFunc();
+    });
+  }
+
+  listProfiles = (req: ListProfilesRequest, callbackFunc: (resp: ListProfilesResponse) => void) => {
+    this.client.listProfiles(req, undefined, (err, resp) => {
+      if (err !== null) {
+        HandleError(err);
+        return;
+      }
+
+      callbackFunc(resp);
+    });
+  }
+
+  deleteProfile = (req: DeleteProfileRequest, callbackFunc: () => void) => {
+    this.client.deleteProfile(req, undefined, (err) => {
+      if (err !== null) {
+        HandleError(err);
+        return;
+      }
+
+      notification.success({
+        message: "Profile deleted",
+        duration: 3,
+      });
+
+      callbackFunc();
+    });
+  }
+
+  createDevice = (req: CreateDeviceRequest, callbackFunc: () => void) => {
+    this.client.createDevice(req, undefined, (err) => {
+      if (err !== null) {
+        HandleError(err);
+        return;
+      }
+
+      notification.success({
+        message: "Device created",
+        duration: 3,
+      });
+
+      callbackFunc();
+    });
+  }
+
+  getDevice = (req: GetDeviceRequest, callbackFunc: (resp: GetDeviceResponse) => void) => {
+    this.client.getDevice(req, undefined, (err, resp) => {
+      if (err !== null) {
+        HandleError(err);
+        return;
+      }
+
+      callbackFunc(resp);
+    });
+  };
+
+  updateDevice = (req: UpdateDeviceRequest, callbackFunc: () => void) => {
+    this.client.updateDevice(req, undefined, (err) => {
+      if (err !== null) {
+        HandleError(err);
+        return;
+      }
+
+      notification.success({
+        message: "Device updated",
+        duration: 3,
+      });
+
+
+      callbackFunc();
+    });
+  }
+
+  listDevices = (req: ListDevicesRequest, callbackFunc: (resp: ListDevicesResponse) => void) => {
+    this.client.listDevices(req, undefined, (err, resp) => {
+      if (err !== null) {
+        HandleError(err);
+        return;
+      }
+
+      callbackFunc(resp);
+    });
+  }
+
+  deleteDevice = (req: DeleteDeviceRequest, callbackFunc: () => void) => {
+    this.client.deleteDevice(req, undefined, (err) => {
+      if (err !== null) {
+        HandleError(err);
+        return;
+      }
+
+      notification.success({
+        message: "Device deleted",
         duration: 3,
       });
 

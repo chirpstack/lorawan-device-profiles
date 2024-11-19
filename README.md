@@ -19,6 +19,52 @@ repository into their database.
 The goal of this repository is to provide an open-source database of LoRaWAN
 device-profiles that can be freely imported.
 
+## Adding a new device-profile
+
+### Fork and clone
+
+* Create a fork of this repository (if not done already).
+* Clone your local fork to your computer.
+
+### Starting the web-interface
+
+* Please make sure that you have Docker Compose installed.
+* In the root of this repository, execute `docker compose up`.
+* Once `Starting server, bind: 0.0.0.0:8090` appears, open the web-interface in your browser by navigating to [http://localhost:8090](http://localhost:8090).
+
+### Add Vendor(s)
+
+* In the left menu, click the _Add vendor_ button.
+* Fill in the form and click _Submit_.
+
+### Add profile(s)
+
+* Select a vendor in the left menu (if no vendor is selected).
+* Click _Profiles_ in the left menu.
+* Click the _Create profile_ button.
+* Fill in the form and click _Submit_.
+
+### Add codec(s)
+
+* Select a vendor in the left menu (if no vendor is selected).
+* Click _Codecs_ in the left menu.
+* Click the _Create codec_ button.
+* Fill in the form, before clicking _Submit_ it is a good idea to click _Run codec tests_.
+
+### Add device(s)
+
+* Select a vendor in the left menu (if no vendor is selected).
+* Click _Devices_ in the left menu.
+* Click the _Create device_ button.
+* Fill in the form and add at least one firmware version by clicking the _Add firmware version_ button.
+    * For each firmware version you can select one or multiple profiles and optionally a codec.
+
+### Create pull-request
+
+Once you have added the vendor(s), profile(s), codec(s) and device(s) you wish
+to add to this repository you must commit the changes using `git`, push these
+to your fork of this repository and create a pull-request in GitHub.
+
 ## Structure
 
 Example structure for an `example-vendor` with an `example` device:
@@ -64,68 +110,6 @@ configuration.
 
 This directory contains the profiles. These profiles can be used by one
 or multiple devices. The profile also defines the region.
-
-## Adding a new device-profile
-
-In summary, these are the steps to create a new device-profile. 
-
-1. **Add a new vendor directory in `vendors/`.** This directory should be
-   lower-cased, and spaces must be replaced by `-`. For example for
-   _My Vendor_ you would create a directory `vendors/my-vendor/`.
-
-2. **Create `vendor.toml` file.** Inside the directory created in the previous
-   step, create a `vendor.toml` file (e.g. `vendors/my-vendor/vendor.toml`).
-   Please use `vendors/example-vendor/vendor.toml` as an example. Under `devices`
-   you want to refer to the devices (that you will add in the next steps).
-   If you have a temperature and a humidity sensor device (thus two devices),
-   your `devices` configuration could look like:
-   `devices = ["temperature.toml", "humidity.toml"]`
-
-3. **Create device file(s).** In this step you need to create a file for each
-   device that you configured in the previous step under `devices`. To
-   continue with the previous example, you would create two files:
-   * `vendors/my-vendor/devices/temperature.toml`
-   * `vendors/my-vendor/devices/humidity.toml`
-   You can use `vendors/example-vendor/devices/example.toml` as an example.
-   For each firmware version (if there are multiple), make sure to also
-   configure the `profiles` and `codec` options (if you provide a payload)
-   codec. For example your `temperature.toml` device configuration could
-   contain `profiles= ["temperature-eu868.toml", "temperature-us915.toml"]` and
-   `codec = "temperature.js"` if there a a codec for this device.
-
-4. **Create profile file(s).** In this step you need to create a file for
-   each profile that you configured in the previous step for your device(s).
-   To continue with the previous example, you would create:
-   * `vendors/my-vendor/profiles/temperature-eu868.toml`
-   * `vendors/my-vendor/profiles/temperature-us915.toml`
-   You can use `vendors/example-vendor/profiles/example-EU868.toml` as an
-   example.
-
-5. **Create codec file(s).** If you have configured any `codec` options, you
-   must create these codec files. To continue with the previous example, you
-   would create a file named `vendors/my-vendor/codecs/temperature.js`. You
-   can use `vendors/example-vendor/codecs/example.js` as an example.
-
-6. **Add codec tests (optional).** To validate that the codec returns the
-   expected output given a certain input you can add tests to your codecs.
-   To continue with the previous example, you would create two files:
-   * `vendors/my-vendor/codecs/test_decode_temperature.json`
-   * `vendors/my-vendor/codecs/test_encode_temperature.json`
-   Please see `test_decode_example.json` and `test_encode_example.json` in 
-   the `vendors/example-vendor/codecs` directory.
-
-7. **Run tests.** This validates that the above configuration can be parsed
-   correctly and that the codec return the expected output.
-
-## Running the test
-
-To run the test-runner, execute:
-
-```
-make test
-```
-
-This will run all tests within a Docker Compose environment.
 
 ## License
 

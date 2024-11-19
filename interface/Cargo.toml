@@ -12,6 +12,7 @@
 [dependencies]
   clap = { version = "4.5", features = ["derive"] }
   serde = { version = "1.0", features = ["derive"] }
+  serde_valid = "0.25"
   toml = "0.8"
   tonic = "0.12"
   tonic-web = "0.12"
@@ -26,6 +27,7 @@
   mime_guess = "2.0"
   axum = "0.7"
   anyhow = "1.0"
+  rquickjs = { version = "0.8", features = ["loader", "array-buffer"] }
 
 [build-dependencies]
   tonic-build = "0.12"

@@ -23,11 +23,20 @@ function SideMenu() {
       });
     };
 
+    const deselectVendor = () => {
+      setVendor(undefined);
+      DeviceProfileStore.listVendors((resp: ListVendorsResponse) => {
+        setVendors(resp.getResultList());
+      });
+    }
+
     DeviceProfileStore.on("change", loadVendors);
+    DeviceProfileStore.on("delete", deselectVendor);
     loadVendors();
 
     return () => {
       DeviceProfileStore.removeAllListeners("change");
+      DeviceProfileStore.removeAllListeners("delete");
     };
   }, []);
 
@@ -84,11 +93,11 @@ function SideMenu() {
   ];
 
   return (<div>
-    <Select showSearch allowClear options={vendorOptions} value={vendor} className="vendor-select" onSelect={onVendorSelect} onClear={onVendorClear} />
+    <Select showSearch allowClear placeholder="Select vendor" options={vendorOptions} value={vendor} className="vendor-select" onSelect={onVendorSelect} onClear={onVendorClear} />
     {vendor ? <Menu
       items={items}
       selectedKeys={[selectedKey]}
-    /> : <Button className="vendor-add" type="primary"><Link to="/vendors/add">Add vendor</Link></Button>}
+    /> : <Link to="/vendors/add"><Button className="vendor-add" type="primary">Add vendor</Button></Link>}
   </div>);
 }
 

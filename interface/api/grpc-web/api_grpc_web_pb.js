@@ -79,67 +79,6 @@ proto.api.DeviceProfileServicePromiseClient =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.api.GetVendorRequest,
- *   !proto.api.GetVendorResponse>}
- */
-const methodDescriptor_DeviceProfileService_GetVendor = new grpc.web.MethodDescriptor(
-  '/api.DeviceProfileService/GetVendor',
-  grpc.web.MethodType.UNARY,
-  proto.api.GetVendorRequest,
-  proto.api.GetVendorResponse,
-  /**
-   * @param {!proto.api.GetVendorRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.api.GetVendorResponse.deserializeBinary
-);
-
-
-/**
- * @param {!proto.api.GetVendorRequest} request The
- *     request proto
- * @param {?Object<string, string>} metadata User defined
- *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.api.GetVendorResponse)}
- *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.api.GetVendorResponse>|undefined}
- *     The XHR Node Readable Stream
- */
-proto.api.DeviceProfileServiceClient.prototype.getVendor =
-    function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
-      '/api.DeviceProfileService/GetVendor',
-      request,
-      metadata || {},
-      methodDescriptor_DeviceProfileService_GetVendor,
-      callback);
-};
-
-
-/**
- * @param {!proto.api.GetVendorRequest} request The
- *     request proto
- * @param {?Object<string, string>=} metadata User defined
- *     call metadata
- * @return {!Promise<!proto.api.GetVendorResponse>}
- *     Promise that resolves to the response
- */
-proto.api.DeviceProfileServicePromiseClient.prototype.getVendor =
-    function(request, metadata) {
-  return this.client_.unaryCall(this.hostname_ +
-      '/api.DeviceProfileService/GetVendor',
-      request,
-      metadata || {},
-      methodDescriptor_DeviceProfileService_GetVendor);
-};
-
-
-/**
- * @const
- * @type {!grpc.web.MethodDescriptor<
  *   !proto.api.CreateVendorRequest,
  *   !proto.google.protobuf.Empty>}
  */
@@ -195,6 +134,67 @@ proto.api.DeviceProfileServicePromiseClient.prototype.createVendor =
       request,
       metadata || {},
       methodDescriptor_DeviceProfileService_CreateVendor);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.api.GetVendorRequest,
+ *   !proto.api.GetVendorResponse>}
+ */
+const methodDescriptor_DeviceProfileService_GetVendor = new grpc.web.MethodDescriptor(
+  '/api.DeviceProfileService/GetVendor',
+  grpc.web.MethodType.UNARY,
+  proto.api.GetVendorRequest,
+  proto.api.GetVendorResponse,
+  /**
+   * @param {!proto.api.GetVendorRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.api.GetVendorResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.api.GetVendorRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.api.GetVendorResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.api.GetVendorResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.api.DeviceProfileServiceClient.prototype.getVendor =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/api.DeviceProfileService/GetVendor',
+      request,
+      metadata || {},
+      methodDescriptor_DeviceProfileService_GetVendor,
+      callback);
+};
+
+
+/**
+ * @param {!proto.api.GetVendorRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.api.GetVendorResponse>}
+ *     Promise that resolves to the response
+ */
+proto.api.DeviceProfileServicePromiseClient.prototype.getVendor =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/api.DeviceProfileService/GetVendor',
+      request,
+      metadata || {},
+      methodDescriptor_DeviceProfileService_GetVendor);
 };
 
 
@@ -683,6 +683,677 @@ proto.api.DeviceProfileServicePromiseClient.prototype.deleteCodec =
       request,
       metadata || {},
       methodDescriptor_DeviceProfileService_DeleteCodec);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.api.TestCodecRequest,
+ *   !proto.api.TestCodecResponse>}
+ */
+const methodDescriptor_DeviceProfileService_TestCodec = new grpc.web.MethodDescriptor(
+  '/api.DeviceProfileService/TestCodec',
+  grpc.web.MethodType.UNARY,
+  proto.api.TestCodecRequest,
+  proto.api.TestCodecResponse,
+  /**
+   * @param {!proto.api.TestCodecRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.api.TestCodecResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.api.TestCodecRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.api.TestCodecResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.api.TestCodecResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.api.DeviceProfileServiceClient.prototype.testCodec =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/api.DeviceProfileService/TestCodec',
+      request,
+      metadata || {},
+      methodDescriptor_DeviceProfileService_TestCodec,
+      callback);
+};
+
+
+/**
+ * @param {!proto.api.TestCodecRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.api.TestCodecResponse>}
+ *     Promise that resolves to the response
+ */
+proto.api.DeviceProfileServicePromiseClient.prototype.testCodec =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/api.DeviceProfileService/TestCodec',
+      request,
+      metadata || {},
+      methodDescriptor_DeviceProfileService_TestCodec);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.api.CreateProfileRequest,
+ *   !proto.google.protobuf.Empty>}
+ */
+const methodDescriptor_DeviceProfileService_CreateProfile = new grpc.web.MethodDescriptor(
+  '/api.DeviceProfileService/CreateProfile',
+  grpc.web.MethodType.UNARY,
+  proto.api.CreateProfileRequest,
+  google_protobuf_empty_pb.Empty,
+  /**
+   * @param {!proto.api.CreateProfileRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  google_protobuf_empty_pb.Empty.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.api.CreateProfileRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.google.protobuf.Empty)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.google.protobuf.Empty>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.api.DeviceProfileServiceClient.prototype.createProfile =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/api.DeviceProfileService/CreateProfile',
+      request,
+      metadata || {},
+      methodDescriptor_DeviceProfileService_CreateProfile,
+      callback);
+};
+
+
+/**
+ * @param {!proto.api.CreateProfileRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.google.protobuf.Empty>}
+ *     Promise that resolves to the response
+ */
+proto.api.DeviceProfileServicePromiseClient.prototype.createProfile =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/api.DeviceProfileService/CreateProfile',
+      request,
+      metadata || {},
+      methodDescriptor_DeviceProfileService_CreateProfile);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.api.GetProfileRequest,
+ *   !proto.api.GetProfileResponse>}
+ */
+const methodDescriptor_DeviceProfileService_GetProfile = new grpc.web.MethodDescriptor(
+  '/api.DeviceProfileService/GetProfile',
+  grpc.web.MethodType.UNARY,
+  proto.api.GetProfileRequest,
+  proto.api.GetProfileResponse,
+  /**
+   * @param {!proto.api.GetProfileRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.api.GetProfileResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.api.GetProfileRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.api.GetProfileResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.api.GetProfileResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.api.DeviceProfileServiceClient.prototype.getProfile =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/api.DeviceProfileService/GetProfile',
+      request,
+      metadata || {},
+      methodDescriptor_DeviceProfileService_GetProfile,
+      callback);
+};
+
+
+/**
+ * @param {!proto.api.GetProfileRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.api.GetProfileResponse>}
+ *     Promise that resolves to the response
+ */
+proto.api.DeviceProfileServicePromiseClient.prototype.getProfile =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/api.DeviceProfileService/GetProfile',
+      request,
+      metadata || {},
+      methodDescriptor_DeviceProfileService_GetProfile);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.api.UpdateProfileRequest,
+ *   !proto.google.protobuf.Empty>}
+ */
+const methodDescriptor_DeviceProfileService_UpdateProfile = new grpc.web.MethodDescriptor(
+  '/api.DeviceProfileService/UpdateProfile',
+  grpc.web.MethodType.UNARY,
+  proto.api.UpdateProfileRequest,
+  google_protobuf_empty_pb.Empty,
+  /**
+   * @param {!proto.api.UpdateProfileRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  google_protobuf_empty_pb.Empty.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.api.UpdateProfileRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.google.protobuf.Empty)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.google.protobuf.Empty>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.api.DeviceProfileServiceClient.prototype.updateProfile =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/api.DeviceProfileService/UpdateProfile',
+      request,
+      metadata || {},
+      methodDescriptor_DeviceProfileService_UpdateProfile,
+      callback);
+};
+
+
+/**
+ * @param {!proto.api.UpdateProfileRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.google.protobuf.Empty>}
+ *     Promise that resolves to the response
+ */
+proto.api.DeviceProfileServicePromiseClient.prototype.updateProfile =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/api.DeviceProfileService/UpdateProfile',
+      request,
+      metadata || {},
+      methodDescriptor_DeviceProfileService_UpdateProfile);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.api.ListProfilesRequest,
+ *   !proto.api.ListProfilesResponse>}
+ */
+const methodDescriptor_DeviceProfileService_ListProfiles = new grpc.web.MethodDescriptor(
+  '/api.DeviceProfileService/ListProfiles',
+  grpc.web.MethodType.UNARY,
+  proto.api.ListProfilesRequest,
+  proto.api.ListProfilesResponse,
+  /**
+   * @param {!proto.api.ListProfilesRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.api.ListProfilesResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.api.ListProfilesRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.api.ListProfilesResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.api.ListProfilesResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.api.DeviceProfileServiceClient.prototype.listProfiles =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/api.DeviceProfileService/ListProfiles',
+      request,
+      metadata || {},
+      methodDescriptor_DeviceProfileService_ListProfiles,
+      callback);
+};
+
+
+/**
+ * @param {!proto.api.ListProfilesRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.api.ListProfilesResponse>}
+ *     Promise that resolves to the response
+ */
+proto.api.DeviceProfileServicePromiseClient.prototype.listProfiles =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/api.DeviceProfileService/ListProfiles',
+      request,
+      metadata || {},
+      methodDescriptor_DeviceProfileService_ListProfiles);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.api.DeleteProfileRequest,
+ *   !proto.google.protobuf.Empty>}
+ */
+const methodDescriptor_DeviceProfileService_DeleteProfile = new grpc.web.MethodDescriptor(
+  '/api.DeviceProfileService/DeleteProfile',
+  grpc.web.MethodType.UNARY,
+  proto.api.DeleteProfileRequest,
+  google_protobuf_empty_pb.Empty,
+  /**
+   * @param {!proto.api.DeleteProfileRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  google_protobuf_empty_pb.Empty.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.api.DeleteProfileRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.google.protobuf.Empty)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.google.protobuf.Empty>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.api.DeviceProfileServiceClient.prototype.deleteProfile =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/api.DeviceProfileService/DeleteProfile',
+      request,
+      metadata || {},
+      methodDescriptor_DeviceProfileService_DeleteProfile,
+      callback);
+};
+
+
+/**
+ * @param {!proto.api.DeleteProfileRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.google.protobuf.Empty>}
+ *     Promise that resolves to the response
+ */
+proto.api.DeviceProfileServicePromiseClient.prototype.deleteProfile =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/api.DeviceProfileService/DeleteProfile',
+      request,
+      metadata || {},
+      methodDescriptor_DeviceProfileService_DeleteProfile);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.api.CreateDeviceRequest,
+ *   !proto.google.protobuf.Empty>}
+ */
+const methodDescriptor_DeviceProfileService_CreateDevice = new grpc.web.MethodDescriptor(
+  '/api.DeviceProfileService/CreateDevice',
+  grpc.web.MethodType.UNARY,
+  proto.api.CreateDeviceRequest,
+  google_protobuf_empty_pb.Empty,
+  /**
+   * @param {!proto.api.CreateDeviceRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  google_protobuf_empty_pb.Empty.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.api.CreateDeviceRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.google.protobuf.Empty)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.google.protobuf.Empty>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.api.DeviceProfileServiceClient.prototype.createDevice =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/api.DeviceProfileService/CreateDevice',
+      request,
+      metadata || {},
+      methodDescriptor_DeviceProfileService_CreateDevice,
+      callback);
+};
+
+
+/**
+ * @param {!proto.api.CreateDeviceRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.google.protobuf.Empty>}
+ *     Promise that resolves to the response
+ */
+proto.api.DeviceProfileServicePromiseClient.prototype.createDevice =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/api.DeviceProfileService/CreateDevice',
+      request,
+      metadata || {},
+      methodDescriptor_DeviceProfileService_CreateDevice);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.api.GetDeviceRequest,
+ *   !proto.api.GetDeviceResponse>}
+ */
+const methodDescriptor_DeviceProfileService_GetDevice = new grpc.web.MethodDescriptor(
+  '/api.DeviceProfileService/GetDevice',
+  grpc.web.MethodType.UNARY,
+  proto.api.GetDeviceRequest,
+  proto.api.GetDeviceResponse,
+  /**
+   * @param {!proto.api.GetDeviceRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.api.GetDeviceResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.api.GetDeviceRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.api.GetDeviceResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.api.GetDeviceResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.api.DeviceProfileServiceClient.prototype.getDevice =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/api.DeviceProfileService/GetDevice',
+      request,
+      metadata || {},
+      methodDescriptor_DeviceProfileService_GetDevice,
+      callback);
+};
+
+
+/**
+ * @param {!proto.api.GetDeviceRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.api.GetDeviceResponse>}
+ *     Promise that resolves to the response
+ */
+proto.api.DeviceProfileServicePromiseClient.prototype.getDevice =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/api.DeviceProfileService/GetDevice',
+      request,
+      metadata || {},
+      methodDescriptor_DeviceProfileService_GetDevice);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.api.UpdateDeviceRequest,
+ *   !proto.google.protobuf.Empty>}
+ */
+const methodDescriptor_DeviceProfileService_UpdateDevice = new grpc.web.MethodDescriptor(
+  '/api.DeviceProfileService/UpdateDevice',
+  grpc.web.MethodType.UNARY,
+  proto.api.UpdateDeviceRequest,
+  google_protobuf_empty_pb.Empty,
+  /**
+   * @param {!proto.api.UpdateDeviceRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  google_protobuf_empty_pb.Empty.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.api.UpdateDeviceRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.google.protobuf.Empty)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.google.protobuf.Empty>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.api.DeviceProfileServiceClient.prototype.updateDevice =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/api.DeviceProfileService/UpdateDevice',
+      request,
+      metadata || {},
+      methodDescriptor_DeviceProfileService_UpdateDevice,
+      callback);
+};
+
+
+/**
+ * @param {!proto.api.UpdateDeviceRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.google.protobuf.Empty>}
+ *     Promise that resolves to the response
+ */
+proto.api.DeviceProfileServicePromiseClient.prototype.updateDevice =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/api.DeviceProfileService/UpdateDevice',
+      request,
+      metadata || {},
+      methodDescriptor_DeviceProfileService_UpdateDevice);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.api.ListDevicesRequest,
+ *   !proto.api.ListDevicesResponse>}
+ */
+const methodDescriptor_DeviceProfileService_ListDevices = new grpc.web.MethodDescriptor(
+  '/api.DeviceProfileService/ListDevices',
+  grpc.web.MethodType.UNARY,
+  proto.api.ListDevicesRequest,
+  proto.api.ListDevicesResponse,
+  /**
+   * @param {!proto.api.ListDevicesRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.api.ListDevicesResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.api.ListDevicesRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.api.ListDevicesResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.api.ListDevicesResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.api.DeviceProfileServiceClient.prototype.listDevices =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/api.DeviceProfileService/ListDevices',
+      request,
+      metadata || {},
+      methodDescriptor_DeviceProfileService_ListDevices,
+      callback);
+};
+
+
+/**
+ * @param {!proto.api.ListDevicesRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.api.ListDevicesResponse>}
+ *     Promise that resolves to the response
+ */
+proto.api.DeviceProfileServicePromiseClient.prototype.listDevices =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/api.DeviceProfileService/ListDevices',
+      request,
+      metadata || {},
+      methodDescriptor_DeviceProfileService_ListDevices);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.api.DeleteDeviceRequest,
+ *   !proto.google.protobuf.Empty>}
+ */
+const methodDescriptor_DeviceProfileService_DeleteDevice = new grpc.web.MethodDescriptor(
+  '/api.DeviceProfileService/DeleteDevice',
+  grpc.web.MethodType.UNARY,
+  proto.api.DeleteDeviceRequest,
+  google_protobuf_empty_pb.Empty,
+  /**
+   * @param {!proto.api.DeleteDeviceRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  google_protobuf_empty_pb.Empty.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.api.DeleteDeviceRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.google.protobuf.Empty)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.google.protobuf.Empty>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.api.DeviceProfileServiceClient.prototype.deleteDevice =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/api.DeviceProfileService/DeleteDevice',
+      request,
+      metadata || {},
+      methodDescriptor_DeviceProfileService_DeleteDevice,
+      callback);
+};
+
+
+/**
+ * @param {!proto.api.DeleteDeviceRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.google.protobuf.Empty>}
+ *     Promise that resolves to the response
+ */
+proto.api.DeviceProfileServicePromiseClient.prototype.deleteDevice =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/api.DeviceProfileService/DeleteDevice',
+      request,
+      metadata || {},
+      methodDescriptor_DeviceProfileService_DeleteDevice);
 };
 
 

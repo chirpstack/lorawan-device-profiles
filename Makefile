@@ -1,10 +1,11 @@
-.PHONY: test fmt devshell
+.PHONY: test nix-start nix-test
 
 test:
-	docker compose run --rm lorawan-device-profiles --run 'cd test-runner && cargo run'
+	docker compose run --rm lorawan-device-profiles --run 'make nix-test'
 
-fmt:
-	docker compose run --rm lorawan-device-profiles --run 'taplo fmt'
+nix-start:
+	cd interface/ui && yarn build
+	cd interface && cargo run
 
-devshell:
-	docker-compose run --rm lorawan-device-profiles
+nix-test:
+	cd interface && cargo run run-tests

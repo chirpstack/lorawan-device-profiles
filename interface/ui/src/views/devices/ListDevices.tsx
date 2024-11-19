@@ -4,11 +4,11 @@ import { useParams, Link } from "react-router-dom";
 import { Space, Breadcrumb, Card, Table, Button } from "antd";
 import { PageHeader } from "@ant-design/pro-layout";
 
-import { ListCodecsRequest, ListCodecsResponse } from "@api/grpc-web/api_pb";
+import { ListDevicesRequest, ListDevicesResponse } from "@api/grpc-web/api_pb";
 import DeviceProfileStore from "../../stores/DeviceProfileStore";
 
-function ListCodecs() {
-  const [codecs, setCodecs] = useState<ListCodecsResponse | undefined>(undefined);
+function ListDevices() {
+  const [devices, setDevices] = useState<ListDevicesResponse | undefined>(undefined);
   const { vendorDir } = useParams();
 
   const columns = [
@@ -17,21 +17,22 @@ function ListCodecs() {
       dataIndex: "file",
       key: "file",
       render: (text: string) => {
-        return <Link to={`/vendors/${vendorDir}/codecs/${text}`}>{text}</Link>
+        return <Link to={`/vendors/${vendorDir}/devices/${text}`}>{text}</Link>
       },
-    },
+    }
   ];
 
   useEffect(() => {
-    const req = new ListCodecsRequest();
+    const req = new ListDevicesRequest();
     req.setVendorDir(vendorDir!);
 
-    DeviceProfileStore.listCodecs(req, (resp: ListCodecsResponse) => {
-      setCodecs(resp);
+    DeviceProfileStore.listDevices(req, (resp: ListDevicesResponse) => {
+      setDevices(resp);
     });
+
   }, [vendorDir]);
 
-  if (codecs === undefined) {
+  if (devices === undefined) {
     return null;
   }
 
@@ -41,23 +42,23 @@ function ListCodecs() {
         breadcrumbRender={() => (
           <Breadcrumb>
             <Breadcrumb.Item>
-              <span>Codecs</span>
+              <span>Devices</span>
             </Breadcrumb.Item>
             <Breadcrumb.Item>
               <span>List</span>
             </Breadcrumb.Item>
           </Breadcrumb>
         )}
-        title="Codecs list"
+        title="Devices list"
         extra={
-          <Button type="primary"><Link to={`/vendors/${vendorDir}/codecs/create`}>Create codec</Link></Button>
+          <Button type="primary"><Link to={`/vendors/${vendorDir}/devices/create`}>Create device</Link></Button>
         }
       />
       <Card>
-        <Table dataSource={codecs?.toObject().resultList} columns={columns} pagination={false} />
+        <Table dataSource={devices?.toObject().resultList} columns={columns} pagination={false} />
       </Card>
     </Space>
   );
 }
 
-export default ListCodecs;
+export default ListDevices;

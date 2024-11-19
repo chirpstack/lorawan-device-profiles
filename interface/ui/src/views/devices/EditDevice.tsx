@@ -4,45 +4,44 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Space, Breadcrumb, Card, Button, Popconfirm } from "antd";
 import { PageHeader } from "@ant-design/pro-layout";
 
-import { GetCodecRequest, GetCodecResponse, Codec, UpdateCodecRequest, DeleteCodecRequest } from "@api/grpc-web/api_pb";
-import CodecForm from "./CodecForm";
+import { GetDeviceRequest, GetDeviceResponse, Device, DeleteDeviceRequest, UpdateDeviceRequest } from "@api/grpc-web/api_pb";
+import DeviceForm from "./DeviceForm";
 import DeviceProfileStore from "../../stores/DeviceProfileStore";
 
-
-function EditCodec() {
-  const [codec, setCodec] = useState<Codec | undefined>(undefined);
+function EditDevice() {
+  const [device, setDevice] = useState<Device | undefined>(undefined);
   const { vendorDir, file } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
-    const req = new GetCodecRequest();
+    const req = new GetDeviceRequest();
     req.setFile(file!);
     req.setVendorDir(vendorDir!);
 
-    DeviceProfileStore.getCodec(req, (resp: GetCodecResponse) => {
-      setCodec(resp.getCodec());
+    DeviceProfileStore.getDevice(req, (resp: GetDeviceResponse) => {
+      setDevice(resp.getDevice());
     });
   }, [vendorDir, file]);
 
-  const onFinish = (obj: Codec) => {
-    const req = new UpdateCodecRequest();
-    req.setCodec(obj);
-    DeviceProfileStore.updateCodec(req, () => {
-      navigate(`/vendors/${vendorDir}/codecs`);
+  const onFinish = (obj: Device) => {
+    const req = new UpdateDeviceRequest();
+    req.setDevice(obj);
+    DeviceProfileStore.updateDevice(req, () => {
+      navigate(`/vendors/${vendorDir}/devices`);
     });
   }
 
   const onDelete = () => {
-    const req = new DeleteCodecRequest();
+    const req = new DeleteDeviceRequest();
     req.setVendorDir(vendorDir!);
     req.setFile(file!);
 
-    DeviceProfileStore.deleteCodec(req, () => {
-      navigate(`/vendors/${vendorDir}/codecs`);
+    DeviceProfileStore.deleteDevice(req, () => {
+      navigate(`/vendors/${vendorDir}/profiles`);
     });
   }
 
-  if (codec === undefined) {
+  if (device === undefined) {
     return null;
   }
 
@@ -52,7 +51,7 @@ function EditCodec() {
         breadcrumbRender={() => (
           <Breadcrumb>
             <Breadcrumb.Item>
-              <span>Codecs</span>
+              <span>Devices</span>
             </Breadcrumb.Item>
             <Breadcrumb.Item>
               <span>{file}</span>
@@ -62,23 +61,23 @@ function EditCodec() {
             </Breadcrumb.Item>
           </Breadcrumb>
         )}
-        title="Update codec"
+        title="Update device"
         extra={
           <Popconfirm
-            title="Delete codec"
-            description="Are you sure you want to delete this codec file?"
+            title="Delete device"
+            description="Are you sure you want to delete this device file?"
             onConfirm={onDelete}
             placement="left"
           >
-            <Button type="primary" danger>Delete codec</Button>
+            <Button type="primary" danger>Delete device</Button>
           </Popconfirm>
         }
       />
       <Card>
-        <CodecForm update initialValues={codec} onFinish={onFinish} />
+        <DeviceForm update initialValues={device} onFinish={onFinish} />
       </Card>
     </Space>
   );
 }
 
-export default EditCodec;
+export default EditDevice;
