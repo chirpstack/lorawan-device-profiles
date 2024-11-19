@@ -1,0 +1,270 @@
+syntax = "proto3";
+
+package api;
+
+import "google/protobuf/empty.proto";
+
+service DeviceProfileService {
+  rpc CreateVendor(CreateVendorRequest) returns (google.protobuf.Empty) {}
+  rpc GetVendor(GetVendorRequest) returns (GetVendorResponse) {}
+  rpc UpdateVendor(UpdateVendorRequest) returns (google.protobuf.Empty) {}
+  rpc ListVendors(google.protobuf.Empty) returns (ListVendorsResponse) {}
+  rpc DeleteVendor(DeleteVendorRequest) returns (google.protobuf.Empty) {}
+
+  rpc CreateCodec(CreateCodecRequest) returns (google.protobuf.Empty) {}
+  rpc GetCodec(GetCodecRequest) returns (GetCodecResponse) {}
+  rpc UpdateCodec(UpdateCodecRequest) returns (google.protobuf.Empty) {}
+  rpc ListCodecs(ListCodecsRequest) returns (ListCodecsResponse) {}
+  rpc DeleteCodec(DeleteCodecRequest) returns (google.protobuf.Empty) {}
+  rpc TestCodec(TestCodecRequest) returns (TestCodecResponse) {}
+
+  rpc CreateProfile(CreateProfileRequest) returns (google.protobuf.Empty) {}
+  rpc GetProfile(GetProfileRequest) returns (GetProfileResponse) {}
+  rpc UpdateProfile(UpdateProfileRequest) returns (google.protobuf.Empty) {}
+  rpc ListProfiles(ListProfilesRequest) returns (ListProfilesResponse) {}
+  rpc DeleteProfile(DeleteProfileRequest) returns (google.protobuf.Empty) {}
+
+  rpc CreateDevice(CreateDeviceRequest) returns (google.protobuf.Empty) {}
+  rpc GetDevice(GetDeviceRequest) returns (GetDeviceResponse) {}
+  rpc UpdateDevice(UpdateDeviceRequest) returns (google.protobuf.Empty) {}
+  rpc ListDevices(ListDevicesRequest) returns (ListDevicesResponse) {}
+  rpc DeleteDevice(DeleteDeviceRequest) returns (google.protobuf.Empty) {}
+}
+
+enum Region {
+  EU868 = 0;
+  US915 = 2;
+  CN779 = 3;
+  EU433 = 4;
+  AU915 = 5;
+  CN470 = 6;
+  AS923 = 7;
+  AS923_2 = 12;
+  AS923_3 = 13;
+  AS923_4 = 14;
+  KR920 = 8;
+  IN865 = 9;
+  RU864 = 10;
+  ISM2400 = 11;
+}
+
+enum MacVersion {
+  LORAWAN_1_0_0 = 0;
+  LORAWAN_1_0_1 = 1;
+  LORAWAN_1_0_2 = 2;
+  LORAWAN_1_0_3 = 3;
+  LORAWAN_1_0_4 = 4;
+  LORAWAN_1_1_0 = 5;
+}
+
+enum RegParamsRevision {
+  A = 0;
+  B = 1;
+  RP002_1_0_0 = 2;
+  RP002_1_0_1 = 3;
+  RP002_1_0_2 = 4;
+  RP002_1_0_3 = 5;
+  RP002_1_0_4 = 6;
+}
+
+message Vendor {
+  string dir = 1;
+  string name = 2;
+  uint32 lora_alliance_vendor_id = 3;
+  repeated string ouis = 4;
+  VendorMetadata metadata = 5;
+}
+
+message VendorMetadata {
+  string homepage = 1;
+}
+
+message GetVendorRequest {
+  string dir = 1;
+}
+
+message GetVendorResponse {
+  Vendor vendor = 1;
+}
+
+message UpdateVendorRequest {
+  Vendor vendor = 1;
+}
+
+message CreateVendorRequest {
+  Vendor vendor = 1;
+}
+
+message ListVendorsResponse {
+  uint32 total_count = 1;
+  repeated Vendor result = 2;
+}
+
+message DeleteVendorRequest {
+  string dir = 1;
+}
+
+message Codec {
+  string vendor_dir = 1;
+  string file = 2;
+  string codec = 3;
+  string decode_tests = 4;
+  string encode_tests = 5;
+}
+
+message CreateCodecRequest {
+  Codec codec = 1;
+}
+
+message GetCodecRequest {
+  string vendor_dir = 1;
+  string file = 2;
+}
+
+message GetCodecResponse {
+  Codec codec = 1;
+}
+
+message UpdateCodecRequest {
+  Codec codec = 1;
+}
+
+message ListCodecsRequest {
+  string vendor_dir = 1;
+}
+
+message ListCodecsResponse {
+  uint32 total_count = 1;
+  repeated Codec result = 2;
+}
+
+message DeleteCodecRequest {
+  string vendor_dir = 1;
+  string file = 2;
+}
+
+message TestCodecRequest {
+  Codec codec = 1;
+}
+
+message TestCodecResponse {
+  string error = 1;
+}
+
+message Profile {
+  string vendor_dir = 1;
+  string file = 2;
+
+  uint32 id = 3;
+  Region region = 4;
+  MacVersion mac_version = 5;
+  RegParamsRevision reg_params_revision = 6;
+  bool supports_otaa = 7;
+  bool supports_class_b = 8;
+  bool supports_class_c = 9;
+  uint32 max_eirp = 10;
+  AbpParams abp = 11;
+  ClassBParams class_b = 12;
+  ClassCParams class_c = 13;
+}
+
+message AbpParams {
+  uint32 rx1_delay = 1;
+  uint32 rx1_dr_offset = 2;
+  uint32 rx2_dr = 3;
+  uint32 rx2_freq = 4;
+}
+
+message ClassBParams {
+  uint32 timeout_secs = 1;
+  uint32 ping_slot_nb_k = 2;
+  uint32 ping_slot_dr = 3;
+  uint32 ping_slot_freq = 4;
+}
+
+message ClassCParams {
+  uint32 timeout_secs = 1;
+}
+
+message CreateProfileRequest {
+  Profile profile = 1;
+}
+
+message GetProfileRequest {
+  string vendor_dir = 1;
+  string file = 2;
+}
+
+message GetProfileResponse {
+  Profile profile = 1;
+}
+
+message UpdateProfileRequest {
+  Profile profile = 1;
+}
+
+message ListProfilesRequest {
+  string vendor_dir = 1;
+}
+
+message ListProfilesResponse {
+  uint32 total_count = 1;
+  repeated Profile result = 2;
+}
+
+message DeleteProfileRequest {
+  string vendor_dir = 1;
+  string file = 2;
+}
+
+message Device {
+  string vendor_dir = 1;
+  string file = 2;
+
+  string name = 3;
+  string description = 4;
+  repeated DeviceFirmware firmware = 5;
+  DeviceMetadata metadata = 6;
+}
+
+message DeviceFirmware {
+  string version = 1;
+  repeated string profiles = 2;
+  string codec = 3;
+}
+
+message DeviceMetadata {
+  string product_url = 1;
+  string documentation_url = 2;
+}
+
+message CreateDeviceRequest {
+  Device device = 1;
+}
+
+message GetDeviceRequest {
+  string vendor_dir = 1;
+  string file = 2;
+}
+
+message GetDeviceResponse {
+  Device device = 1;
+}
+
+message UpdateDeviceRequest {
+  Device device = 1;
+}
+
+message ListDevicesRequest {
+  string vendor_dir = 1;
+}
+
+message ListDevicesResponse {
+  uint32 total_count = 1;
+  repeated Device result = 2;
+}
+
+message DeleteDeviceRequest {
+  string vendor_dir = 1;
+  string file = 2;
+}

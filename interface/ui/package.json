@@ -1,0 +1,47 @@
+{
+  "name": "lorawan-device-profiles-ui",
+  "version": "4.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@ant-design/colors": "^7.1.0",
+    "@ant-design/icons": "^5.3.7",
+    "@ant-design/pro-layout": "^7.19.8",
+    "@api/grpc-web": "file:../api/grpc-web",
+    "ace-builds": "^1.36.4",
+    "antd": "^5.19.1",
+    "events": "^3.3.0",
+    "google-protobuf": "^3.21.2",
+    "grpc-web": "^1.5.0",
+    "history": "^5.3.0",
+    "react": "^18.3.1",
+    "react-ace": "^13.0.0",
+    "react-dom": "^18.3.1",
+    "react-json-tree": "^0.19.0",
+    "react-router-dom": "^6.24.1",
+    "web-vitals": "^4.2.1"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.4.6",
+    "@types/events": "^3.0.3",
+    "@types/google-protobuf": "^3.15.12",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@typescript-eslint/eslint-plugin": "^7.13.1",
+    "@typescript-eslint/parser": "^7.13.1",
+    "@vitejs/plugin-react-swc": "^3.5.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-react-refresh": "^0.4.7",
+    "grpc-tools": "^1.12.4",
+    "prettier": "^3.3.2",
+    "typescript": "^5.2.2",
+    "vite": "^5.3.6"
+  }
+}

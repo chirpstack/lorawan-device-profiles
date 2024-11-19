@@ -1,0 +1,8 @@
+# hiddden files
+.*
+!.gitignore
+
+# builds
+/interface/target
+/interface/ui/build
+/interface/ui/node_modules
