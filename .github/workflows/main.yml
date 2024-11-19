@@ -35,4 +35,4 @@ jobs:
           key: ${{ runner.os }}-cargo-test-${{ hashFiles('**/Cargo.lock') }}
       -
         name: Run tests
-        run: nix-shell --command "cd test-runner && cargo run"
+        run: nix-shell --command "make nix-test"
