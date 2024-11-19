@@ -8,4 +8,5 @@ nix-start:
 	cd interface && cargo run
 
 nix-test:
+	cd interface/ui && yarn build
 	cd interface && cargo run run-tests
