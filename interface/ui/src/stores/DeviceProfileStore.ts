@@ -163,6 +163,8 @@ class DeviceProfileStore extends EventEmitter {
         duration: 3,
       });
 
+      this.emit("change");
+
       callbackFunc();
     });
   }
@@ -190,6 +192,8 @@ class DeviceProfileStore extends EventEmitter {
         duration: 3,
       });
 
+      this.emit("change");
+
       callbackFunc();
     });
   }
@@ -205,6 +209,8 @@ class DeviceProfileStore extends EventEmitter {
         message: "Codec deleted",
         duration: 3,
       });
+
+      this.emit("change");
 
       callbackFunc();
     });
@@ -233,6 +239,8 @@ class DeviceProfileStore extends EventEmitter {
         duration: 3,
       });
 
+      this.emit("change");
+
       callbackFunc();
     });
   }
@@ -259,6 +267,8 @@ class DeviceProfileStore extends EventEmitter {
         message: "Profile updated",
         duration: 3,
       });
+
+      this.emit("change");
 
       callbackFunc();
     });
@@ -287,6 +297,8 @@ class DeviceProfileStore extends EventEmitter {
         duration: 3,
       });
 
+      this.emit("change");
+
       callbackFunc();
     });
   }
@@ -302,6 +314,8 @@ class DeviceProfileStore extends EventEmitter {
         message: "Device created",
         duration: 3,
       });
+
+      this.emit("change");
 
       callbackFunc();
     });
@@ -330,6 +344,7 @@ class DeviceProfileStore extends EventEmitter {
         duration: 3,
       });
 
+      this.emit("change");
 
       callbackFunc();
     });
@@ -357,6 +372,8 @@ class DeviceProfileStore extends EventEmitter {
         message: "Device deleted",
         duration: 3,
       });
+
+      this.emit("change");
 
       callbackFunc();
     });
