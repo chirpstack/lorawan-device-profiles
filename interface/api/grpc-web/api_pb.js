@@ -890,7 +890,7 @@ if (goog.DEBUG && !COMPILED) {
  * @private {!Array<number>}
  * @const
  */
-proto.api.Vendor.repeatedFields_ = [4];
+proto.api.Vendor.repeatedFields_ = [4,5];
 
 
 
@@ -927,6 +927,7 @@ proto.api.Vendor.toObject = function(includeInstance, msg) {
     name: jspb.Message.getFieldWithDefault(msg, 2, ""),
     loraAllianceVendorId: jspb.Message.getFieldWithDefault(msg, 3, 0),
     ouisList: (f = jspb.Message.getRepeatedField(msg, 4)) == null ? undefined : f,
+    devicesList: (f = jspb.Message.getRepeatedField(msg, 5)) == null ? undefined : f,
     metadata: (f = msg.getMetadata()) && proto.api.VendorMetadata.toObject(includeInstance, f)
   };
 
@@ -981,6 +982,10 @@ proto.api.Vendor.deserializeBinaryFromReader = function(msg, reader) {
       msg.addOuis(value);
       break;
     case 5:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addDevices(value);
+      break;
+    case 6:
       var value = new proto.api.VendorMetadata;
       reader.readMessage(value,proto.api.VendorMetadata.deserializeBinaryFromReader);
       msg.setMetadata(value);
@@ -1042,10 +1047,17 @@ proto.api.Vendor.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
+  f = message.getDevicesList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      5,
+      f
+    );
+  }
   f = message.getMetadata();
   if (f != null) {
     writer.writeMessage(
-      5,
+      6,
       f,
       proto.api.VendorMetadata.serializeBinaryToWriter
     );
@@ -1145,12 +1157,49 @@ proto.api.Vendor.prototype.clearOuisList = function() {
 
 
 /**
- * optional VendorMetadata metadata = 5;
+ * repeated string devices = 5;
+ * @return {!Array<string>}
+ */
+proto.api.Vendor.prototype.getDevicesList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 5));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.api.Vendor} returns this
+ */
+proto.api.Vendor.prototype.setDevicesList = function(value) {
+  return jspb.Message.setField(this, 5, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.api.Vendor} returns this
+ */
+proto.api.Vendor.prototype.addDevices = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 5, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.api.Vendor} returns this
+ */
+proto.api.Vendor.prototype.clearDevicesList = function() {
+  return this.setDevicesList([]);
+};
+
+
+/**
+ * optional VendorMetadata metadata = 6;
  * @return {?proto.api.VendorMetadata}
  */
 proto.api.Vendor.prototype.getMetadata = function() {
   return /** @type{?proto.api.VendorMetadata} */ (
-    jspb.Message.getWrapperField(this, proto.api.VendorMetadata, 5));
+    jspb.Message.getWrapperField(this, proto.api.VendorMetadata, 6));
 };
 
 
@@ -1159,7 +1208,7 @@ proto.api.Vendor.prototype.getMetadata = function() {
  * @return {!proto.api.Vendor} returns this
 */
 proto.api.Vendor.prototype.setMetadata = function(value) {
-  return jspb.Message.setWrapperField(this, 5, value);
+  return jspb.Message.setWrapperField(this, 6, value);
 };
 
 
@@ -1177,7 +1226,7 @@ proto.api.Vendor.prototype.clearMetadata = function() {
  * @return {boolean}
  */
 proto.api.Vendor.prototype.hasMetadata = function() {
-  return jspb.Message.getField(this, 5) != null;
+  return jspb.Message.getField(this, 6) != null;
 };
 
 

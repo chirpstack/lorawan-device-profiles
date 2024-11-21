@@ -112,7 +112,7 @@ impl From<&api::Vendor> for VendorConfiguration {
                 name: value.name.clone(),
                 id: value.lora_alliance_vendor_id,
                 ouis: value.ouis.clone(),
-                devices: Vec::new(),
+                devices: value.devices.clone(),
                 metadata: VendorMetadata {
                     homepage: value.metadata.as_ref().map(|v| v.homepage.clone()),
                 },
@@ -128,6 +128,7 @@ impl From<&VendorConfiguration> for api::Vendor {
             name: value.vendor.name.clone(),
             lora_alliance_vendor_id: value.vendor.id,
             ouis: value.vendor.ouis.clone(),
+            devices: value.vendor.devices.clone(),
             metadata: Some(api::VendorMetadata {
                 homepage: value.vendor.metadata.homepage.clone().unwrap_or_default(),
             }),

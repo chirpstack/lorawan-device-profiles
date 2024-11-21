@@ -18,6 +18,11 @@ export class Vendor extends jspb.Message {
   clearOuisList(): Vendor;
   addOuis(value: string, index?: number): Vendor;
 
+  getDevicesList(): Array<string>;
+  setDevicesList(value: Array<string>): Vendor;
+  clearDevicesList(): Vendor;
+  addDevices(value: string, index?: number): Vendor;
+
   getMetadata(): VendorMetadata | undefined;
   setMetadata(value?: VendorMetadata): Vendor;
   hasMetadata(): boolean;
@@ -37,6 +42,7 @@ export namespace Vendor {
     name: string,
     loraAllianceVendorId: number,
     ouisList: Array<string>,
+    devicesList: Array<string>,
     metadata?: VendorMetadata.AsObject,
   }
 }

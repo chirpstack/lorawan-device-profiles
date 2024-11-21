@@ -72,7 +72,8 @@ message Vendor {
   string name = 2;
   uint32 lora_alliance_vendor_id = 3;
   repeated string ouis = 4;
-  VendorMetadata metadata = 5;
+  repeated string devices = 5;
+  VendorMetadata metadata = 6;
 }
 
 message VendorMetadata {

@@ -1,7 +1,10 @@
-import { Form, Input, InputNumber, Button, } from "antd";
+import { useState, useEffect } from "react";
+
+import { Form, Input, InputNumber, Button, Select } from "antd";
 import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
 
-import { Vendor, VendorMetadata } from "@api/grpc-web/api_pb";
+import { Vendor, VendorMetadata, ListDevicesRequest, ListDevicesResponse, Device } from "@api/grpc-web/api_pb";
+import DeviceProfileStore from "../../stores/DeviceProfileStore";
 import { slugify } from "../helpers";
 
 interface IProps {
@@ -12,6 +15,17 @@ interface IProps {
 
 function VendorForm(props: IProps) {
   const [form] = Form.useForm();
+  const [devices, setDevices] = useState<Device[]>([]);
+
+  useEffect(() => {
+    const v = props.initialValues;
+
+    const req = new ListDevicesRequest();
+    req.setVendorDir(v.getDir());
+    DeviceProfileStore.listDevices(req, (resp: ListDevicesResponse) => {
+      setDevices(resp.getResultList());
+    });
+  }, [props.initialValues]);
 
   const onFinish = (values: Vendor.AsObject) => {
     const v = Object.assign(props.initialValues.toObject(), values);
@@ -23,6 +37,7 @@ function VendorForm(props: IProps) {
     vendor.setName(v.name);
     vendor.setLoraAllianceVendorId(v.loraAllianceVendorId);
     vendor.setOuisList(v.ouisList);
+    vendor.setDevicesList(v.devicesList);
 
     vendorMetadata.setHomepage(v.metadata?.homepage || "");
     vendor.setMetadata(vendorMetadata);
@@ -59,6 +74,14 @@ function VendorForm(props: IProps) {
       </Form.Item>
       <Form.Item label="LoRa Alliance Vendor ID" name="loraAllianceVendorId" tooltip="This ID is provided by the LoRa Alliance.">
         <InputNumber min={0} />
+      </Form.Item>
+      <Form.Item label="Devices" name="devicesList">
+        <Select mode="multiple" options={devices.map((v) => {
+          return {
+            label: v.getFile(),
+            value: v.getFile(),
+          };
+        })} />
       </Form.Item>
       <Form.List name="ouisList">
         {(fields, { add, remove }) => (
