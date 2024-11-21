@@ -18,6 +18,10 @@ function VendorForm(props: IProps) {
   const [devices, setDevices] = useState<Device[]>([]);
 
   useEffect(() => {
+    if (!props.update) {
+      return;
+    }
+
     const v = props.initialValues;
 
     const req = new ListDevicesRequest();

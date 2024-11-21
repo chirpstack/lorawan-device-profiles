@@ -41,23 +41,30 @@ device-profiles that can be freely imported.
 
 * Select a vendor in the left menu (if no vendor is selected).
 * Click _Profiles_ in the left menu.
-* Click the _Create profile_ button.
+* Click the _Add profile_ menu entry.
 * Fill in the form and click _Submit_.
 
 ### Add codec(s)
 
 * Select a vendor in the left menu (if no vendor is selected).
 * Click _Codecs_ in the left menu.
-* Click the _Create codec_ button.
+* Click the _Add codec_ menu entry.
 * Fill in the form, before clicking _Submit_ it is a good idea to click _Run codec tests_.
 
 ### Add device(s)
 
 * Select a vendor in the left menu (if no vendor is selected).
 * Click _Devices_ in the left menu.
-* Click the _Create device_ button.
+* Click the _Add device_ menu entry.
 * Fill in the form and add at least one firmware version by clicking the _Add firmware version_ button.
     * For each firmware version you can select one or multiple profiles and optionally a codec.
+
+### Update vendor
+
+* Select a vendor in the left menu (if no vendor is selected).
+* Click _Update vendor_ in the left menu.
+* Update the vendor by selecting the devices that you added in the previous step.
+* Click _Submit_.
 
 ### Create pull-request
 
