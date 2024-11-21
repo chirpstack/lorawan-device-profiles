@@ -1,4 +1,4 @@
-use std::collections::HashMap;
+use std::collections::BTreeMap;
 use std::fs;
 use std::path::Path;
 
@@ -34,8 +34,8 @@ pub fn update_vendor(path: &Path, dir: &str, v: &VendorConfiguration) -> Result<
     Ok(())
 }
 
-pub fn get_vendors(path: &Path) -> Result<HashMap<String, VendorConfiguration>> {
-    let mut out = HashMap::new();
+pub fn get_vendors(path: &Path) -> Result<BTreeMap<String, VendorConfiguration>> {
+    let mut out = BTreeMap::new();
     let vendors = fs::read_dir(path.join("vendors"))?;
     for vendor in vendors {
         let vendor = vendor?.path();
@@ -106,8 +106,8 @@ pub fn update_codec(
 pub fn get_codecs(
     path: &Path,
     vendor_dir: &str,
-) -> Result<HashMap<String, (String, String, String)>> {
-    let mut out = HashMap::new();
+) -> Result<BTreeMap<String, (String, String, String)>> {
+    let mut out = BTreeMap::new();
     let codecs_path = path.join("vendors").join(vendor_dir).join("codecs");
     let codecs = fs::read_dir(&codecs_path)?;
 
@@ -182,8 +182,8 @@ pub fn update_profile(
 pub fn get_profiles(
     path: &Path,
     vendor_dir: &str,
-) -> Result<HashMap<String, ProfileConfiguration>> {
-    let mut out = HashMap::new();
+) -> Result<BTreeMap<String, ProfileConfiguration>> {
+    let mut out = BTreeMap::new();
     let profiles = fs::read_dir(path.join("vendors").join(vendor_dir).join("profiles"))?;
     for profile in profiles {
         let profile = profile?.path();
@@ -246,8 +246,8 @@ pub fn update_device(
     create_device(path, vendor_dir, name, device)
 }
 
-pub fn get_devices(path: &Path, vendor_dir: &str) -> Result<HashMap<String, DeviceConfiguration>> {
-    let mut out = HashMap::new();
+pub fn get_devices(path: &Path, vendor_dir: &str) -> Result<BTreeMap<String, DeviceConfiguration>> {
+    let mut out = BTreeMap::new();
     let devices = fs::read_dir(path.join("vendors").join(vendor_dir).join("devices"))?;
     for device in devices {
         let device = device?.path();
