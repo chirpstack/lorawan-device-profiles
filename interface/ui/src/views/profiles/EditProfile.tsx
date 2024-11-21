@@ -74,7 +74,7 @@ function EditProfile() {
         }
       />
       <Card>
-        <ProfileForm update initialValues={profile} onFinish={onFinish} />
+        <ProfileForm update key={profile.getFile()} initialValues={profile} onFinish={onFinish} />
       </Card>
     </Space>
   );

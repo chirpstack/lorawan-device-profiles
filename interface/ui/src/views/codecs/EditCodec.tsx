@@ -75,7 +75,7 @@ function EditCodec() {
         }
       />
       <Card>
-        <CodecForm update initialValues={codec} onFinish={onFinish} />
+        <CodecForm update key={codec.getFile()} initialValues={codec} onFinish={onFinish} />
       </Card>
     </Space>
   );

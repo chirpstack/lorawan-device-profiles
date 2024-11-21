@@ -74,7 +74,7 @@ function EditDevice() {
         }
       />
       <Card>
-        <DeviceForm update initialValues={device} onFinish={onFinish} />
+        <DeviceForm update key={device.getFile()} initialValues={device} onFinish={onFinish} />
       </Card>
     </Space>
   );
