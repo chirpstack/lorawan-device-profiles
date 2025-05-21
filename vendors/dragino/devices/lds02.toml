@@ -1,0 +1,8 @@
+[device]
+name = "LDS02"
+description = "Door Sensor"
+firmware = []
+
+[device.metadata]
+product_url = "https://dragino.com/products/lorawan-nb-iot-door-sensor-water-leak/item/181-lds02.html"
+documentation_url = "https://dragino.com/products/lorawan-nb-iot-door-sensor-water-leak/item/181-lds02.html"

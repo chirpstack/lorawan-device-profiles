@@ -1,0 +1,8 @@
+[device]
+name = "LDDS75"
+description = "Distance Detection Sensor"
+firmware = []
+
+[device.metadata]
+product_url = "https://dragino.com/products/distance-level-sensor/item/161-ldds75.html"
+documentation_url = "https://dragino.com/products/distance-level-sensor/item/161-ldds75.html"

@@ -1,0 +1,8 @@
+[device]
+name = "LT-22222-L"
+description = "LoRa I/O Controller"
+firmware = []
+
+[device.metadata]
+product_url = "https://dragino.com/products/lora-lorawan-end-node/item/156-lt-22222-l.html"
+documentation_url = "https://dragino.com/products/lora-lorawan-end-node/item/156-lt-22222-l.html"
