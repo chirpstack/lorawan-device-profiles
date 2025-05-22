@@ -1,0 +1,8 @@
+[device]
+name = "Milesight EM300-MLD"
+description = "Membrane Leakage Detection Sensor"
+firmware = []
+
+[device.metadata]
+product_url = "https://www.milesight.com/iot/product/lorawan-sensor/em300-mld"
+documentation_url = "https://www.milesight.com/iot/product/lorawan-sensor/em300-mld"

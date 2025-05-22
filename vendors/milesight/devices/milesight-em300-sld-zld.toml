@@ -1,0 +1,8 @@
+[device]
+name = "Milesight EM300-SLD-ZLD"
+description = "Leak Detection Sensor"
+firmware = []
+
+[device.metadata]
+product_url = "https://www.milesight.com/iot/product/lorawan-sensor/em300-sld-zld"
+documentation_url = "https://www.milesight.com/iot/product/lorawan-sensor/em300-sld-zld"

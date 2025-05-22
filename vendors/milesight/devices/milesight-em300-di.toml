@@ -1,0 +1,8 @@
+[device]
+name = "Milesight EM300-DI"
+description = "Pulse Counter"
+firmware = []
+
+[device.metadata]
+product_url = "https://www.milesight.com/iot/product/lorawan-sensor/em300-di"
+documentation_url = "https://www.milesight.com/iot/product/lorawan-sensor/em300-di"
