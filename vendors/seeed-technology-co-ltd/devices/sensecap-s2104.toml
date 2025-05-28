@@ -1,0 +1,8 @@
+[device]
+name = "SenseCAP S2104"
+description = "Soil Moisture and Temperature Sensor"
+firmware = []
+
+[device.metadata]
+product_url = "https://www.seeedstudio.com/SenseCAP-S2104-LoRaWAN-Soil-Temperature-and-Moisture-Sensor-p-5357.html"
+documentation_url = "https://www.seeedstudio.com/SenseCAP-S2104-LoRaWAN-Soil-Temperature-and-Moisture-Sensor-p-5357.html"

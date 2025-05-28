@@ -1,0 +1,21 @@
+[vendor]
+name = "Seeed Technology Co Ltd"
+id = 744
+ouis = ["2cf7f1"]
+devices = [
+    "sensecap-a1101.toml",
+    "sensecap-s2100.toml",
+    "sensecap-s2101.toml",
+    "sensecap-s2102.toml",
+    "sensecap-s2103.toml",
+    "sensecap-s2104.toml",
+    "sensecap-s2105.toml",
+    "sensecap-s2106.toml",
+    "sensecap-s2107.toml",
+    "sensecap-s2120.toml",
+    "sensecap-t1000-a.toml",
+    "sensecap-t1000-b.toml",
+]
+
+[vendor.metadata]
+homepage = "https://www.seeedstudio.com/"

@@ -1,0 +1,8 @@
+[device]
+name = "SenseCAP S2100"
+description = "Data Logger/DTU, Supports RS485/Analog/GPIO Interfaces"
+firmware = []
+
+[device.metadata]
+product_url = "https://www.seeedstudio.com/SenseCAP-S2100-LoRaWAN-Data-Logger-p-5361.html"
+documentation_url = "https://www.seeedstudio.com/SenseCAP-S2100-LoRaWAN-Data-Logger-p-5361.html"

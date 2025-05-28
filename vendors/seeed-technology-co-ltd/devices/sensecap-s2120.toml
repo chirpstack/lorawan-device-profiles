@@ -1,0 +1,8 @@
+[device]
+name = "SenseCAP S2120"
+description = "8-in-1 LoRaWAN Weather Sensor"
+firmware = []
+
+[device.metadata]
+product_url = "https://www.seeedstudio.com/sensecap-s2120-lorawan-8-in-1-weather-sensor-p-5436.html"
+documentation_url = "https://www.seeedstudio.com/sensecap-s2120-lorawan-8-in-1-weather-sensor-p-5436.html"

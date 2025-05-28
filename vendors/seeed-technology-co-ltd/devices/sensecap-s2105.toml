@@ -1,0 +1,8 @@
+[device]
+name = "SenseCAP S2105"
+description = "Soil Moisture, Temperature and EC Sensor"
+firmware = []
+
+[device.metadata]
+product_url = "https://www.seeedstudio.com/SenseCAP-S2105-LoRaWAN-Soil-Temperature-Moisture-and-EC-Sensor-p-5358.html"
+documentation_url = "https://www.seeedstudio.com/SenseCAP-S2105-LoRaWAN-Soil-Temperature-Moisture-and-EC-Sensor-p-5358.html"

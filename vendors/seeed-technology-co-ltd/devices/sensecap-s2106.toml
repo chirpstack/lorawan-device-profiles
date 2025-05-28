@@ -1,0 +1,8 @@
+[device]
+name = "SenseCAP S2106"
+description = "pH Sensor"
+firmware = []
+
+[device.metadata]
+product_url = "https://www.seeedstudio.com/SenseCAP-S2106-p-5647.html"
+documentation_url = "https://www.seeedstudio.com/SenseCAP-S2106-p-5647.html"

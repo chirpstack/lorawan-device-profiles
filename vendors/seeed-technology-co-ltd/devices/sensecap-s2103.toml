@@ -1,0 +1,8 @@
+[device]
+name = "SenseCAP S2103"
+description = " CO2, Temperature and Humidity Sensor"
+firmware = []
+
+[device.metadata]
+product_url = "https://www.seeedstudio.com/SenseCAP-S2103-LoRaWAN-CO2-Temperature-and-Humidity-Sensor-p-5356.html"
+documentation_url = "https://www.seeedstudio.com/SenseCAP-S2103-LoRaWAN-CO2-Temperature-and-Humidity-Sensor-p-5356.html"
