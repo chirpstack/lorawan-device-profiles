@@ -56,7 +56,7 @@ async fn main() -> Result<()> {
     let web = Router::new()
         .fallback(service_static_handler)
         .into_service()
-        .map_response(|r| r.map(tonic::body::boxed));
+        .map_response(|r| r.map(tonic::body::Body::new));
 
     let grpc = Server::builder()
         .accept_http1(true)
