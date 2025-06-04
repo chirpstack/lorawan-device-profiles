@@ -1,7 +1,16 @@
 [device]
 name = "LDDS75"
 description = "Distance Detection Sensor"
-firmware = []
+
+[[device.firmware]]
+version = "1.1.4"
+profiles = [
+    "AS923-1_0_3.toml",
+    "AU915-1_0_3.toml",
+    "EU868-1_0_3.toml",
+    "US915-1_0_3.toml",
+]
+codec = "ldds75.js"
 
 [device.metadata]
 product_url = "https://dragino.com/products/distance-level-sensor/item/161-ldds75.html"

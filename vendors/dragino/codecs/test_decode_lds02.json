@@ -1,1 +1,20 @@
-[]
+[
+  {
+    "name": "Test decode Dragino LDS02",
+    "input": {
+      "fPort": 0xa,
+      "bytes": [11,136,1,0,27,179,0,0,0,0]
+    },
+    "expected": {
+      "data": {
+        "Node_type":"LDS02",
+        "BAT_V":2.952,
+        "MOD":1,
+        "DOOR_OPEN_STATUS":0,
+        "DOOR_OPEN_TIMES":7091,
+        "LAST_DOOR_OPEN_DURATION":0,
+        "ALARM":0
+      }
+    }
+  }
+]

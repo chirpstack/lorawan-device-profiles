@@ -1,1 +1,25 @@
-[]
+[
+  {
+    "name": "Test decode Dragino LT-22222-L",
+    "input": {
+      "fPort": 0x02,
+      "bytes": [0,0,0,0,0,0,0,0,60,255,65]
+    },
+    "expected": {
+      "data": {
+        "Hardware_mode":"LT22222",
+        "DO1_status":"H",
+        "DO2_status":"H",
+        "RO1_status":"OFF",
+        "RO2_status":"OFF",
+        "Work_mode":"2ACI+2AVI",
+        "AVI1_V":0,
+        "AVI2_V":0,
+        "ACI1_mA":0,
+        "ACI2_mA":0,
+        "DI1_status":"H",
+        "DI2_status":"H"
+      }
+    }
+  }
+]

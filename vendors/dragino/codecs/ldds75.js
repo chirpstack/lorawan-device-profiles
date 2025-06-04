@@ -1,26 +1,31 @@
-function Decode(fPort, bytes, variables) {
-  // Decode an uplink message from a buffer
-  // (array) of bytes to an object of fields.
-  var len=bytes.length;
-  var value=(bytes[0]<<8 | bytes[1]) & 0x3FFF;
-  var batV=value/1000;//Battery,units:V
-  
-  var distance = 0;
-  if(len==5)  
-  {
-   value=bytes[2]<<8 | bytes[3];
-   distance=(value);//distance,units:mm
-   if(value<20)
-    distance = "Invalid Reading";
+function decodeUplink(input) {
+  let decoded = {};
+  let len = input.bytes.length;
+  let value = (input.bytes[0]<<8 | input.bytes[1]) & 0x3FFF;
+
+  switch (input.fPort) {
+    case 2:
+      decoded.Bat=value/1000;
+      value=input.bytes[2]<<8 | input.bytes[3];
+      decoded.Distance=(value); //+" mm"; distance in mm
+
+      if(value === 0)
+        decoded.Distance = "No Sensor";
+      else if (value === 20)
+        decoded.Distance = "Invalid Reading";
+        decoded.Interrupt_flag = input.bytes[4]; 
+      
+      value = input.bytes[5]<<8 | input.bytes[6];
+      if (input.bytes[5] & 0x80)
+        {value |= 0xFFFF0000;}
+        decoded.TempC_DS18B20=(value/10).toFixed(2); //DS18B20,temperature  
+        decoded.Sensor_flag = input.bytes[7];
+    
+  return {data: decoded};
+
+  default:
+    return {
+      errors: ["unknown FPort"]
+    }
   }
-  else
-   distance = "No Sensor";
-   
-  var interrupt = bytes[len-1]; 
-  return {
-       Node_type:"LDDS75",
-       Bat:batV ,
-       Distance:distance,
-       Interrupt_status:interrupt
-  };
 }

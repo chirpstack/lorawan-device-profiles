@@ -1,7 +1,7 @@
 function decodeUplink(input) {
-	return {
-		data: Decode(input.fPort, input.bytes, input.variables),
-	};
+  return {
+    data: Decode(input.fPort, input.bytes, input.variables),
+  };
 }
 
 function Str1(str2) {

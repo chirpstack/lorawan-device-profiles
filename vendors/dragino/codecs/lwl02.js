@@ -1,8 +1,9 @@
 function decodeUplink(input) {
-    return { 
-        data: Decode(input.fPort, input.bytes, input.variables)
-    };   
+  return { 
+    data: Decode(input.fPort, input.bytes, input.variables)
+  };   
 }
+
 function Decode(fPort, bytes, variables) {
   // Decode an uplink message from a buffer
   // (array) of bytes to an object of fields.
@@ -20,7 +21,7 @@ function Decode(fPort, bytes, variables) {
     var open_duration=bytes[6]<<16 | bytes[7]<<8 | bytes[8];//units:min
     if(bytes.length==10 &&  0x07>bytes[0]< 0x0f)
     return {
-      Node_type:"LWL02",
+      Node_type:"LDS02",
 	  BAT_V:bat,
       MOD:mod,
       DOOR_OPEN_STATUS:door_open_status,

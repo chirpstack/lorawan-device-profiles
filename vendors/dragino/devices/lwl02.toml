@@ -1,7 +1,16 @@
 [device]
 name = "LWL02"
 description = "Water Leak Sensor"
-firmware = []
+
+[[device.firmware]]
+version = "1.5"
+profiles = [
+    "AS923-1_0_3.toml",
+    "AU915-1_0_3.toml",
+    "EU868-1_0_3.toml",
+    "US915-1_0_3.toml",
+]
+codec = "lwl02.js"
 
 [device.metadata]
 product_url = "https://dragino.com/products/lorawan-nb-iot-door-sensor-water-leak/item/180-lwl02.html"

@@ -1,1 +1,19 @@
-[]
+[
+  {
+    "name": "Test decode Dragino LWL02",
+    "input": {
+      "fPort": 0xa,
+      "bytes": [12,30,2,0,0,4,0,0,0,0]
+    },
+    "expected": {
+      "data": {
+        Node_type:"LWL02",
+        BAT_V:3.102,
+        MOD:2,
+        WATER_LEAK_STATUS:0,
+        WATER_LEAK_TIMES:4,
+        LAST_WATER_LEAK_DURATION:0
+      }
+    }
+  }
+]
