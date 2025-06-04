@@ -1,7 +1,26 @@
 [device]
 name = "Milesight EM300-MCS"
 description = "Magnetic Contact Switch"
-firmware = []
+
+[[device.firmware]]
+version = "1.22"
+profiles = [
+    "AS923-1_0_3.toml",
+    "AU915-1_0_3.toml",
+    "EU868-1_0_3.toml",
+    "US915-1_0_3.toml",
+]
+codec = "em300-mcs.js"
+
+[[device.firmware]]
+version = "1.8"
+profiles = [
+    "AS923-1_0_3.toml",
+    "AU915-1_0_3.toml",
+    "US915-1_0_3.toml",
+    "EU868-1_0_3.toml",
+]
+codec = "em300-mcs.js"
 
 [device.metadata]
 product_url = "https://www.milesight.com/iot/product/lorawan-sensor/em300-mcs"
