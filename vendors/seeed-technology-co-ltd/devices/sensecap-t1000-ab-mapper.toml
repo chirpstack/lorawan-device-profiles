@@ -1,6 +1,6 @@
 [device]
-name = "SenseCAP T1000-A"
-description = "Tracker for Indoor and Outdoor Positioning"
+name = "SenseCAP T1000-AB-Mapper"
+description = "Profile for Helium & TTN Mapper mapping platforms"
 
 [[device.firmware]]
 version = "2.2"
@@ -10,7 +10,7 @@ profiles = [
     "EU868-1_0_3.toml",
     "US915-1_0_3.toml",
 ]
-codec = "SenseCAP_LoRaWAN_V4_Decoder.js"
+codec = "SenseCAP_T1000_mapper.js"
 
 [[device.firmware]]
 version = "2.5"
@@ -20,7 +20,7 @@ profiles = [
     "EU868-1_0_3.toml",
     "US915-1_0_3.toml",
 ]
-codec = "SenseCAP_LoRaWAN_V4_Decoder.js"
+codec = "SenseCAP_T1000_mapper.js"
 
 [device.metadata]
 product_url = "https://www.seeedstudio.com/SenseCAP-Card-Tracker-T1000-A-p-5697.html"

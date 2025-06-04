@@ -1,7 +1,16 @@
 [device]
 name = "SenseCAP S2104"
 description = "Soil Moisture and Temperature Sensor"
-firmware = []
+
+[[device.firmware]]
+version = "1.0"
+profiles = [
+    "AS923-1_0_3.toml",
+    "AU915-1_0_3.toml",
+    "EU868-1_0_3.toml",
+    "US915-1_0_3.toml",
+]
+codec = "SenseCAP_LoRaWAN_V4_Decoder.js"
 
 [device.metadata]
 product_url = "https://www.seeedstudio.com/SenseCAP-S2104-LoRaWAN-Soil-Temperature-and-Moisture-Sensor-p-5357.html"
