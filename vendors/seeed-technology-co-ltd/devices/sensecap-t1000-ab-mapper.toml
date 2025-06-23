@@ -1,0 +1,27 @@
+[device]
+name = "SenseCAP T1000-AB-Mapper"
+description = "Profile for Helium & TTN Mapper mapping platforms"
+
+[[device.firmware]]
+version = "2.2"
+profiles = [
+    "AS923-1_0_3.toml",
+    "AU915-1_0_3.toml",
+    "EU868-1_0_3.toml",
+    "US915-1_0_3.toml",
+]
+codec = "SenseCAP_T1000_mapper.js"
+
+[[device.firmware]]
+version = "2.5"
+profiles = [
+    "AS923-1_0_3.toml",
+    "AU915-1_0_3.toml",
+    "EU868-1_0_3.toml",
+    "US915-1_0_3.toml",
+]
+codec = "SenseCAP_T1000_mapper.js"
+
+[device.metadata]
+product_url = "https://www.seeedstudio.com/SenseCAP-Card-Tracker-T1000-A-p-5697.html"
+documentation_url = "https://www.seeedstudio.com/SenseCAP-Card-Tracker-T1000-A-p-5697.html"

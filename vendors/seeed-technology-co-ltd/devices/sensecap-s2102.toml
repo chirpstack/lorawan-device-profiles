@@ -1,0 +1,17 @@
+[device]
+name = "SenseCAP S2102"
+description = "Wireless Light Intensity Sensor"
+
+[[device.firmware]]
+version = "1.0"
+profiles = [
+    "AS923-1_0_3.toml",
+    "AU915-1_0_3.toml",
+    "EU868-1_0_3.toml",
+    "US915-1_0_3.toml",
+]
+codec = "SenseCAP_LoRaWAN_V4_Decoder.js"
+
+[device.metadata]
+product_url = "https://www.seeedstudio.com/SenseCAP-S2102-LoRaWAN-Light-Intensity-Sensor-p-5355.html"
+documentation_url = "https://www.seeedstudio.com/SenseCAP-S2102-LoRaWAN-Light-Intensity-Sensor-p-5355.html"

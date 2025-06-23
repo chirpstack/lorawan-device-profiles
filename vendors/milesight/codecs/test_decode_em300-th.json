@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Test decode Milesight EM300-TH",
+    "input": {
+      "bytes": [3, 103, 44, 0, 4, 104, 23]
+    },
+    "expected": {
+      "data": {
+        "temperature": 4.4,
+		"humidity": 11.5
+      }
+    }
+  }
+]

@@ -1,0 +1,14 @@
+[vendor]
+name = "Dragino"
+id = 676
+ouis = ["a84041"]
+devices = [
+    "lht65n-e31f.toml",
+    "lt-22222-l.toml",
+    "lwl02.toml",
+    "lds02.toml",
+    "ldds75.toml",
+]
+
+[vendor.metadata]
+homepage = "https://dragino.com/"

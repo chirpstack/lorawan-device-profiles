@@ -1,0 +1,17 @@
+[device]
+name = "Milesight EM300-CL"
+description = "Capacitive Level Sensor "
+
+[[device.firmware]]
+version = "1.2"
+profiles = [
+    "AS923-1_0_3.toml",
+    "AU915-1_0_3.toml",
+    "EU868-1_0_3.toml",
+    "US915-1_0_3.toml",
+]
+codec = "em300-cl.js"
+
+[device.metadata]
+product_url = "https://www.milesight.com/iot/product/lorawan-sensor/em300-cl"
+documentation_url = "https://www.milesight.com/iot/product/lorawan-sensor/em300-cl"

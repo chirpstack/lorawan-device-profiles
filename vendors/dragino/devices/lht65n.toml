@@ -1,0 +1,17 @@
+[device]
+name = "LHT65N"
+description = "Temperature & Humidity Sensor, optional external temperature sensor."
+
+[[device.firmware]]
+version = "1.8"
+profiles = [
+    "AS923-1_0_3.toml",
+    "AU915-1_0_3.toml",
+    "EU868-1_0_3.toml",
+    "US915-1_0_3.toml",
+]
+codec = "lht65n.js"
+
+[device.metadata]
+product_url = "https://dragino.com/products/temperature-humidity-sensor/item/266-lht65n-e31f.html"
+documentation_url = "https://dragino.com/products/temperature-humidity-sensor/item/266-lht65n-e31f.html"

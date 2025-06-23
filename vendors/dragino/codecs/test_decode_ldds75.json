@@ -1,0 +1,18 @@
+[
+  {
+    "name": "Test decode Dragino LDDS75",
+    "input": {
+      "fPort": 0x02,
+      "bytes": [13,10,7,233,0,0,0,1]
+    },
+    "expected": {
+      "data": {
+        "Bat":3.338,
+        "Distance":2025,
+        "Interrupt_flag":0,
+        "TempC_DS18B20":"0.00",
+        "Sensor_flag":1
+      }
+    }
+  }
+]
