@@ -32,6 +32,7 @@ function ProfileForm(props: IProps) {
     profile.setFile(v.file);
 
     profile.setId(v.id);
+    profile.setVendorProfileId(v.vendorProfileId);
     profile.setRegion(v.region);
     profile.setMacVersion(v.macVersion);
     profile.setRegParamsRevision(v.regParamsRevision);

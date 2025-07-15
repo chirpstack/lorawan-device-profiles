@@ -27,6 +27,10 @@
   mime_guess = "2.0"
   axum = "0.8"
   anyhow = "1.0"
+  uuid = { version = "1.17", default-features = false, features = [
+    "v4",
+    "serde",
+  ] }
   rquickjs = { version = "0.9", features = ["loader", "array-buffer"] }
 
 [build-dependencies]

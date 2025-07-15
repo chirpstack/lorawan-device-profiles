@@ -156,7 +156,8 @@ message Profile {
   string vendor_dir = 1;
   string file = 2;
 
-  uint32 id = 3;
+  string id = 14;
+  uint32 vendor_profile_id = 3;
   Region region = 4;
   MacVersion mac_version = 5;
   RegParamsRevision reg_params_revision = 6;

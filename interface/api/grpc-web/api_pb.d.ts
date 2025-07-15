@@ -410,8 +410,11 @@ export class Profile extends jspb.Message {
   getFile(): string;
   setFile(value: string): Profile;
 
-  getId(): number;
-  setId(value: number): Profile;
+  getId(): string;
+  setId(value: string): Profile;
+
+  getVendorProfileId(): number;
+  setVendorProfileId(value: number): Profile;
 
   getRegion(): Region;
   setRegion(value: Region): Profile;
@@ -461,7 +464,8 @@ export namespace Profile {
   export type AsObject = {
     vendorDir: string,
     file: string,
-    id: number,
+    id: string,
+    vendorProfileId: number,
     region: Region,
     macVersion: MacVersion,
     regParamsRevision: RegParamsRevision,

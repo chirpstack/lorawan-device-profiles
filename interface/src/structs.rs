@@ -1,5 +1,8 @@
+use std::str::FromStr;
+
 use serde::{Deserialize, Serialize};
 use serde_valid::Validate;
+use uuid::Uuid;
 
 use crate::api;
 
@@ -29,10 +32,11 @@ pub struct ProfileConfiguration {
     pub profile: Profile,
 }
 
-#[derive(Default, Serialize, Deserialize, Validate)]
+#[derive(Serialize, Deserialize, Validate)]
 #[serde(default)]
 pub struct Profile {
-    pub id: usize,
+    pub id: Uuid,
+    pub vendor_profile_id: usize,
     #[validate(enumerate = ["EU868", "US915", "CN779", "EU433", "AU915", "CN470", "AS923", "AS923-2", "AS923-3", "AS923-4", "KR920", "IN865", "RU864"])]
     pub region: String,
     #[validate(enumerate = ["1.0.0", "1.0.1", "1.0.2", "1.0.3","1.0.4", "1.1.0"])]
@@ -49,6 +53,25 @@ pub struct Profile {
     #[validate]
     pub class_b: ProfileClassB,
     pub class_c: ProfileClassC,
+}
+
+impl Default for Profile {
+    fn default() -> Self {
+        Profile {
+            id: Uuid::new_v4(),
+            vendor_profile_id: 0,
+            region: "".into(),
+            mac_version: "".into(),
+            reg_params_revision: "".into(),
+            supports_otaa: false,
+            supports_class_b: false,
+            supports_class_c: false,
+            max_eirp: 0,
+            abp: Default::default(),
+            class_b: Default::default(),
+            class_c: Default::default(),
+        }
+    }
 }
 
 #[derive(Default, Serialize, Deserialize, Validate)]
@@ -140,7 +163,8 @@ impl From<&api::Profile> for ProfileConfiguration {
     fn from(value: &api::Profile) -> Self {
         ProfileConfiguration {
             profile: Profile {
-                id: value.id as usize,
+                id: Uuid::from_str(&value.id).unwrap_or_else(|_| Uuid::new_v4()),
+                vendor_profile_id: value.vendor_profile_id as usize,
                 region: value.region().into(),
                 mac_version: value.mac_version().into(),
                 reg_params_revision: value.reg_params_revision().into(),
@@ -187,7 +211,8 @@ impl TryFrom<&ProfileConfiguration> for api::Profile {
             vendor_dir: "".into(),
             file: "".into(),
 
-            id: value.id as u32,
+            id: value.id.to_string(),
+            vendor_profile_id: value.vendor_profile_id as u32,
             region: api::Region::try_from(&value.region)?.into(),
             mac_version: api::MacVersion::try_from(&value.mac_version)?.into(),
             reg_params_revision: api::RegParamsRevision::try_from(&value.reg_params_revision)?

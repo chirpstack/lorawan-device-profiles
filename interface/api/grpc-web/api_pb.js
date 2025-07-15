@@ -3921,7 +3921,8 @@ proto.api.Profile.toObject = function(includeInstance, msg) {
   var f, obj = {
     vendorDir: jspb.Message.getFieldWithDefault(msg, 1, ""),
     file: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    id: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    id: jspb.Message.getFieldWithDefault(msg, 14, ""),
+    vendorProfileId: jspb.Message.getFieldWithDefault(msg, 3, 0),
     region: jspb.Message.getFieldWithDefault(msg, 4, 0),
     macVersion: jspb.Message.getFieldWithDefault(msg, 5, 0),
     regParamsRevision: jspb.Message.getFieldWithDefault(msg, 6, 0),
@@ -3976,9 +3977,13 @@ proto.api.Profile.deserializeBinaryFromReader = function(msg, reader) {
       var value = /** @type {string} */ (reader.readString());
       msg.setFile(value);
       break;
+    case 14:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setId(value);
+      break;
     case 3:
       var value = /** @type {number} */ (reader.readUint32());
-      msg.setId(value);
+      msg.setVendorProfileId(value);
       break;
     case 4:
       var value = /** @type {!proto.api.Region} */ (reader.readEnum());
@@ -4067,6 +4072,13 @@ proto.api.Profile.serializeBinaryToWriter = function(message, writer) {
     );
   }
   f = message.getId();
+  if (f.length > 0) {
+    writer.writeString(
+      14,
+      f
+    );
+  }
+  f = message.getVendorProfileId();
   if (f !== 0) {
     writer.writeUint32(
       3,
@@ -4186,10 +4198,28 @@ proto.api.Profile.prototype.setFile = function(value) {
 
 
 /**
- * optional uint32 id = 3;
- * @return {number}
+ * optional string id = 14;
+ * @return {string}
  */
 proto.api.Profile.prototype.getId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 14, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.api.Profile} returns this
+ */
+proto.api.Profile.prototype.setId = function(value) {
+  return jspb.Message.setProto3StringField(this, 14, value);
+};
+
+
+/**
+ * optional uint32 vendor_profile_id = 3;
+ * @return {number}
+ */
+proto.api.Profile.prototype.getVendorProfileId = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
 };
 
@@ -4198,7 +4228,7 @@ proto.api.Profile.prototype.getId = function() {
  * @param {number} value
  * @return {!proto.api.Profile} returns this
  */
-proto.api.Profile.prototype.setId = function(value) {
+proto.api.Profile.prototype.setVendorProfileId = function(value) {
   return jspb.Message.setProto3IntField(this, 3, value);
 };
 
