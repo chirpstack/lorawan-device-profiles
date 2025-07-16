@@ -77,12 +77,21 @@ function ProfileForm(props: IProps) {
       initialValues={props.initialValues.toObject()}
       onFinish={onFinish}
     >
-      <Form.Item label="Filename" name="file" rules={[
-        { required: true, message: "Please enter a name!" },
-        { pattern: /^[\w-_]+\.toml$/g, message: "The filename can only contain a-z, A-Z, 0-9, _ and - characters and must end with .toml!" },
-      ]}>
-        <Input disabled={props.update} placeholder="EU868-1.0.0.toml" />
-      </Form.Item>
+      <Row>
+        <Col span={12}>
+          <Form.Item label="Filename" name="file" rules={[
+            { required: true, message: "Please enter a name!" },
+            { pattern: /^[\w-_]+\.toml$/g, message: "The filename can only contain a-z, A-Z, 0-9, _ and - characters and must end with .toml!" },
+          ]}>
+            <Input disabled={props.update} placeholder="EU868-1.0.0.toml" />
+          </Form.Item>
+        </Col>
+        <Col span={12}>
+          <Form.Item label="Vendor Profile ID" name="vendorProfileId" tooltip="The vendor assigned Profile ID">
+            <InputNumber min={0} max={65535} />
+          </Form.Item>
+        </Col>
+      </Row>
       <Row>
         <Col span={12}>
           <Form.Item label="Region" name="region" rules={[{ required: true, message: "Please select a region!" }]}>
