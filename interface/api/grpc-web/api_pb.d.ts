@@ -4,6 +4,9 @@ import * as google_protobuf_empty_pb from 'google-protobuf/google/protobuf/empty
 
 
 export class Vendor extends jspb.Message {
+  getId(): string;
+  setId(value: string): Vendor;
+
   getDir(): string;
   setDir(value: string): Vendor;
 
@@ -38,6 +41,7 @@ export class Vendor extends jspb.Message {
 
 export namespace Vendor {
   export type AsObject = {
+    id: string,
     dir: string,
     name: string,
     loraAllianceVendorId: number,
@@ -704,6 +708,9 @@ export namespace DeleteProfileRequest {
 }
 
 export class Device extends jspb.Message {
+  getId(): string;
+  setId(value: string): Device;
+
   getVendorDir(): string;
   setVendorDir(value: string): Device;
 
@@ -736,6 +743,7 @@ export class Device extends jspb.Message {
 
 export namespace Device {
   export type AsObject = {
+    id: string,
     vendorDir: string,
     file: string,
     name: string,

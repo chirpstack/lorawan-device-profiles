@@ -923,6 +923,7 @@ proto.api.Vendor.prototype.toObject = function(opt_includeInstance) {
  */
 proto.api.Vendor.toObject = function(includeInstance, msg) {
   var f, obj = {
+    id: jspb.Message.getFieldWithDefault(msg, 7, ""),
     dir: jspb.Message.getFieldWithDefault(msg, 1, ""),
     name: jspb.Message.getFieldWithDefault(msg, 2, ""),
     loraAllianceVendorId: jspb.Message.getFieldWithDefault(msg, 3, 0),
@@ -965,6 +966,10 @@ proto.api.Vendor.deserializeBinaryFromReader = function(msg, reader) {
     }
     var field = reader.getFieldNumber();
     switch (field) {
+    case 7:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setId(value);
+      break;
     case 1:
       var value = /** @type {string} */ (reader.readString());
       msg.setDir(value);
@@ -1019,6 +1024,13 @@ proto.api.Vendor.prototype.serializeBinary = function() {
  */
 proto.api.Vendor.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
+  f = message.getId();
+  if (f.length > 0) {
+    writer.writeString(
+      7,
+      f
+    );
+  }
   f = message.getDir();
   if (f.length > 0) {
     writer.writeString(
@@ -1062,6 +1074,24 @@ proto.api.Vendor.serializeBinaryToWriter = function(message, writer) {
       proto.api.VendorMetadata.serializeBinaryToWriter
     );
   }
+};
+
+
+/**
+ * optional string id = 7;
+ * @return {string}
+ */
+proto.api.Vendor.prototype.getId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 7, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.api.Vendor} returns this
+ */
+proto.api.Vendor.prototype.setId = function(value) {
+  return jspb.Message.setProto3StringField(this, 7, value);
 };
 
 
@@ -6172,6 +6202,7 @@ proto.api.Device.prototype.toObject = function(opt_includeInstance) {
  */
 proto.api.Device.toObject = function(includeInstance, msg) {
   var f, obj = {
+    id: jspb.Message.getFieldWithDefault(msg, 7, ""),
     vendorDir: jspb.Message.getFieldWithDefault(msg, 1, ""),
     file: jspb.Message.getFieldWithDefault(msg, 2, ""),
     name: jspb.Message.getFieldWithDefault(msg, 3, ""),
@@ -6215,6 +6246,10 @@ proto.api.Device.deserializeBinaryFromReader = function(msg, reader) {
     }
     var field = reader.getFieldNumber();
     switch (field) {
+    case 7:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setId(value);
+      break;
     case 1:
       var value = /** @type {string} */ (reader.readString());
       msg.setVendorDir(value);
@@ -6270,6 +6305,13 @@ proto.api.Device.prototype.serializeBinary = function() {
  */
 proto.api.Device.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
+  f = message.getId();
+  if (f.length > 0) {
+    writer.writeString(
+      7,
+      f
+    );
+  }
   f = message.getVendorDir();
   if (f.length > 0) {
     writer.writeString(
@@ -6314,6 +6356,24 @@ proto.api.Device.serializeBinaryToWriter = function(message, writer) {
       proto.api.DeviceMetadata.serializeBinaryToWriter
     );
   }
+};
+
+
+/**
+ * optional string id = 7;
+ * @return {string}
+ */
+proto.api.Device.prototype.getId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 7, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.api.Device} returns this
+ */
+proto.api.Device.prototype.setId = function(value) {
+  return jspb.Message.setProto3StringField(this, 7, value);
 };
 
 
