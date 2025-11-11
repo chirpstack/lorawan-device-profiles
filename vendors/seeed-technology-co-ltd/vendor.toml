@@ -1,6 +1,6 @@
 [vendor]
 name = "Seeed Technology Co Ltd"
-id = 744
+vendor_id = 744
 ouis = ["2cf7f1"]
 devices = [
     "sensecap-a1101.toml",

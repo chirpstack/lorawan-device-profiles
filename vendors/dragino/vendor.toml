@@ -1,6 +1,6 @@
 [vendor]
 name = "Dragino"
-id = 676
+vendor_id = 676
 ouis = ["a84041"]
 devices = [
     "lt-22222-l.toml",

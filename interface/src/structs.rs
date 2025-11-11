@@ -15,7 +15,7 @@ pub struct VendorConfiguration {
 #[serde(default)]
 pub struct Vendor {
     pub name: String,
-    pub id: u32,
+    pub vendor_id: u32,
     pub ouis: Vec<String>,
     pub devices: Vec<String>,
     pub metadata: VendorMetadata,
@@ -133,7 +133,7 @@ impl From<&api::Vendor> for VendorConfiguration {
         VendorConfiguration {
             vendor: Vendor {
                 name: value.name.clone(),
-                id: value.lora_alliance_vendor_id,
+                vendor_id: value.lora_alliance_vendor_id,
                 ouis: value.ouis.clone(),
                 devices: value.devices.clone(),
                 metadata: VendorMetadata {
@@ -149,7 +149,7 @@ impl From<&VendorConfiguration> for api::Vendor {
         api::Vendor {
             dir: "".into(),
             name: value.vendor.name.clone(),
-            lora_alliance_vendor_id: value.vendor.id,
+            lora_alliance_vendor_id: value.vendor.vendor_id,
             ouis: value.vendor.ouis.clone(),
             devices: value.vendor.devices.clone(),
             metadata: Some(api::VendorMetadata {

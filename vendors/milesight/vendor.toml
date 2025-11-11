@@ -1,6 +1,6 @@
 [vendor]
 name = "Milesight"
-id = 601
+vendor_id = 601
 ouis = ["24e124"]
 devices = [
     "milesight-em300-di.toml",
