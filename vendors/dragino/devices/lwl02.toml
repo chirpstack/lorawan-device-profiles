@@ -1,4 +1,5 @@
 [device]
+id = "b9a99932-c5e0-40fb-a673-85c24640cf7c"
 name = "LWL02"
 description = "Water Leak Sensor"
 

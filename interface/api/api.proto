@@ -221,6 +221,7 @@ message DeleteProfileRequest {
 }
 
 message Device {
+  string id = 7;
   string vendor_dir = 1;
   string file = 2;
 

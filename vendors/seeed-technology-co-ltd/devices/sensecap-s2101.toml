@@ -1,4 +1,5 @@
 [device]
+id = "fc455aa2-01cf-492b-9359-a5d8c9a0e1b3"
 name = "SenseCAP S2101"
 description = "Air Temperature and Humidity Sensor"
 

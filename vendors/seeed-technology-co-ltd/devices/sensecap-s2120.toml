@@ -1,4 +1,5 @@
 [device]
+id = "ba6c2e5d-d894-41d1-a5c1-5e8f4a7d3826"
 name = "SenseCAP S2120"
 description = "8-in-1 LoRaWAN Weather Sensor"
 

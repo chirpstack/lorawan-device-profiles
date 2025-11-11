@@ -1,4 +1,5 @@
 [device]
+id = "669899f3-c9fc-49a8-9266-7c6f57aa025a"
 name = "Milesight EM320-TH"
 description = "Temperature & Humidity Sensor"
 

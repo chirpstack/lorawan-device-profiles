@@ -1,4 +1,5 @@
 [device]
+id = "ed93f9cc-be5d-4c7f-84fb-6da71e3a1a31"
 name = "Milesight EM300-DI"
 description = "Pulse Counter"
 

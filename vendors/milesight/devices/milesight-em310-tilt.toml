@@ -1,4 +1,5 @@
 [device]
+id = "ec938710-be7d-4b29-8989-ae6f0b6f493d"
 name = "Milesight EM310-TILT"
 description = "Tilt Sensor"
 

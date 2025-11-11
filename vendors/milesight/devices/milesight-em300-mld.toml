@@ -1,4 +1,5 @@
 [device]
+id = "b4e65b1f-0cb0-461d-9878-9eac2fa644ce"
 name = "Milesight EM300-MLD"
 description = "Membrane Leakage Detection Sensor"
 

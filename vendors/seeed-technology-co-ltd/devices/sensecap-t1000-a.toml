@@ -1,4 +1,5 @@
 [device]
+id = "a801aa3f-58d8-4e6f-80b9-34fb1d26910f"
 name = "SenseCAP T1000-A"
 description = "Tracker for Indoor and Outdoor Positioning"
 

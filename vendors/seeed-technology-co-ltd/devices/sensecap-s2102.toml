@@ -1,4 +1,5 @@
 [device]
+id = "92e11305-8190-41cc-84d0-ddc452cf1889"
 name = "SenseCAP S2102"
 description = "Wireless Light Intensity Sensor"
 

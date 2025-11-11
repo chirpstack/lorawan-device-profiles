@@ -1,4 +1,5 @@
 [device]
+id = "f60ee224-4023-4574-8bcc-45e237c4c02b"
 name = "LHT65N"
 description = "Temperature & Humidity Sensor, optional external temperature sensor."
 

@@ -1,46 +1,24 @@
 [device]
-  # Device name.
-  name = "WisBlock Kit 4 Indoor Environment Monitor"
+id = "b7560a6a-6489-4b6e-b2c9-05d864432e16"
+name = "WisBlock Kit 4 Indoor Environment Monitor"
+description = "WisBlock Kit 4 Indoor Environment Monitor."
 
-  # Device description.
-  description = "WisBlock Kit 4 Indoor Environment Monitor."
+[[device.firmware]]
+version = "1.0.1"
+profiles = [
+    "EU868_1_0_2.toml",
+    "RU864_1_0_2.toml",
+    "IN865_1_0_2.toml",
+    "US915_1_0_2.toml",
+    "AU915_1_0_2.toml",
+    "KR920_1_0_2.toml",
+    "AS923_1_1_0_2.toml",
+    "AS923_2_1_0_2.toml",
+    "AS923_3_1_0_2.toml",
+    "AS923_4_1_0_2.toml",
+]
+codec = "rak_standard.js"
 
-  # Device metadata (optional).
-  [device.metadata]
-    # Product URL.
-    product_url = "https://store.rakwireless.com/products/wisblock-kit-4-air-quality-monitor"
-
-    # Documentation URL.
-    documentation_url = "https://github.com/beegee-tokyo/RAK4631-Kit-4-RAK1906"
-
-
-  # Device firmware version.
-  #
-  # This section can be repeated in case multiple firmware versions exist.
-  # As a new firmware version can change the supported profiles / regions and
-  # payload format, each firmware version has its own profiles and codec
-  # configuration.
-  [[device.firmware]]
-    # Firmware version.
-    version = "1.0.1"
-
-    # List of supported profiles.
-    #
-    # This list refers to one or multiple profiles in the profiles/ directory.
-    profiles = [
-      "EU868_1_0_2.toml",
-      "RU864_1_0_2.toml",
-      "IN865_1_0_2.toml",
-      "US915_1_0_2.toml",
-      "AU915_1_0_2.toml",
-      "KR920_1_0_2.toml",
-      "AS923_1_1_0_2.toml",
-      "AS923_2_1_0_2.toml",
-      "AS923_3_1_0_2.toml",
-      "AS923_4_1_0_2.toml",
-    ]
-
-    # Payload codec.
-    #
-    # In case no codec is available, you can remove this option.
-    codec = "rak_standard.js"
+[device.metadata]
+product_url = "https://store.rakwireless.com/products/wisblock-kit-4-air-quality-monitor"
+documentation_url = "https://github.com/beegee-tokyo/RAK4631-Kit-4-RAK1906"

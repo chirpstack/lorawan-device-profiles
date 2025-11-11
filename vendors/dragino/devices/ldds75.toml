@@ -1,4 +1,5 @@
 [device]
+id = "eaaf6138-870f-48d3-b0ec-299350cb88af"
 name = "LDDS75"
 description = "Distance Detection Sensor"
 

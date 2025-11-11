@@ -1,4 +1,5 @@
 [device]
+id = "d3fa42cf-635e-4638-8c87-c62b45813cf3"
 name = "Milesight EM300-MCS"
 description = "Magnetic Contact Switch"
 

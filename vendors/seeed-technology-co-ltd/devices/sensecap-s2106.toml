@@ -1,4 +1,5 @@
 [device]
+id = "c8e601fc-6015-46f9-be5d-abb0e2863b96"
 name = "SenseCAP S2106"
 description = "pH Sensor"
 

@@ -1,4 +1,5 @@
 [device]
+id = "b941a068-8494-4a17-ac21-b0a083787e72"
 name = "SenseCAP S2104"
 description = "Soil Moisture and Temperature Sensor"
 

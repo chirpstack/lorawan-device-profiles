@@ -1,4 +1,5 @@
 [device]
+id = "38630583-7d56-4376-9bc4-cd3ee97f460d"
 name = "SenseCAP A1101"
 description = "Vision AI Sensor"
 

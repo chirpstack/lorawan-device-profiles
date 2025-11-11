@@ -1,4 +1,5 @@
 [device]
+id = "55deef19-c13c-4b69-a10d-2e89f6398a02"
 name = "LDS02"
 description = "Door Sensor"
 

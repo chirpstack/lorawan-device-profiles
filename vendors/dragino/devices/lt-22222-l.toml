@@ -1,4 +1,5 @@
 [device]
+id = "cb0a7bef-eaa0-4c61-a0b6-ce33e6ecbc4f"
 name = "LT-22222-L"
 description = "LoRa I/O Controller"
 

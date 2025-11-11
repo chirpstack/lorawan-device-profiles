@@ -1,46 +1,24 @@
 [device]
-  # Device name.
-  name = "WisBlock Kit 1 Indoor Ambient Monitor"
+id = "4395d973-f126-4e06-95ad-0db946ed3158"
+name = "WisBlock Kit 1 Indoor Ambient Monitor"
+description = "WisBlock Kit 1 consists of a Sensor Node to measures air temperature, air humidity, barometric pressure, and environment luminosity values."
 
-  # Device description.
-  description = "WisBlock Kit 1 consists of a Sensor Node to measures air temperature, air humidity, barometric pressure, and environment luminosity values."
+[[device.firmware]]
+version = "1.0.1"
+profiles = [
+    "EU868_1_0_2.toml",
+    "RU864_1_0_2.toml",
+    "IN865_1_0_2.toml",
+    "US915_1_0_2.toml",
+    "AU915_1_0_2.toml",
+    "KR920_1_0_2.toml",
+    "AS923_1_1_0_2.toml",
+    "AS923_2_1_0_2.toml",
+    "AS923_3_1_0_2.toml",
+    "AS923_4_1_0_2.toml",
+]
+codec = "rak_standard.js"
 
-  # Device metadata (optional).
-  [device.metadata]
-    # Product URL.
-    product_url = "https://store.rakwireless.com/products/wisblock-kit-1-weather-monitor"
-
-    # Documentation URL.
-    documentation_url = "https://github.com/beegee-tokyo/RAK4631-Kit-1-RAK1901-RAK1902-RAK1903"
-
-
-  # Device firmware version.
-  #
-  # This section can be repeated in case multiple firmware versions exist.
-  # As a new firmware version can change the supported profiles / regions and
-  # payload format, each firmware version has its own profiles and codec
-  # configuration.
-  [[device.firmware]]
-    # Firmware version.
-    version = "1.0.1"
-
-    # List of supported profiles.
-    #
-    # This list refers to one or multiple profiles in the profiles/ directory.
-    profiles = [
-      "EU868_1_0_2.toml",
-      "RU864_1_0_2.toml",
-      "IN865_1_0_2.toml",
-      "US915_1_0_2.toml",
-      "AU915_1_0_2.toml",
-      "KR920_1_0_2.toml",
-      "AS923_1_1_0_2.toml",
-      "AS923_2_1_0_2.toml",
-      "AS923_3_1_0_2.toml",
-      "AS923_4_1_0_2.toml",
-    ]
-
-    # Payload codec.
-    #
-    # In case no codec is available, you can remove this option.
-    codec = "rak_standard.js"
+[device.metadata]
+product_url = "https://store.rakwireless.com/products/wisblock-kit-1-weather-monitor"
+documentation_url = "https://github.com/beegee-tokyo/RAK4631-Kit-1-RAK1901-RAK1902-RAK1903"

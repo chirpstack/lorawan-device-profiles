@@ -1,4 +1,5 @@
 [device]
+id = "7e5c3173-627a-4c89-abf2-ffb2562c720c"
 name = "SenseCAP S2107"
 description = "Temperature Sensor with PT1000"
 

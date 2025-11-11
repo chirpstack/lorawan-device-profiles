@@ -1,46 +1,24 @@
 [device]
-  # Device name.
-  name = "RAK10702 WisBlock Indoor Comfort Node"
+id = "66f47932-91b1-460d-8afc-82a227577a32"
+name = "RAK10702 WisBlock Indoor Comfort Node"
+description = "The RAK10702 WisBlock Indoor Comfort Node is an indoor air quality sensor kit. It features measurement of CO2, particulate matter, VOC (volatile organic components), temperature, humidity, and light and has in addition a PIR sensor to detect room occupancy."
 
-  # Device description.
-  description = "The RAK10702 WisBlock Indoor Comfort Node is an indoor air quality sensor kit. It features measurement of CO2, particulate matter, VOC (volatile organic components), temperature, humidity, and light and has in addition a PIR sensor to detect room occupancy."
+[[device.firmware]]
+version = "1.1.0"
+profiles = [
+    "EU868_1_0_2.toml",
+    "RU864_1_0_2.toml",
+    "IN865_1_0_2.toml",
+    "US915_1_0_2.toml",
+    "AU915_1_0_2.toml",
+    "KR920_1_0_2.toml",
+    "AS923_1_1_0_2.toml",
+    "AS923_2_1_0_2.toml",
+    "AS923_3_1_0_2.toml",
+    "AS923_4_1_0_2.toml",
+]
+codec = "rak_standard.js"
 
-  # Device metadata (optional).
-  [device.metadata]
-    # Product URL.
-    product_url = "https://store.rakwireless.com/products/wisblock-iaq-solution-kit-rak10702"
-
-    # Documentation URL.
-    documentation_url = "https://docs.rakwireless.com/Product-Categories/WisBlock/RAK10702/Overview/"
-
-
-  # Device firmware version.
-  #
-  # This section can be repeated in case multiple firmware versions exist.
-  # As a new firmware version can change the supported profiles / regions and
-  # payload format, each firmware version has its own profiles and codec
-  # configuration.
-  [[device.firmware]]
-    # Firmware version.
-    version = "1.1.0"
-
-    # List of supported profiles.
-    #
-    # This list refers to one or multiple profiles in the profiles/ directory.
-    profiles = [
-      "EU868_1_0_2.toml",
-      "RU864_1_0_2.toml",
-      "IN865_1_0_2.toml",
-      "US915_1_0_2.toml",
-      "AU915_1_0_2.toml",
-      "KR920_1_0_2.toml",
-      "AS923_1_1_0_2.toml",
-      "AS923_2_1_0_2.toml",
-      "AS923_3_1_0_2.toml",
-      "AS923_4_1_0_2.toml",
-    ]
-
-    # Payload codec.
-    #
-    # In case no codec is available, you can remove this option.
-    codec = "rak_standard.js"
+[device.metadata]
+product_url = "https://store.rakwireless.com/products/wisblock-iaq-solution-kit-rak10702"
+documentation_url = "https://docs.rakwireless.com/Product-Categories/WisBlock/RAK10702/Overview/"

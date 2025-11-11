@@ -1,4 +1,5 @@
 [device]
+id = "b7da14c7-d5de-49a1-8937-5063719bf70e"
 name = "SenseCAP S2100"
 description = "Data Logger/DTU, Supports RS485/Analog/GPIO Interfaces"
 

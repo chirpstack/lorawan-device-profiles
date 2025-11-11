@@ -1,4 +1,5 @@
 [device]
+id = "661ab78e-bfd3-40e5-ac75-ef9804eb5b80"
 name = "Milesight EM300-CL"
 description = "Capacitive Level Sensor "
 

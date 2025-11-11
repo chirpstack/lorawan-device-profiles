@@ -120,13 +120,26 @@ pub struct DeviceConfiguration {
     pub device: Device,
 }
 
-#[derive(Default, Serialize, Deserialize)]
+#[derive(Serialize, Deserialize)]
 #[serde(default)]
 pub struct Device {
+    pub id: Uuid,
     pub name: String,
     pub description: String,
     pub firmware: Vec<DeviceFirmware>,
     pub metadata: DeviceMetadata,
+}
+
+impl Default for Device {
+    fn default() -> Self {
+        Device {
+            id: Uuid::new_v4(),
+            name: "".into(),
+            description: "".into(),
+            firmware: vec![],
+            metadata: DeviceMetadata::default(),
+        }
+    }
 }
 
 #[derive(Default, Serialize, Deserialize)]
@@ -260,6 +273,7 @@ impl From<&api::Device> for DeviceConfiguration {
     fn from(value: &api::Device) -> Self {
         DeviceConfiguration {
             device: Device {
+                id: Uuid::from_str(&value.id).unwrap_or_else(|_| Uuid::new_v4()),
                 name: value.name.clone(),
                 description: value.description.clone(),
                 metadata: value
@@ -304,6 +318,7 @@ impl From<&DeviceConfiguration> for api::Device {
             vendor_dir: "".into(),
             file: "".into(),
 
+            id: value.id.to_string(),
             name: value.name.clone(),
             description: value.description.clone(),
             firmware: value
