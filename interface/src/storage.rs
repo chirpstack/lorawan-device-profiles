@@ -118,12 +118,12 @@ pub fn get_codecs(
             continue;
         }
 
-        let codec_str = fs::read_to_string(&codecs_path.join(&codec_filename)).unwrap_or_default();
+        let codec_str = fs::read_to_string(codecs_path.join(&codec_filename)).unwrap_or_default();
         let codec_dec_test_str =
-            fs::read_to_string(&codecs_path.join(format!("test_decode_{}on", codec_filename)))
+            fs::read_to_string(codecs_path.join(format!("test_decode_{}on", codec_filename)))
                 .unwrap_or("[]".to_string());
         let codec_enc_test_str =
-            fs::read_to_string(&codecs_path.join(format!("test_encode_{}on", codec_filename)))
+            fs::read_to_string(codecs_path.join(format!("test_encode_{}on", codec_filename)))
                 .unwrap_or("[]".to_string());
 
         out.insert(
