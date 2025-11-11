@@ -11,14 +11,28 @@ pub struct VendorConfiguration {
     pub vendor: Vendor,
 }
 
-#[derive(Default, Serialize, Deserialize)]
+#[derive(Serialize, Deserialize)]
 #[serde(default)]
 pub struct Vendor {
+    pub id: Uuid,
     pub name: String,
     pub vendor_id: u32,
     pub ouis: Vec<String>,
     pub devices: Vec<String>,
     pub metadata: VendorMetadata,
+}
+
+impl Default for Vendor {
+    fn default() -> Self {
+        Vendor {
+            id: Uuid::new_v4(),
+            name: "".into(),
+            vendor_id: 0,
+            ouis: vec![],
+            devices: vec![],
+            metadata: VendorMetadata::default(),
+        }
+    }
 }
 
 #[derive(Default, Serialize, Deserialize)]
@@ -132,6 +146,7 @@ impl From<&api::Vendor> for VendorConfiguration {
     fn from(value: &api::Vendor) -> Self {
         VendorConfiguration {
             vendor: Vendor {
+                id: Uuid::from_str(&value.id).unwrap_or_else(|_| Uuid::new_v4()),
                 name: value.name.clone(),
                 vendor_id: value.lora_alliance_vendor_id,
                 ouis: value.ouis.clone(),
@@ -147,6 +162,7 @@ impl From<&api::Vendor> for VendorConfiguration {
 impl From<&VendorConfiguration> for api::Vendor {
     fn from(value: &VendorConfiguration) -> Self {
         api::Vendor {
+            id: value.vendor.id.to_string(),
             dir: "".into(),
             name: value.vendor.name.clone(),
             lora_alliance_vendor_id: value.vendor.vendor_id,

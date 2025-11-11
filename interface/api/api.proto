@@ -68,6 +68,7 @@ enum RegParamsRevision {
 }
 
 message Vendor {
+  string id = 7;
   string dir = 1;
   string name = 2;
   uint32 lora_alliance_vendor_id = 3;
