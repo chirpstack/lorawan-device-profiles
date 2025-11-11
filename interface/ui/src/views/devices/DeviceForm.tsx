@@ -43,6 +43,7 @@ function DeviceForm(props: IProps) {
     device.setVendorDir(v.vendorDir);
     device.setFile(v.file);
 
+    device.setId(v.id);
     device.setName(v.name);
     device.setDescription(v.description);
     deviceMetadata.setProductUrl(v.metadata?.productUrl || "");

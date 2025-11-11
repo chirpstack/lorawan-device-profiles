@@ -37,6 +37,7 @@ function VendorForm(props: IProps) {
     const vendor = new Vendor();
     const vendorMetadata = new VendorMetadata();
 
+    vendor.setId(v.id);
     vendor.setDir(v.dir);
     vendor.setName(v.name);
     vendor.setLoraAllianceVendorId(v.loraAllianceVendorId);
