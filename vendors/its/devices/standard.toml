@@ -1,0 +1,10 @@
+[device]
+id = "9aee88e7-7b8b-4b69-b3d5-3c335e220620"
+name = "standard"
+description = "standard device for IoT"
+
+[[device.firmware]]
+version = "1.0.0"
+profiles = [
+    "standard-as923-1_0_3-class-c.toml",
+]

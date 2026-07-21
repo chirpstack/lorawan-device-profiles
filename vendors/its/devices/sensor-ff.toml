@@ -1,0 +1,10 @@
+[device]
+id = "67993019-f108-4253-bf9f-252dfbe78fbc"
+name = "sensor FF"
+description = "sensor node FF"
+
+[[device.firmware]]
+version = "1.0.0"
+profiles = [
+    "sensor-ff-as923-1_0_3-class-a.toml",
+]

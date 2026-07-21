@@ -1,0 +1,9 @@
+[vendor]
+id = "2fa33e13-198f-421f-9e0e-bc3efa89b926"
+name = "ITS"
+vendor_id = 0
+ouis = []
+devices = [
+    "standard.toml",
+    "sensor-ff.toml",
+]
