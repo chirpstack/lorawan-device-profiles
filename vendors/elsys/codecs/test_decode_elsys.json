@@ -134,5 +134,20 @@
         "occupancy": 2
       }
     }
+  },
+  {
+    "name": "Test decode EMS Lite payload",
+    "input": {
+      "fPort": 5,
+      "bytes": [1, 0, 215, 2, 45, 18, 1, 7, 14, 24]
+    },
+    "expected": {
+      "data": {
+        "temperature": 21.5,
+        "humidity": 45,
+        "waterleak": 1,
+        "vdd": 3608
+      }
+    }
   }
 ]
