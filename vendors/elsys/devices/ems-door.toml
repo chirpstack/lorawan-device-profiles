@@ -1,0 +1,16 @@
+[device]
+id = "d5b6c7d8-9f0a-4123-b456-789abcdef012"
+name = "EMS Door"
+description = "Indoor door activity sensor with accelerometer and reed switch."
+
+[[device.firmware]]
+version = "1.0"
+profiles = [
+    "EU868-1_0_4.toml",
+    "US915-1_0_4.toml",
+]
+codec = "elsys.js"
+
+[device.metadata]
+product_url = "https://www.elsys.se/en/ems-door/"
+documentation_url = "https://elsys.se/public/datasheets/EMS_Series_LoRa_Datasheet.pdf"
