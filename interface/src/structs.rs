@@ -49,11 +49,11 @@ pub struct ProfileConfiguration {
 pub struct Profile {
     pub id: Uuid,
     pub vendor_profile_id: usize,
-    #[validate(enumerate = ["EU868", "US915", "CN779", "EU433", "AU915", "CN470", "AS923", "AS923-2", "AS923-3", "AS923-4", "KR920", "IN865", "RU864"])]
+    #[validate(r#enum = ["EU868", "US915", "CN779", "EU433", "AU915", "CN470", "AS923", "AS923-2", "AS923-3", "AS923-4", "KR920", "IN865", "RU864"])]
     pub region: String,
-    #[validate(enumerate = ["1.0.0", "1.0.1", "1.0.2", "1.0.3","1.0.4", "1.1.0"])]
+    #[validate(r#enum = ["1.0.0", "1.0.1", "1.0.2", "1.0.3","1.0.4", "1.1.0"])]
     pub mac_version: String,
-    #[validate(enumerate = ["A", "B", "RP002-1.0.0", "RP002-1.0.1", "RP002-1.0.2", "RP002-1.0.3", "RP002-1.0.4"])]
+    #[validate(r#enum = ["A", "B", "RP002-1.0.0", "RP002-1.0.1", "RP002-1.0.2", "RP002-1.0.3", "RP002-1.0.4"])]
     pub reg_params_revision: String,
     pub supports_otaa: bool,
     pub supports_class_b: bool,
@@ -65,6 +65,8 @@ pub struct Profile {
     #[validate]
     pub class_b: ProfileClassB,
     pub class_c: ProfileClassC,
+    #[validate]
+    pub app_layer_params: AppLayerParams,
 }
 
 impl Default for Profile {
@@ -82,6 +84,7 @@ impl Default for Profile {
             abp: Default::default(),
             class_b: Default::default(),
             class_c: Default::default(),
+            app_layer_params: Default::default(),
         }
     }
 }
@@ -111,6 +114,19 @@ pub struct ProfileClassB {
 #[derive(Default, Serialize, Deserialize)]
 pub struct ProfileClassC {
     pub timeout_secs: usize,
+}
+
+#[derive(Default, Serialize, Deserialize, Validate)]
+pub struct AppLayerParams {
+    #[validate(r#enum = ["", "1.0.0", "2.0.0"])]
+    pub ts003_version: String,
+    pub ts003_f_port: usize,
+    #[validate(r#enum = ["", "1.0.0", "2.0.0"])]
+    pub ts004_version: String,
+    pub ts004_f_port: usize,
+    #[validate(r#enum = ["", "1.0.0", "2.0.0"])]
+    pub ts005_version: String,
+    pub ts005_f_port: usize,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -221,6 +237,32 @@ impl From<&api::Profile> for ProfileConfiguration {
                         timeout_secs: v.timeout_secs as usize,
                     })
                     .unwrap_or_default(),
+                app_layer_params: value
+                    .app_layer_params
+                    .map(|v| AppLayerParams {
+                        ts003_version: match v.ts003_version() {
+                            api::Ts003Version::Ts003NotImplemented => "",
+                            api::Ts003Version::Ts003V100 => "1.0.0",
+                            api::Ts003Version::Ts003V200 => "2.0.0",
+                        }
+                        .into(),
+                        ts004_version: match v.ts004_version() {
+                            api::Ts004Version::Ts004NotImplemented => "",
+                            api::Ts004Version::Ts004V100 => "1.0.0",
+                            api::Ts004Version::Ts004V200 => "2.0.0",
+                        }
+                        .into(),
+                        ts005_version: match v.ts005_version() {
+                            api::Ts005Version::Ts005NotImplemented => "",
+                            api::Ts005Version::Ts005V100 => "1.0.0",
+                            api::Ts005Version::Ts005V200 => "2.0.0",
+                        }
+                        .into(),
+                        ts003_f_port: v.ts003_f_port as usize,
+                        ts004_f_port: v.ts004_f_port as usize,
+                        ts005_f_port: v.ts005_f_port as usize,
+                    })
+                    .unwrap_or_default(),
             },
         }
     }
@@ -260,6 +302,29 @@ impl TryFrom<&ProfileConfiguration> for api::Profile {
             }),
             class_c: Some(&value.class_c).map(|v| api::ClassCParams {
                 timeout_secs: v.timeout_secs as u32,
+            }),
+            app_layer_params: Some(&value.app_layer_params).map(|v| api::AppLayerParams {
+                ts003_version: match v.ts003_version.as_str() {
+                    "1.0.0" => api::Ts003Version::Ts003V100,
+                    "2.0.0" => api::Ts003Version::Ts003V200,
+                    _ => api::Ts003Version::Ts003NotImplemented,
+                }
+                .into(),
+                ts004_version: match v.ts004_version.as_str() {
+                    "1.0.0" => api::Ts004Version::Ts004V100,
+                    "2.0.0" => api::Ts004Version::Ts004V200,
+                    _ => api::Ts004Version::Ts004NotImplemented,
+                }
+                .into(),
+                ts005_version: match v.ts005_version.as_str() {
+                    "1.0.0" => api::Ts005Version::Ts005V100,
+                    "2.0.0" => api::Ts005Version::Ts005V200,
+                    _ => api::Ts005Version::Ts005NotImplemented,
+                }
+                .into(),
+                ts003_f_port: v.ts003_f_port as u32,
+                ts004_f_port: v.ts004_f_port as u32,
+                ts005_f_port: v.ts005_f_port as u32,
             }),
         })
     }

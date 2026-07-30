@@ -450,6 +450,11 @@ export class Profile extends jspb.Message {
   hasClassC(): boolean;
   clearClassC(): Profile;
 
+  getAppLayerParams(): AppLayerParams | undefined;
+  setAppLayerParams(value?: AppLayerParams): Profile;
+  hasAppLayerParams(): boolean;
+  clearAppLayerParams(): Profile;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Profile.AsObject;
   static toObject(includeInstance: boolean, msg: Profile): Profile.AsObject;
@@ -474,6 +479,7 @@ export namespace Profile {
     abp?: AbpParams.AsObject,
     classB?: ClassBParams.AsObject,
     classC?: ClassCParams.AsObject,
+    appLayerParams?: AppLayerParams.AsObject,
   }
 }
 
@@ -552,6 +558,44 @@ export class ClassCParams extends jspb.Message {
 export namespace ClassCParams {
   export type AsObject = {
     timeoutSecs: number,
+  }
+}
+
+export class AppLayerParams extends jspb.Message {
+  getTs003Version(): Ts003Version;
+  setTs003Version(value: Ts003Version): AppLayerParams;
+
+  getTs003FPort(): number;
+  setTs003FPort(value: number): AppLayerParams;
+
+  getTs004Version(): Ts004Version;
+  setTs004Version(value: Ts004Version): AppLayerParams;
+
+  getTs004FPort(): number;
+  setTs004FPort(value: number): AppLayerParams;
+
+  getTs005Version(): Ts005Version;
+  setTs005Version(value: Ts005Version): AppLayerParams;
+
+  getTs005FPort(): number;
+  setTs005FPort(value: number): AppLayerParams;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): AppLayerParams.AsObject;
+  static toObject(includeInstance: boolean, msg: AppLayerParams): AppLayerParams.AsObject;
+  static serializeBinaryToWriter(message: AppLayerParams, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): AppLayerParams;
+  static deserializeBinaryFromReader(message: AppLayerParams, reader: jspb.BinaryReader): AppLayerParams;
+}
+
+export namespace AppLayerParams {
+  export type AsObject = {
+    ts003Version: Ts003Version,
+    ts003FPort: number,
+    ts004Version: Ts004Version,
+    ts004FPort: number,
+    ts005Version: Ts005Version,
+    ts005FPort: number,
   }
 }
 
@@ -975,4 +1019,19 @@ export enum RegParamsRevision {
   RP002_1_0_2 = 4,
   RP002_1_0_3 = 5,
   RP002_1_0_4 = 6,
+}
+export enum Ts003Version { 
+  TS003_NOT_IMPLEMENTED = 0,
+  TS003_V100 = 1,
+  TS003_V200 = 2,
+}
+export enum Ts004Version { 
+  TS004_NOT_IMPLEMENTED = 0,
+  TS004_V100 = 1,
+  TS004_V200 = 2,
+}
+export enum Ts005Version { 
+  TS005_NOT_IMPLEMENTED = 0,
+  TS005_V100 = 1,
+  TS005_V200 = 2,
 }

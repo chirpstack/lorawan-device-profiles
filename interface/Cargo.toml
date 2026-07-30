@@ -10,29 +10,29 @@
   license = "MIT"
 
 [dependencies]
-  clap = { version = "4.5", features = ["derive"] }
+  clap = { version = "4.6", features = ["derive"] }
   serde = { version = "1.0", features = ["derive"] }
   serde_valid = "2.0"
-  toml = "1.0"
+  toml = "1.1"
   tonic = "0.14"
   tonic-web = "0.14"
   tonic-prost = "0.14"
   prost = "0.14"
-  tokio = { version = "1.49", features = ["macros", "rt-multi-thread"] }
+  tokio = { version = "1.53", features = ["macros", "rt-multi-thread"] }
   futures = "0.3"
   http = "1.4"
-  http-body = "1.0"
+  http-body = "1.1"
   pin-project = "1.1"
   tower = "0.5"
-  rust-embed = "8.11"
+  rust-embed = "8.12"
   mime_guess = "2.0"
   axum = "0.8"
   anyhow = "1.0"
-  uuid = { version = "1.21", default-features = false, features = [
+  uuid = { version = "1.24", default-features = false, features = [
     "v4",
     "serde",
   ] }
-  rquickjs = { version = "0.11", features = ["loader", "array-buffer"] }
+  rquickjs = { version = "0.12", features = ["loader", "array-buffer"] }
 
 [build-dependencies]
   tonic-build = "0.14"

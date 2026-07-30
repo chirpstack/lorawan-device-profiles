@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Space, Breadcrumb, Card } from "antd";
 import { PageHeader } from "@ant-design/pro-layout";
 
-import { Profile, CreateProfileRequest } from "@api/grpc-web/api_pb";
+import { Profile, CreateProfileRequest, AppLayerParams } from "@api/grpc-web/api_pb";
 import ProfileForm from "./ProfileForm";
 import DeviceProfileStore from "../../stores/DeviceProfileStore";
 
@@ -20,9 +20,14 @@ function CreateProfile() {
     DeviceProfileStore.createProfile(req, () => {
       navigate(`/vendors/${vendorDir}/profiles`);
     });
-  }
+  };
 
   const profile = new Profile();
+  const appLayerParams = new AppLayerParams();
+  appLayerParams.setTs003FPort(202);
+  appLayerParams.setTs004FPort(201);
+  appLayerParams.setTs005FPort(200);
+  profile.setAppLayerParams(appLayerParams);
 
   return (
     <Space direction="vertical" style={{ width: "100%" }} size="large">
