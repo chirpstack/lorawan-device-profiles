@@ -1,0 +1,14 @@
+[device]
+id = "667956ab-267c-4958-87d3-54d69402dc4e"
+name = "ELV-LW-OMO"
+description = "Orientation/motion module of the ELV modular system reporting acceleration, tilt and button events."
+
+[[device.firmware]]
+version = "1.0.1"
+profiles = [
+    "EU868-1_0_3.toml",
+]
+codec = "elv-lw-omo.js"
+
+[device.metadata]
+product_url = "https://www.elv.de/"

@@ -1,0 +1,106 @@
+[
+  {
+    "name": "Test decode device info frame",
+    "input": {
+      "fPort": 10,
+      "bytes": [33, 0, 4, 1, 2, 3, 4, 5, 6, 1, 2]
+    },
+    "expected": {
+      "data": {
+        "Supply_Voltage": 330,
+        "frame_type": "Device_Info",
+        "TX_Reason": "Joined",
+        "Bootloader_Version": "1.2.3",
+        "Firmware_Version": "4.5.6",
+        "hw_revision": 258
+      }
+    }
+  },
+  {
+    "name": "Test decode device state frame",
+    "input": {
+      "fPort": 10,
+      "bytes": [25, 1, 6, 17, 45, 1, 44]
+    },
+    "expected": {
+      "data": {
+        "Supply_Voltage": 250,
+        "frame_type": "Device_State",
+        "TX_Reason": "Tilt",
+        "Accelerated": true,
+        "Tilt_Area_0": true,
+        "Tilt_Area_1": false,
+        "Tilt_Area_2": false,
+        "Angle": 45,
+        "Activation_count": 300
+      }
+    }
+  },
+  {
+    "name": "Test decode acceleration data frame",
+    "input": {
+      "fPort": 10,
+      "bytes": [30, 2, 5, 33, 90]
+    },
+    "expected": {
+      "data": {
+        "Supply_Voltage": 300,
+        "frame_type": "Acceleration_Data",
+        "TX_Reason": "Acceleration",
+        "Accelerated": true,
+        "Tilt_Area_0": false,
+        "Tilt_Area_1": true,
+        "Tilt_Area_2": false,
+        "Angle": 90
+      }
+    }
+  },
+  {
+    "name": "Test decode button pressed frame",
+    "input": {
+      "fPort": 10,
+      "bytes": [33, 3, 1, 7]
+    },
+    "expected": {
+      "data": {
+        "Supply_Voltage": 330,
+        "frame_type": "Button_Pressed",
+        "TX_Reason": "Button Pressed",
+        "Button_Count": 7
+      }
+    }
+  },
+  {
+    "name": "Test decode config data frame",
+    "input": {
+      "fPort": 10,
+      "bytes": [33, 4, 3, 3, 50, 2, 70, 150, 3, 10]
+    },
+    "expected": {
+      "data": {
+        "Supply_Voltage": 330,
+        "frame_type": "Config_Data",
+        "TX_Reason": "Settings",
+        "device_mode": "AccelerationTilt",
+        "sensor_threshold": 50,
+        "range": 2,
+        "alpha": 70,
+        "beta": 150,
+        "hysteresis": 3,
+        "senc_cycle_minutes": 60
+      }
+    }
+  },
+  {
+    "name": "Test decode wrong port number",
+    "input": {
+      "fPort": 1,
+      "bytes": [33, 4, 3, 3, 50, 2, 70, 150, 3, 10]
+    },
+    "expected": {
+      "data": {
+        "parser_error": "Wrong Port Number"
+      }
+    }
+  }
+]

@@ -1,0 +1,126 @@
+[
+  {
+    "name": "Test decode application version",
+    "input": {
+      "fPort": 10,
+      "bytes": [1, 2, 3, 4]
+    },
+    "expected": {
+      "data": {
+        "app_version": "V2.3.4"
+      }
+    }
+  },
+  {
+    "name": "Test decode bootloader version",
+    "input": {
+      "fPort": 10,
+      "bytes": [2, 1, 0, 0]
+    },
+    "expected": {
+      "data": {
+        "bl_version": "V1.0.0"
+      }
+    }
+  },
+  {
+    "name": "Test decode known tx-reason",
+    "input": {
+      "fPort": 10,
+      "bytes": [3, 4]
+    },
+    "expected": {
+      "data": {
+        "tx_reason": "HEARTBEAT_EVENT"
+      }
+    }
+  },
+  {
+    "name": "Test decode unknown tx-reason",
+    "input": {
+      "fPort": 10,
+      "bytes": [3, 99]
+    },
+    "expected": {
+      "data": {
+        "tx_reason": "UNKNOWN_EVENT --> Please update your payload parser"
+      }
+    }
+  },
+  {
+    "name": "Test decode supply voltage",
+    "input": {
+      "fPort": 10,
+      "bytes": [4, 12, 192]
+    },
+    "expected": {
+      "data": {
+        "supply_voltage": 3264
+      }
+    }
+  },
+  {
+    "name": "Test decode GPS position",
+    "input": {
+      "fPort": 10,
+      "bytes": [10, 64, 78, 222, 2, 63, 180, 150, 0, 68, 214, 18, 0, 1, 2]
+    },
+    "expected": {
+      "data": {
+        "latitude": 48.123456,
+        "longitude": 9.876543,
+        "altitude": 123.45,
+        "hdop": 1.08
+      }
+    }
+  },
+  {
+    "name": "Test decode tx-reason, supply voltage and GPS position combined",
+    "input": {
+      "fPort": 10,
+      "bytes": [3, 4, 4, 12, 192, 10, 64, 78, 222, 2, 63, 180, 150, 0, 68, 214, 18, 0, 1, 2]
+    },
+    "expected": {
+      "data": {
+        "tx_reason": "HEARTBEAT_EVENT",
+        "supply_voltage": 3264,
+        "latitude": 48.123456,
+        "longitude": 9.876543,
+        "altitude": 123.45,
+        "hdop": 1.08
+      }
+    }
+  },
+  {
+    "name": "Test decode empty payload",
+    "input": {
+      "fPort": 10,
+      "bytes": []
+    },
+    "expected": {
+      "data": {}
+    }
+  },
+  {
+    "name": "Test decode unknown data type",
+    "input": {
+      "fPort": 10,
+      "bytes": [9, 9, 9]
+    },
+    "expected": {
+      "data": {},
+      "errors": ["Data Type Failure --> Please update your payload parser"]
+    }
+  },
+  {
+    "name": "Test decode wrong port number",
+    "input": {
+      "fPort": 1,
+      "bytes": [4, 12, 192]
+    },
+    "expected": {
+      "data": {},
+      "errors": ["Wrong Port Number"]
+    }
+  }
+]

@@ -1,0 +1,8 @@
+[vendor]
+id = "57b81b89-554d-457c-a6f7-126d8092ec8c"
+name = "ELV"
+vendor_id = 0
+ouis = []
+
+[vendor.metadata]
+homepage = "https://www.elv.de/"
