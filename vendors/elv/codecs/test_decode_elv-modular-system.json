@@ -1,0 +1,135 @@
+[
+  {
+    "name": "Test decode header only (timer event)",
+    "input": {
+      "fPort": 10,
+      "bytes": [0, 0, 0, 12, 246]
+    },
+    "expected": {
+      "data": {
+        "TX_Reason": "Timer_Event",
+        "Supply_Voltage": 3318
+      }
+    }
+  },
+  {
+    "name": "Test decode header only (undefined event)",
+    "input": {
+      "fPort": 10,
+      "bytes": [255, 0, 0, 12, 192]
+    },
+    "expected": {
+      "data": {
+        "TX_Reason": "UNDEFINED_EVENT",
+        "Supply_Voltage": 3264
+      }
+    }
+  },
+  {
+    "name": "Test decode binary input (user button event)",
+    "input": {
+      "fPort": 10,
+      "bytes": [1, 0, 0, 12, 192, 0, 3]
+    },
+    "expected": {
+      "data": {
+        "TX_Reason": "User_Button_Event",
+        "Supply_Voltage": 3264,
+        "Input_1": "Active"
+      }
+    }
+  },
+  {
+    "name": "Test decode positive temperature",
+    "input": {
+      "fPort": 10,
+      "bytes": [0, 0, 0, 13, 136, 2, 0, 200]
+    },
+    "expected": {
+      "data": {
+        "TX_Reason": "Timer_Event",
+        "Supply_Voltage": 3464,
+        "Temperature_Sensor": "20.0"
+      }
+    }
+  },
+  {
+    "name": "Test decode negative temperature",
+    "input": {
+      "fPort": 10,
+      "bytes": [0, 0, 0, 13, 136, 2, 255, 56]
+    },
+    "expected": {
+      "data": {
+        "TX_Reason": "Timer_Event",
+        "Supply_Voltage": 3464,
+        "Temperature_Sensor": "-20.0"
+      }
+    }
+  },
+  {
+    "name": "Test decode temperature and relative humidity",
+    "input": {
+      "fPort": 10,
+      "bytes": [0, 0, 0, 13, 136, 3, 0, 200, 55]
+    },
+    "expected": {
+      "data": {
+        "TX_Reason": "Timer_Event",
+        "Supply_Voltage": 3464,
+        "TH_Sensor_Temperature": "20.0",
+        "TH_Sensor_Humidity": "55"
+      }
+    }
+  },
+  {
+    "name": "Test decode battery indicator (okay)",
+    "input": {
+      "fPort": 10,
+      "bytes": [0, 0, 0, 13, 136, 7, 2]
+    },
+    "expected": {
+      "data": {
+        "TX_Reason": "Timer_Event",
+        "Supply_Voltage": 3464,
+        "Battery_Indicator": "Battery_OKAY"
+      }
+    }
+  },
+  {
+    "name": "Test decode unknown data type",
+    "input": {
+      "fPort": 10,
+      "bytes": [0, 0, 0, 13, 136, 238]
+    },
+    "expected": {
+      "data": {
+        "parser_error": "Data Type Failure --> Please update your payload parser"
+      }
+    }
+  },
+  {
+    "name": "Test decode not enough data",
+    "input": {
+      "fPort": 10,
+      "bytes": [0, 0, 0, 12]
+    },
+    "expected": {
+      "data": {
+        "parser_error": "Not enough data"
+      }
+    }
+  },
+  {
+    "name": "Test decode wrong port number",
+    "input": {
+      "fPort": 1,
+      "bytes": [0, 0, 0, 12, 192]
+    },
+    "expected": {
+      "data": {
+        "parser_error": "Wrong Port Number"
+      }
+    }
+  }
+]

@@ -1,0 +1,176 @@
+[
+  {
+    "name": "Test encode orientation mode example (angle + hysteresis + update cycle)",
+    "input": {
+      "data": {
+        "device_mode": ["tilt"],
+        "angle_alpha": 70,
+        "angle_beta": 150,
+        "hysteresis": 3,
+        "update_cycle_min": 60
+      }
+    },
+    "expected": {
+      "fPort": 10,
+      "bytes": [0, 2, 3, 70, 4, 150, 5, 3, 6, 10]
+    }
+  },
+  {
+    "name": "Test encode device mode acceleration only",
+    "input": {
+      "data": { "device_mode": "acceleration" }
+    },
+    "expected": {
+      "fPort": 10,
+      "bytes": [0, 1]
+    }
+  },
+  {
+    "name": "Test encode device mode acceleration and tilt combined",
+    "input": {
+      "data": { "device_mode": ["acceleration", "tilt"] }
+    },
+    "expected": {
+      "fPort": 10,
+      "bytes": [0, 3]
+    }
+  },
+  {
+    "name": "Test encode device mode disarmed",
+    "input": {
+      "data": { "device_mode": "disarmed" }
+    },
+    "expected": {
+      "fPort": 10,
+      "bytes": [0, 4]
+    }
+  },
+  {
+    "name": "Test encode measurement range",
+    "input": {
+      "data": { "range_g": 8 }
+    },
+    "expected": {
+      "fPort": 10,
+      "bytes": [1, 2]
+    }
+  },
+  {
+    "name": "Test encode sensitivity",
+    "input": {
+      "data": { "sensitivity": 100 }
+    },
+    "expected": {
+      "fPort": 10,
+      "bytes": [2, 100]
+    }
+  },
+  {
+    "name": "Test encode reference vector update",
+    "input": {
+      "data": { "reference_vector_update": true }
+    },
+    "expected": {
+      "fPort": 10,
+      "bytes": [7, 0]
+    }
+  },
+  {
+    "name": "Test encode request config",
+    "input": {
+      "data": { "request_config": true }
+    },
+    "expected": {
+      "fPort": 10,
+      "bytes": [8, 0]
+    }
+  },
+  {
+    "name": "Test encode invalid device mode",
+    "input": {
+      "data": { "device_mode": "foo" }
+    },
+    "expected": {
+      "fPort": 10,
+      "bytes": [],
+      "errors": ["invalid device_mode: 'foo' (acceleration, tilt, disarmed)"]
+    }
+  },
+  {
+    "name": "Test encode invalid measurement range",
+    "input": {
+      "data": { "range_g": 5 }
+    },
+    "expected": {
+      "fPort": 10,
+      "bytes": [],
+      "errors": ["invalid range_g: 5 (2, 4, 8, 16)"]
+    }
+  },
+  {
+    "name": "Test encode invalid sensitivity",
+    "input": {
+      "data": { "sensitivity": 0 }
+    },
+    "expected": {
+      "fPort": 10,
+      "bytes": [],
+      "errors": ["invalid sensitivity: 0 (1..255)"]
+    }
+  },
+  {
+    "name": "Test encode invalid angle alpha",
+    "input": {
+      "data": { "angle_alpha": 200 }
+    },
+    "expected": {
+      "fPort": 10,
+      "bytes": [],
+      "errors": ["invalid angle_alpha: 200 (1..180)"]
+    }
+  },
+  {
+    "name": "Test encode invalid angle beta",
+    "input": {
+      "data": { "angle_beta": 0 }
+    },
+    "expected": {
+      "fPort": 10,
+      "bytes": [],
+      "errors": ["invalid angle_beta: 0 (1..180)"]
+    }
+  },
+  {
+    "name": "Test encode invalid hysteresis",
+    "input": {
+      "data": { "hysteresis": 200 }
+    },
+    "expected": {
+      "fPort": 10,
+      "bytes": [],
+      "errors": ["invalid hysteresis: 200 (0..180)"]
+    }
+  },
+  {
+    "name": "Test encode invalid update cycle",
+    "input": {
+      "data": { "update_cycle_min": 7 }
+    },
+    "expected": {
+      "fPort": 10,
+      "bytes": [],
+      "errors": ["invalid update_cycle_min: 7 (0 or multiple of 6, 6..1530)"]
+    }
+  },
+  {
+    "name": "Test encode empty config",
+    "input": {
+      "data": {}
+    },
+    "expected": {
+      "fPort": 10,
+      "bytes": [],
+      "warnings": ["No valid configuration fields specified"]
+    }
+  }
+]

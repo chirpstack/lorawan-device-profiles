@@ -1,0 +1,14 @@
+[device]
+id = "f94abb37-2043-4f4f-bdaf-7d578e581617"
+name = "ELV-LW-BASE"
+description = "Base module of the ELV modular system for building LoRaWAN sensor/actuator nodes from application modules."
+
+[[device.firmware]]
+version = "1.10.1"
+profiles = [
+    "EU868-1_0_3.toml",
+]
+codec = "elv-modular-system.js"
+
+[device.metadata]
+product_url = "https://www.elv.de/"
