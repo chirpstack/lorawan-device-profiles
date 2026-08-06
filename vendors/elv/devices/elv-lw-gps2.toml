@@ -1,0 +1,14 @@
+[device]
+id = "6401d482-00b2-4ec4-bb52-6d6a896e20ee"
+name = "ELV-LW-GPS2"
+description = "GPS/GNSS module of the ELV modular system for position, motion and contact-interface based LoRaWAN tracking."
+
+[[device.firmware]]
+version = "1.0.0"
+profiles = [
+    "EU868-1_0_3.toml",
+]
+codec = "elv-lw-gps2.js"
+
+[device.metadata]
+product_url = "https://www.elv.de/"

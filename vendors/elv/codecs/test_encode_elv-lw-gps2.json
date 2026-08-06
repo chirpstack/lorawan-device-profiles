@@ -1,0 +1,154 @@
+[
+  {
+    "name": "Test encode empty config (no change)",
+    "input": {
+      "data": {}
+    },
+    "expected": {
+      "fPort": 10,
+      "bytes": [0, 0, 0, 0, 0]
+    }
+  },
+  {
+    "name": "Test encode mode only",
+    "input": {
+      "data": { "mode": "motion" }
+    },
+    "expected": {
+      "fPort": 10,
+      "bytes": [3, 0, 0, 0, 0]
+    }
+  },
+  {
+    "name": "Test encode interval only",
+    "input": {
+      "data": { "interval_s": 60 }
+    },
+    "expected": {
+      "fPort": 10,
+      "bytes": [0, 2, 0, 0, 0]
+    }
+  },
+  {
+    "name": "Test encode datarate as DR string",
+    "input": {
+      "data": { "datarate": "DR5" }
+    },
+    "expected": {
+      "fPort": 10,
+      "bytes": [0, 0, 6, 0, 0]
+    }
+  },
+  {
+    "name": "Test encode datarate as number",
+    "input": {
+      "data": { "datarate": 2 }
+    },
+    "expected": {
+      "fPort": 10,
+      "bytes": [0, 0, 3, 0, 0]
+    }
+  },
+  {
+    "name": "Test encode sensitivity only",
+    "input": {
+      "data": { "sensitivity": "high" }
+    },
+    "expected": {
+      "fPort": 10,
+      "bytes": [0, 0, 0, 3, 0]
+    }
+  },
+  {
+    "name": "Test encode low power mode only",
+    "input": {
+      "data": { "low_power": "gnss_always_on" }
+    },
+    "expected": {
+      "fPort": 10,
+      "bytes": [0, 0, 0, 0, 1]
+    }
+  },
+  {
+    "name": "Test encode all fields combined",
+    "input": {
+      "data": {
+        "mode": "cyclic",
+        "interval_s": 600,
+        "datarate": "DR3",
+        "sensitivity": "medium",
+        "low_power": "gnss_backup"
+      }
+    },
+    "expected": {
+      "fPort": 10,
+      "bytes": [1, 20, 4, 2, 2]
+    }
+  },
+  {
+    "name": "Test encode invalid mode",
+    "input": {
+      "data": { "mode": "invalid" }
+    },
+    "expected": {
+      "fPort": 10,
+      "bytes": [],
+      "errors": ["invalid mode: 'invalid' (allowed: cyclic, contact, motion)"]
+    }
+  },
+  {
+    "name": "Test encode invalid interval (not a multiple of 30)",
+    "input": {
+      "data": { "interval_s": 31 }
+    },
+    "expected": {
+      "fPort": 10,
+      "bytes": [],
+      "errors": ["invalid interval_s: 31 (multiple of 30, 30..7650 s)"]
+    }
+  },
+  {
+    "name": "Test encode invalid interval (out of range)",
+    "input": {
+      "data": { "interval_s": 7680 }
+    },
+    "expected": {
+      "fPort": 10,
+      "bytes": [],
+      "errors": ["invalid interval_s: 7680 (multiple of 30, 30..7650 s)"]
+    }
+  },
+  {
+    "name": "Test encode invalid datarate",
+    "input": {
+      "data": { "datarate": "DR9" }
+    },
+    "expected": {
+      "fPort": 10,
+      "bytes": [],
+      "errors": ["invalid datarate: 'DR9' (allowed: DR0..DR5 or 0..5)"]
+    }
+  },
+  {
+    "name": "Test encode invalid sensitivity",
+    "input": {
+      "data": { "sensitivity": "extreme" }
+    },
+    "expected": {
+      "fPort": 10,
+      "bytes": [],
+      "errors": ["invalid sensitivity: 'extreme' (allowed: low, medium, high)"]
+    }
+  },
+  {
+    "name": "Test encode invalid low power mode",
+    "input": {
+      "data": { "low_power": "off" }
+    },
+    "expected": {
+      "fPort": 10,
+      "bytes": [],
+      "errors": ["invalid low_power: 'off' (allowed: gnss_always_on, gnss_backup)"]
+    }
+  }
+]

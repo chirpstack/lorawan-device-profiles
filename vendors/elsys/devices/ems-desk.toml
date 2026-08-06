@@ -1,0 +1,16 @@
+[device]
+id = "e6c7d8e9-0a1b-4234-c567-89abcdef0123"
+name = "EMS Desk"
+description = "Indoor desk occupancy sensor with temperature, humidity, and IR occupancy detection."
+
+[[device.firmware]]
+version = "1.0"
+profiles = [
+    "EU868-1_0_4.toml",
+    "US915-1_0_4.toml",
+]
+codec = "elsys.js"
+
+[device.metadata]
+product_url = "https://www.elsys.se/en/ems-desk/"
+documentation_url = "https://elsys.se/public/datasheets/EMS_Series_LoRa_Datasheet.pdf"

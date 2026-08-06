@@ -1,0 +1,16 @@
+[device]
+id = "a6b18c2d-94e5-4f67-b892-123456789a01"
+name = "EMS Lite"
+description = "Indoor climate and water leak sensor measuring temperature, humidity, and water leak detection."
+
+[[device.firmware]]
+version = "1.0"
+profiles = [
+    "EU868-1_0_4.toml",
+    "US915-1_0_4.toml",
+]
+codec = "elsys.js"
+
+[device.metadata]
+product_url = "https://www.elsys.se/en/ems-lite/"
+documentation_url = "https://elsys.se/public/datasheets/EMS_Series_LoRa_Datasheet.pdf"

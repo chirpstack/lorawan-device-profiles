@@ -2,7 +2,19 @@ import { useState, useEffect } from "react";
 
 import { Form, Input, InputNumber, Button, Select, Switch, Row, Col } from "antd";
 
-import { Profile, MacVersion, RegParamsRevision, AbpParams, ClassBParams, ClassCParams, Region } from "@api/grpc-web/api_pb";
+import {
+  Profile,
+  MacVersion,
+  RegParamsRevision,
+  AbpParams,
+  AppLayerParams,
+  ClassBParams,
+  ClassCParams,
+  Region,
+  Ts003Version,
+  Ts004Version,
+  Ts005Version,
+} from "@api/grpc-web/api_pb";
 
 interface IProps {
   initialValues: Profile;
@@ -21,7 +33,6 @@ function ProfileForm(props: IProps) {
     setSupportsClassB(v.getSupportsClassB());
     setSupportsClassC(v.getSupportsClassC());
   }, [props]);
-
 
   const onFinish = (values: Profile.AsObject) => {
     const v = Object.assign(props.initialValues.toObject(), values);
@@ -68,21 +79,36 @@ function ProfileForm(props: IProps) {
       profile.setClassC(classC);
     }
 
+    if (v.appLayerParams) {
+      const appLayerParams = new AppLayerParams();
+      appLayerParams.setTs003Version(v.appLayerParams.ts003Version);
+      appLayerParams.setTs004Version(v.appLayerParams.ts004Version);
+      appLayerParams.setTs005Version(v.appLayerParams.ts005Version);
+      appLayerParams.setTs003FPort(v.appLayerParams.ts003FPort);
+      appLayerParams.setTs004FPort(v.appLayerParams.ts004FPort);
+      appLayerParams.setTs005FPort(v.appLayerParams.ts005FPort);
+
+      profile.setAppLayerParams(appLayerParams);
+    }
+
     props.onFinish(profile);
-  }
+  };
 
   return (
-    <Form
-      layout="vertical"
-      initialValues={props.initialValues.toObject()}
-      onFinish={onFinish}
-    >
+    <Form layout="vertical" initialValues={props.initialValues.toObject()} onFinish={onFinish}>
       <Row>
         <Col span={12}>
-          <Form.Item label="Filename" name="file" rules={[
-            { required: true, message: "Please enter a name!" },
-            { pattern: /^[\w-_]+\.toml$/g, message: "The filename can only contain a-z, A-Z, 0-9, _ and - characters and must end with .toml!" },
-          ]}>
+          <Form.Item
+            label="Filename"
+            name="file"
+            rules={[
+              { required: true, message: "Please enter a name!" },
+              {
+                pattern: /^[\w-_]+\.toml$/g,
+                message: "The filename can only contain a-z, A-Z, 0-9, _ and - characters and must end with .toml!",
+              },
+            ]}
+          >
             <Input disabled={props.update} placeholder="EU868-1.0.0.toml" />
           </Form.Item>
         </Col>
@@ -121,7 +147,11 @@ function ProfileForm(props: IProps) {
       </Row>
       <Row>
         <Col span={12}>
-          <Form.Item label="MAC Version" name="macVersion" rules={[{ required: true, message: "Please select a mac-version!" }]}>
+          <Form.Item
+            label="MAC Version"
+            name="macVersion"
+            rules={[{ required: true, message: "Please select a mac-version!" }]}
+          >
             <Select style={{ width: "300px" }}>
               <Select.Option value={MacVersion.LORAWAN_1_0_0}>LoRaWAN 1.0.0</Select.Option>
               <Select.Option value={MacVersion.LORAWAN_1_0_1}>LoRaWAN 1.0.1</Select.Option>
@@ -175,23 +205,23 @@ function ProfileForm(props: IProps) {
       {!supportsOtaa && (
         <Row>
           <Col span={6}>
-            <Form.Item label="RX1 Delay" name={['abp', 'rx1Delay']}>
+            <Form.Item label="RX1 Delay" name={["abp", "rx1Delay"]}>
               <InputNumber min={0} max={15} />
             </Form.Item>
           </Col>
           <Col span={6}>
-            <Form.Item label="RX1 DR Offset" name={['abp', 'rx1DrOffset']}>
+            <Form.Item label="RX1 DR Offset" name={["abp", "rx1DrOffset"]}>
               <InputNumber min={0} max={15} />
             </Form.Item>
           </Col>
           <Col span={6}>
-            <Form.Item label="RX2 DR" name={['abp', 'rx2Dr']}>
+            <Form.Item label="RX2 DR" name={["abp", "rx2Dr"]}>
               <InputNumber min={0} max={15} />
             </Form.Item>
           </Col>
           <Col span={6}>
-            <Form.Item label="RX2 Frequency (Hz)" name={['abp', 'rx2Freq']}>
-              <InputNumber min={0} style={{ width: '200px' }} />
+            <Form.Item label="RX2 Frequency (Hz)" name={["abp", "rx2Freq"]}>
+              <InputNumber min={0} style={{ width: "200px" }} />
             </Form.Item>
           </Col>
         </Row>
@@ -199,22 +229,22 @@ function ProfileForm(props: IProps) {
       {supportsClassB && (
         <Row>
           <Col span={6}>
-            <Form.Item label="Class-B timeout (sec)" name={['classB', 'timeoutSecs']}>
+            <Form.Item label="Class-B timeout (sec)" name={["classB", "timeoutSecs"]}>
               <InputNumber min={0} />
             </Form.Item>
           </Col>
           <Col span={6}>
-            <Form.Item label="Class-B ping-slot DR" name={['classB', 'pingSlotDr']}>
+            <Form.Item label="Class-B ping-slot DR" name={["classB", "pingSlotDr"]}>
               <InputNumber min={0} max={15} />
             </Form.Item>
           </Col>
           <Col span={6}>
-            <Form.Item label="Class-B ping-slot freq. (Hz)" name={['classB', 'pingSlotFreq']}>
-              <InputNumber min={0} style={{ width: '200px' }} />
+            <Form.Item label="Class-B ping-slot freq. (Hz)" name={["classB", "pingSlotFreq"]}>
+              <InputNumber min={0} style={{ width: "200px" }} />
             </Form.Item>
           </Col>
           <Col span={6}>
-            <Form.Item label="Class-B ping-slot periodicity " name={['classB', 'pingSlotNbK']}>
+            <Form.Item label="Class-B ping-slot periodicity " name={["classB", "pingSlotNbK"]}>
               <Select>
                 <Select.Option value={0}>Every second</Select.Option>
                 <Select.Option value={1}>Every 2 seconds</Select.Option>
@@ -230,15 +260,80 @@ function ProfileForm(props: IProps) {
         </Row>
       )}
       {supportsClassC && (
-        <Form.Item label="Class-C timeout (sec)" name={['classC', 'timeoutSecs']}>
+        <Form.Item label="Class-C timeout (sec)" name={["classC", "timeoutSecs"]}>
           <InputNumber min={0} />
         </Form.Item>
       )}
+      <Row gutter={24}>
+        <Col span={12}>
+          <Form.Item
+            label="Clock sync version (TS003)"
+            name={["appLayerParams", "ts003Version"]}
+            tooltip="If an implemented version is selected, ChirpStack will handle payloads received on the matching fPort"
+          >
+            <Select
+              options={[
+                { value: Ts003Version.TS003_NOT_IMPLEMENTED, label: "Not implemented" },
+                { value: Ts003Version.TS003_V100, label: "v1.0.0" },
+                { value: Ts003Version.TS003_V200, label: "v2.0.0" },
+              ]}
+            />
+          </Form.Item>
+        </Col>
+        <Col span={12}>
+          <Form.Item label="Clock sync fPort (TS003)" name={["appLayerParams", "ts003FPort"]}>
+            <InputNumber min={0} max={255} />
+          </Form.Item>
+        </Col>
+      </Row>
+      <Row gutter={24}>
+        <Col span={12}>
+          <Form.Item
+            label="Fragmented data block transport (TS004)"
+            name={["appLayerParams", "ts004Version"]}
+            tooltip="If an implemented version is selected, ChirpStack will handle payloads received on the matching fPort"
+          >
+            <Select
+              options={[
+                { value: Ts004Version.TS004_NOT_IMPLEMENTED, label: "Not implemented" },
+                { value: Ts004Version.TS004_V100, label: "v1.0.0" },
+                { value: Ts004Version.TS004_V200, label: "v2.0.0" },
+              ]}
+            />
+          </Form.Item>
+        </Col>
+        <Col span={12}>
+          <Form.Item label="Fragmented data block transport fPort (TS004)" name={["appLayerParams", "ts004FPort"]}>
+            <InputNumber min={0} max={255} />
+          </Form.Item>
+        </Col>
+      </Row>
+      <Row gutter={24}>
+        <Col span={12}>
+          <Form.Item
+            label="Remote multicast setup version (TS005)"
+            name={["appLayerParams", "ts005Version"]}
+            tooltip="If an implemented version is selected, ChirpStack will handle payloads received on the matching fPort"
+          >
+            <Select
+              options={[
+                { value: Ts005Version.TS005_NOT_IMPLEMENTED, label: "Not implemented" },
+                { value: Ts005Version.TS005_V100, label: "v1.0.0" },
+                { value: Ts005Version.TS005_V200, label: "v2.0.0" },
+              ]}
+            />
+          </Form.Item>
+        </Col>
+        <Col span={12}>
+          <Form.Item label="Remote multicast setup fPort (TS005)" name={["appLayerParams", "ts005FPort"]}>
+            <InputNumber min={0} max={255} />
+          </Form.Item>
+        </Col>
+      </Row>
       <Button type="primary" htmlType="submit">
         Submit
       </Button>
     </Form>
-
   );
 }
 

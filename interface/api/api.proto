@@ -67,6 +67,24 @@ enum RegParamsRevision {
   RP002_1_0_4 = 6;
 }
 
+enum Ts003Version {
+  TS003_NOT_IMPLEMENTED = 0;
+  TS003_V100 = 1;
+  TS003_v200 = 2;
+}
+
+enum Ts004Version {
+  TS004_NOT_IMPLEMENTED = 0;
+  TS004_V100 = 1;
+  TS004_V200 = 2;
+}
+
+enum Ts005Version {
+  TS005_NOT_IMPLEMENTED = 0;
+  TS005_V100 = 1;
+  TS005_V200 = 2;
+}
+
 message Vendor {
   string id = 7;
   string dir = 1;
@@ -168,6 +186,7 @@ message Profile {
   AbpParams abp = 11;
   ClassBParams class_b = 12;
   ClassCParams class_c = 13;
+  AppLayerParams app_layer_params = 15;
 }
 
 message AbpParams {
@@ -186,6 +205,15 @@ message ClassBParams {
 
 message ClassCParams {
   uint32 timeout_secs = 1;
+}
+
+message AppLayerParams {
+  Ts003Version ts003_version = 1;
+  uint32 ts003_f_port = 2;
+  Ts004Version ts004_version = 3;
+  uint32 ts004_f_port = 4;
+  Ts005Version ts005_version = 5;
+  uint32 ts005_f_port = 6;
 }
 
 message CreateProfileRequest {
