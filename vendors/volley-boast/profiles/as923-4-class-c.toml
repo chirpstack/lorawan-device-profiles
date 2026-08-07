@@ -23,3 +23,11 @@ ping_slot_freq = 0
 
 [profile.class_c]
 timeout_secs = 0
+
+[profile.app_layer_params]
+ts003_version = "2.0.0"
+ts003_f_port = 202
+ts004_version = "2.0.0"
+ts004_f_port = 201
+ts005_version = "2.0.0"
+ts005_f_port = 200
