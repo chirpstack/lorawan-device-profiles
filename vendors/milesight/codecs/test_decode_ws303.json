@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Test decode periodic uplink (battery)",
+    "input": { "bytes": [1, 117, 100] },
+    "expected": { "data": { "battery": 100 } }
+  },
+  {
+    "name": "Test decode leakage alarm",
+    "input": { "bytes": [3, 0, 1] },
+    "expected": { "data": { "leakage_status": "leak" } }
+  },
+  {
+    "name": "Test decode leakage cleared",
+    "input": { "bytes": [3, 0, 0] },
+    "expected": { "data": { "leakage_status": "normal" } }
+  },
+  {
+    "name": "Test decode battery and leakage status",
+    "input": { "bytes": [1, 117, 92, 3, 0, 0] },
+    "expected": { "data": { "battery": 92, "leakage_status": "normal" } }
+  },
+  {
+    "name": "Test decode device status",
+    "input": { "bytes": [255, 11, 1] },
+    "expected": { "data": { "device_status": "on" } }
+  }
+]
