@@ -1,11 +1,11 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 import { Space, Breadcrumb, Card } from "antd";
-import { PageHeader } from "@ant-design/pro-layout";
 
 import { Vendor, CreateVendorRequest } from "@api/grpc-web/api_pb";
 import VendorForm from "./VendorForm";
 import DeviceProfileStore from "../../stores/DeviceProfileStore";
+import PageHeader from "../../components/PageHeader";
 
 function AddVendor() {
   const navigate = useNavigate();
@@ -22,18 +22,9 @@ function AddVendor() {
   const vendor = new Vendor();
 
   return (
-    <Space direction="vertical" style={{ width: "100%" }} size="large">
+    <Space orientation="vertical" style={{ width: "100%" }} size="large">
       <PageHeader
-        breadcrumbRender={() => (
-          <Breadcrumb>
-            <Breadcrumb.Item>
-              <span>Vendors</span>
-            </Breadcrumb.Item>
-            <Breadcrumb.Item>
-              <span>Add</span>
-            </Breadcrumb.Item>
-          </Breadcrumb>
-        )}
+        breadcrumbRender={() => <Breadcrumb items={[{ title: "Vendors" }, { title: "Add" }]} />}
         title="Add vendor"
       />
       <Card>

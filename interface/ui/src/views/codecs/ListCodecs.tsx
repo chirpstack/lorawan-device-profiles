@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link } from "react-router";
 
 import { Space, Breadcrumb, Card, Table, Button } from "antd";
-import { PageHeader } from "@ant-design/pro-layout";
 
 import { ListCodecsRequest, ListCodecsResponse } from "@api/grpc-web/api_pb";
 import DeviceProfileStore from "../../stores/DeviceProfileStore";
+import PageHeader from "../../components/PageHeader";
 
 function ListCodecs() {
   const [codecs, setCodecs] = useState<ListCodecsResponse | undefined>(undefined);
@@ -17,7 +17,7 @@ function ListCodecs() {
       dataIndex: "file",
       key: "file",
       render: (text: string) => {
-        return <Link to={`/vendors/${vendorDir}/codecs/${text}`}>{text}</Link>
+        return <Link to={`/vendors/${vendorDir}/codecs/${text}`}>{text}</Link>;
       },
     },
   ];
@@ -36,21 +36,14 @@ function ListCodecs() {
   }
 
   return (
-    <Space direction="vertical" style={{ width: "100%" }} size="large">
+    <Space orientation="vertical" style={{ width: "100%" }} size="large">
       <PageHeader
-        breadcrumbRender={() => (
-          <Breadcrumb>
-            <Breadcrumb.Item>
-              <span>Codecs</span>
-            </Breadcrumb.Item>
-            <Breadcrumb.Item>
-              <span>List</span>
-            </Breadcrumb.Item>
-          </Breadcrumb>
-        )}
+        breadcrumbRender={() => <Breadcrumb items={[{ title: "Codecs" }, { title: "List" }]} />}
         title="Codecs list"
         extra={
-          <Button type="primary"><Link to={`/vendors/${vendorDir}/codecs/create`}>Create codec</Link></Button>
+          <Button type="primary">
+            <Link to={`/vendors/${vendorDir}/codecs/create`}>Create codec</Link>
+          </Button>
         }
       />
       <Card>

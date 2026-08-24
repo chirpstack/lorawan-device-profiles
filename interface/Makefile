@@ -7,10 +7,10 @@ release-amd64:
 	cross build --target x86_64-unknown-linux-musl --release
 
 api:
-	cd ui && yarn install
+	cd ui && pnpm install
 
 	mkdir -p ui/src/api
 	$(PROTOC_PATH) $(PROTOC_ARGS) api/api.proto
 
 ui:
-	cd ui && yarn add file:../api/grpc-web && yarn install && yarn build
+	cd ui && pnpm install && pnpm build

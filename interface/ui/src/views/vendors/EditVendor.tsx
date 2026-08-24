@@ -1,12 +1,18 @@
 import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router";
 
 import { Space, Breadcrumb, Card, Button, Popconfirm } from "antd";
-import { PageHeader } from "@ant-design/pro-layout";
 
-import { Vendor, GetVendorRequest, GetVendorResponse, DeleteVendorRequest, UpdateVendorRequest } from "@api/grpc-web/api_pb";
+import {
+  Vendor,
+  GetVendorRequest,
+  GetVendorResponse,
+  DeleteVendorRequest,
+  UpdateVendorRequest,
+} from "@api/grpc-web/api_pb";
 import VendorForm from "./VendorForm";
 import DeviceProfileStore from "../../stores/DeviceProfileStore";
+import PageHeader from "../../components/PageHeader";
 
 function EditVendor() {
   const [vendor, setVendor] = useState<Vendor | undefined>(undefined);
@@ -24,13 +30,12 @@ function EditVendor() {
     };
 
     getVendor();
-
   }, [dir]);
 
   const onFinish = (obj: Vendor) => {
     const req = new UpdateVendorRequest();
     req.setVendor(obj);
-    DeviceProfileStore.updateVendor(req, () => { });
+    DeviceProfileStore.updateVendor(req, () => {});
   };
 
   const onDeleteVendor = () => {
@@ -40,27 +45,17 @@ function EditVendor() {
     DeviceProfileStore.deleteVedor(req, () => {
       navigate("/");
     });
-  }
+  };
 
   if (vendor === undefined) {
     return null;
   }
 
   return (
-    <Space direction="vertical" style={{ width: "100%" }} size="large">
+    <Space orientation="vertical" style={{ width: "100%" }} size="large">
       <PageHeader
         breadcrumbRender={() => (
-          <Breadcrumb>
-            <Breadcrumb.Item>
-              <span>Vendors</span>
-            </Breadcrumb.Item>
-            <Breadcrumb.Item>
-              <span>{vendor.getName()}</span>
-            </Breadcrumb.Item>
-            <Breadcrumb.Item>
-              <span>Update</span>
-            </Breadcrumb.Item>
-          </Breadcrumb>
+          <Breadcrumb items={[{ title: "Vendors" }, { title: vendor.getName() }, { title: "Update" }]} />
         )}
         title="Update vendor"
         extra={
@@ -70,7 +65,9 @@ function EditVendor() {
             onConfirm={onDeleteVendor}
             placement="left"
           >
-            <Button type="primary" danger>Delete vendor</Button>
+            <Button type="primary" danger>
+              Delete vendor
+            </Button>
           </Popconfirm>
         }
       />

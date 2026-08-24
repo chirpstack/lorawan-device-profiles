@@ -1,12 +1,23 @@
 import { useState, useEffect, useCallback } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router";
 
 import type { MenuProps } from "antd";
 import { Menu, Select, Button } from "antd";
 
-import { Vendor, ListVendorsResponse, ListDevicesRequest, ListDevicesResponse, Device, ListProfilesRequest, ListProfilesResponse, Profile, ListCodecsRequest, ListCodecsResponse, Codec } from "@api/grpc-web/api_pb";
+import {
+  Vendor,
+  ListVendorsResponse,
+  ListDevicesRequest,
+  ListDevicesResponse,
+  Device,
+  ListProfilesRequest,
+  ListProfilesResponse,
+  Profile,
+  ListCodecsRequest,
+  ListCodecsResponse,
+  Codec,
+} from "@api/grpc-web/api_pb";
 import DeviceProfileStore from "../stores/DeviceProfileStore";
-
 
 function SideMenu() {
   const [vendor, setVendor] = useState<string | undefined>(undefined);
@@ -31,7 +42,7 @@ function SideMenu() {
       DeviceProfileStore.listVendors((resp: ListVendorsResponse) => {
         setVendors(resp.getResultList());
       });
-    }
+    };
 
     DeviceProfileStore.on("change", loadVendors);
     DeviceProfileStore.on("delete", deselectVendor);
@@ -72,7 +83,7 @@ function SideMenu() {
       });
     };
 
-    DeviceProfileStore.on("change", loadDevices)
+    DeviceProfileStore.on("change", loadDevices);
     DeviceProfileStore.on("change", loadProfiles);
     DeviceProfileStore.on("change", loadCodecs);
     loadDevices();
@@ -86,17 +97,17 @@ function SideMenu() {
 
   useEffect(() => {
     parseLocation();
-  }, [location])
+  }, [location]);
 
   const onVendorSelect = (value: string) => {
     setVendor(value);
     navigate(`/vendors/${value}/edit`);
-  }
+  };
 
   const onVendorClear = () => {
     setVendor(undefined);
-    navigate('/');
-  }
+    navigate("/");
+  };
 
   const vendorOptions = vendors.map(v => {
     return {
@@ -165,14 +176,17 @@ function SideMenu() {
       label: "Devices",
       children: [
         {
-          key: "devices-create", label: <Link to={`/vendors/${vendor}/devices/create`}>Add device</Link>,
+          key: "devices-create",
+          label: <Link to={`/vendors/${vendor}/devices/create`}>Add device</Link>,
         },
-      ].concat(devices.map((v) => {
-        return {
-          key: "devices-" + v.getFile(),
-          label: <Link to={`/vendors/${vendor}/devices/${v.getFile()}`}>{v.getFile()}</Link>,
-        };
-      })),
+      ].concat(
+        devices.map(v => {
+          return {
+            key: "devices-" + v.getFile(),
+            label: <Link to={`/vendors/${vendor}/devices/${v.getFile()}`}>{v.getFile()}</Link>,
+          };
+        }),
+      ),
     },
     {
       key: "profiles",
@@ -182,36 +196,57 @@ function SideMenu() {
           key: "profiles-create",
           label: <Link to={`/vendors/${vendor}/profiles/create`}>Add profile</Link>,
         },
-      ].concat(profiles.map((v) => {
-        return {
-          key: "profiles-" + v.getFile(),
-          label: <Link to={`/vendors/${vendor}/profiles/${v.getFile()}`}>{v.getFile()}</Link>,
-        };
-      })),
+      ].concat(
+        profiles.map(v => {
+          return {
+            key: "profiles-" + v.getFile(),
+            label: <Link to={`/vendors/${vendor}/profiles/${v.getFile()}`}>{v.getFile()}</Link>,
+          };
+        }),
+      ),
     },
     {
-      key: "codecs", label: "Codecs", children: [
+      key: "codecs",
+      label: "Codecs",
+      children: [
         {
           key: "codecs-create",
           label: <Link to={`/vendors/${vendor}/codecs/create`}>Add codec</Link>,
         },
-      ].concat(codecs.map((v) => {
-        return {
-          key: "codecs-" + v.getFile(),
-          label: <Link to={`/vendors/${vendor}/codecs/${v.getFile()}`}>{v.getFile()}</Link>,
-        };
-      }))
+      ].concat(
+        codecs.map(v => {
+          return {
+            key: "codecs-" + v.getFile(),
+            label: <Link to={`/vendors/${vendor}/codecs/${v.getFile()}`}>{v.getFile()}</Link>,
+          };
+        }),
+      ),
     },
   ];
 
-  return (<div>
-    <Select showSearch allowClear placeholder="Select vendor" options={vendorOptions} value={vendor} className="vendor-select" onSelect={onVendorSelect} onClear={onVendorClear} />
-    {vendor ? <Menu
-      items={items}
-      selectedKeys={[selectedKey]}
-      mode="inline"
-    /> : <Link to="/vendors/add"><Button className="vendor-add" type="primary">Add vendor</Button></Link>}
-  </div>);
+  return (
+    <div>
+      <Select
+        showSearch
+        allowClear
+        placeholder="Select vendor"
+        options={vendorOptions}
+        value={vendor}
+        className="vendor-select"
+        onSelect={onVendorSelect}
+        onClear={onVendorClear}
+      />
+      {vendor ? (
+        <Menu items={items} selectedKeys={[selectedKey]} mode="inline" />
+      ) : (
+        <Link to="/vendors/add">
+          <Button className="vendor-add" type="primary">
+            Add vendor
+          </Button>
+        </Link>
+      )}
+    </div>
+  );
 }
 
 export default SideMenu;

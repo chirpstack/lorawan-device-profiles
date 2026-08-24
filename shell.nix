@@ -5,7 +5,7 @@ pkgs.mkShell {
     pkgs.rustup
     pkgs.protobuf
     pkgs.nodejs
-    pkgs.yarn
+    pkgs.pnpm
     pkgs.protoc-gen-grpc-web
   ];
   shellHook = ''

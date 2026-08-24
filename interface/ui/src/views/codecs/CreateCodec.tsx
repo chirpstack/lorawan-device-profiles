@@ -1,11 +1,11 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router";
 
 import { Space, Breadcrumb, Card } from "antd";
-import { PageHeader } from "@ant-design/pro-layout";
 
 import { Codec, CreateCodecRequest } from "@api/grpc-web/api_pb";
 import CodecForm from "./CodecForm";
 import DeviceProfileStore from "../../stores/DeviceProfileStore";
+import PageHeader from "../../components/PageHeader";
 
 function CreateCodec() {
   const navigate = useNavigate();
@@ -60,18 +60,9 @@ function encodeDownlink(input) {
   codec.setDecodeTests(`[]`);
 
   return (
-    <Space direction="vertical" style={{ width: "100%" }} size="large">
+    <Space orientation="vertical" style={{ width: "100%" }} size="large">
       <PageHeader
-        breadcrumbRender={() => (
-          <Breadcrumb>
-            <Breadcrumb.Item>
-              <span>Codecs</span>
-            </Breadcrumb.Item>
-            <Breadcrumb.Item>
-              <span>Add</span>
-            </Breadcrumb.Item>
-          </Breadcrumb>
-        )}
+        breadcrumbRender={() => <Breadcrumb items={[{ title: "Codecs" }, { title: "Add" }]} />}
         title="Add codec"
       />
       <Card>

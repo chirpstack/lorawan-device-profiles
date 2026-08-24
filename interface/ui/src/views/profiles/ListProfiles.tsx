@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link } from "react-router";
 
 import { Space, Breadcrumb, Card, Table, Button } from "antd";
-import { PageHeader } from "@ant-design/pro-layout";
 
 import { ListProfilesRequest, ListProfilesResponse } from "@api/grpc-web/api_pb";
 import DeviceProfileStore from "../../stores/DeviceProfileStore";
+import PageHeader from "../../components/PageHeader";
 
 function ListProfiles() {
   const [profiles, setProfiles] = useState<ListProfilesResponse | undefined>(undefined);
@@ -17,9 +17,9 @@ function ListProfiles() {
       dataIndex: "file",
       key: "file",
       render: (text: string) => {
-        return <Link to={`/vendors/${vendorDir}/profiles/${text}`}>{text}</Link>
+        return <Link to={`/vendors/${vendorDir}/profiles/${text}`}>{text}</Link>;
       },
-    }
+    },
   ];
 
   useEffect(() => {
@@ -29,7 +29,6 @@ function ListProfiles() {
     DeviceProfileStore.listProfiles(req, (resp: ListProfilesResponse) => {
       setProfiles(resp);
     });
-
   }, [vendorDir]);
 
   if (profiles === undefined) {
@@ -37,21 +36,14 @@ function ListProfiles() {
   }
 
   return (
-    <Space direction="vertical" style={{ width: "100%" }} size="large">
+    <Space orientation="vertical" style={{ width: "100%" }} size="large">
       <PageHeader
-        breadcrumbRender={() => (
-          <Breadcrumb>
-            <Breadcrumb.Item>
-              <span>Profiles</span>
-            </Breadcrumb.Item>
-            <Breadcrumb.Item>
-              <span>List</span>
-            </Breadcrumb.Item>
-          </Breadcrumb>
-        )}
+        breadcrumbRender={() => <Breadcrumb items={[{ title: "Profiles" }, { title: "List" }]} />}
         title="Profiles list"
         extra={
-          <Button type="primary"><Link to={`/vendors/${vendorDir}/profiles/create`}>Create profile</Link></Button>
+          <Button type="primary">
+            <Link to={`/vendors/${vendorDir}/profiles/create`}>Create profile</Link>
+          </Button>
         }
       />
       <Card>
