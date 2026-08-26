@@ -624,12 +624,10 @@ function getEncodeValue(map, value) {
     throw new Error("not match in " + JSON.stringify(map));
 }
 
-function Buffer(size) {
-    this.buffer = new Array(size);
-    this.offset = 0;
-
-    for (var i = 0; i < size; i++) {
-        this.buffer[i] = 0;
+class Buffer {
+    constructor(size) {
+        this.buffer = new Array(size).fill(0);
+        this.offset = 0;
     }
 }
 
