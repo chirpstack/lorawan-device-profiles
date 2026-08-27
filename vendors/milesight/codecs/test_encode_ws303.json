@@ -1,0 +1,12 @@
+[
+  {
+    "name": "Test encode reboot",
+    "input": { "data": { "reboot": "yes" } },
+    "expected": { "bytes": [255, 16, 255] }
+  },
+  {
+    "name": "Test encode report interval",
+    "input": { "data": { "report_interval": 3600 } },
+    "expected": { "bytes": [255, 3, 16, 14] }
+  }
+]
