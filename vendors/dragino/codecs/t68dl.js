@@ -1,3 +1,7 @@
+// Based on the official Dragino T68DL v1.0 decoder:
+// https://github.com/dragino/dragino-end-node-decoder/blob/main/T68DL/T68DL_v1.0_decoder.txt
+// Payload documentation:
+// https://wiki.dragino.com/docs/LoRaWAN-End-Node/temperature-humidity-sensors/t68dl/
 function decodeUplink(input) {
 	var bytes = input.bytes;
 	var data = {};
