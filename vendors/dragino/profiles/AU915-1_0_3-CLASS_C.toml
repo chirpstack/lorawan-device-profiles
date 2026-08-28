@@ -2,7 +2,7 @@
 id = "5212951d-10f2-4a3a-bd6f-1033cc70b96f"
 vendor_profile_id = 0
 region = "AU915"
-mac_version = "1.0.0"
+mac_version = "1.0.3"
 reg_params_revision = "A"
 supports_otaa = true
 supports_class_b = false
