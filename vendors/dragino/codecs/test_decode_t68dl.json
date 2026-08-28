@@ -1,0 +1,66 @@
+[
+  {
+    "name": "Test decode Dragino T68DL real-time data (fPort 2)",
+    "input": {
+      "fPort": 2,
+      "bytes": [14, 28, 9, 246, 0, 101, 83, 241, 0]
+    },
+    "expected": {
+      "data": {
+        "BatV": 3.612,
+        "TempC": 25.5,
+        "TEMPH_flag": "False",
+        "TEMPL_flag": "False",
+        "Data_time": "2023-11-14 22:13:20",
+        "Node_type": "T68DL"
+      }
+    }
+  },
+  {
+    "name": "Test decode Dragino T68DL negative temperature with alarm flag (fPort 2)",
+    "input": {
+      "fPort": 2,
+      "bytes": [14, 28, 253, 238, 2, 101, 83, 241, 0]
+    },
+    "expected": {
+      "data": {
+        "BatV": 3.612,
+        "TempC": -5.3,
+        "TEMPH_flag": "False",
+        "TEMPL_flag": "True",
+        "Data_time": "2023-11-14 22:13:20",
+        "Node_type": "T68DL"
+      }
+    }
+  },
+  {
+    "name": "Test decode Dragino T68DL datalog (fPort 3)",
+    "input": {
+      "fPort": 3,
+      "bytes": [0, 0, 0, 0, 9, 246, 0, 101, 83, 241, 0]
+    },
+    "expected": {
+      "data": {
+        "Node_type": "T68DL",
+        "DATALOG": "[25.5,2023-11-14 22:13:20],",
+        "PNACKMD": "False"
+      }
+    }
+  },
+  {
+    "name": "Test decode Dragino T68DL device status (fPort 5)",
+    "input": {
+      "fPort": 5,
+      "bytes": [52, 1, 0, 1, 255, 14, 28]
+    },
+    "expected": {
+      "data": {
+        "SENSOR_MODEL": "T68DL",
+        "SUB_BAND": "NULL",
+        "FREQUENCY_BAND": "EU868",
+        "FIRMWARE_VERSION": "1.0.0",
+        "BAT": 3.612
+      }
+    }
+  }
+]

@@ -1,0 +1,18 @@
+[device]
+id = "818138c6-9e6a-4562-a997-97a4e5110e0e"
+name = "T68DL"
+description = "Long range LoRaWAN temperature sensor with built-in TMP117 high-accuracy sensor and datalog feature."
+
+[[device.firmware]]
+version = "1.0.0"
+profiles = [
+    "AS923-1_0_3.toml",
+    "AU915-1_0_3.toml",
+    "EU868-1_0_3.toml",
+    "US915-1_0_3.toml",
+]
+codec = "t68dl.js"
+
+[device.metadata]
+product_url = "https://www.dragino.com/products/temperature-humidity-sensor/item/352-t68dl.html"
+documentation_url = "https://wiki.dragino.com/docs/LoRaWAN-End-Node/temperature-humidity-sensors/t68dl/"
